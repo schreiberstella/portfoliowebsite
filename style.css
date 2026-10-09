@@ -1,0 +1,267 @@
+/* ===== Grundeinstellungen ===== */
+:root {
+  --blau-hell: #eaf4fc;
+  --blau-mittel: #bfe0f7;
+  --blau-akzent: #6fb7e9;
+  --blau-dunkel: #2d6a9f;
+  --text: #1f3347;
+  --weiss: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, system-ui, sans-serif;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--blau-hell);
+}
+
+img,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+/* ===== Kopfbereich / Navigation ===== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: rgba(234, 244, 252, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--blau-mittel);
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  color: var(--blau-dunkel);
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  gap: 1.8rem;
+}
+
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  padding-bottom: 0.2rem;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+nav a:hover,
+nav a.aktiv {
+  color: var(--blau-dunkel);
+  border-bottom-color: var(--blau-akzent);
+}
+
+/* ===== Startseite: Hero mit Video ===== */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--blau-mittel), var(--blau-akzent));
+}
+
+.hero video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+  padding: 1.5rem 2.5rem;
+  background: rgba(234, 244, 252, 0.78);
+  border-radius: 16px;
+}
+
+.hero-text h1 {
+  font-size: clamp(2.2rem, 7vw, 4.5rem);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: var(--blau-dunkel);
+}
+
+.hero-text p {
+  margin-top: 0.4rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+/* ===== Über mich ===== */
+.about {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.about img,
+.foto-platzhalter {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(45, 106, 159, 0.18);
+}
+
+.foto-platzhalter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--blau-mittel);
+  color: var(--blau-dunkel);
+  font-size: 0.9rem;
+}
+
+.about h2 {
+  font-weight: 300;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--blau-dunkel);
+}
+
+/* ===== Unterseiten ===== */
+.seite {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 8rem 2rem 4rem;
+}
+
+.zurueck {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: var(--blau-dunkel);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.zurueck:hover {
+  text-decoration: underline;
+}
+
+.seite h1 {
+  font-weight: 300;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: 0.05em;
+  color: var(--blau-dunkel);
+  margin-bottom: 0.5rem;
+}
+
+.seite .einleitung {
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+}
+
+.galerie {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.arbeit {
+  background: var(--weiss);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(45, 106, 159, 0.12);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.arbeit:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(45, 106, 159, 0.2);
+}
+
+.arbeit img,
+.arbeit video,
+.platzhalter {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.platzhalter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--blau-mittel);
+  color: var(--blau-dunkel);
+  font-size: 0.9rem;
+}
+
+.arbeit figcaption {
+  padding: 0.9rem 1.1rem;
+  font-size: 0.95rem;
+}
+
+.arbeit figcaption span {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* ===== Fußbereich ===== */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.85rem;
+  color: var(--blau-dunkel);
+  border-top: 1px solid var(--blau-mittel);
+}
+
+/* ===== Handy-Ansicht ===== */
+@media (max-width: 700px) {
+  header {
+    padding: 0.8rem 1rem;
+    justify-content: center;
+  }
+
+  nav {
+    gap: 1.1rem;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+    padding: 4rem 1.5rem;
+  }
+
+  .seite {
+    padding-top: 9rem;
+  }
+}
