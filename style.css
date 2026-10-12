@@ -1,267 +1,555 @@
-/* ===== Grundeinstellungen ===== */
-:root {
-  --blau-hell: #eaf4fc;
-  --blau-mittel: #bfe0f7;
-  --blau-akzent: #6fb7e9;
-  --blau-dunkel: #2d6a9f;
-  --text: #1f3347;
-  --weiss: #ffffff;
+/* =====================================================
+   Stella Schreiber – Portfolio
+   Alle Farben und Größen stehen oben bei :root.
+   ===================================================== */
+
+/* ----- Schriften (liegen im selben Ordner, kein Google-Server nötig) ----- */
+@font-face {
+  font-family: "Display";
+  src: url("inter-black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Text";
+  src: url("inter-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+:root {
+  --weiss: #ffffff;
+  --schwarz: #000000;
+  --text: #111111;
+
+  /* Farben aus deinem Logo */
+  --orange: #ff5a00;
+  --violett: #8b3ff0;
+  --gelb: #f5e942;
+
+  /* Lila für das Menü (aus deinem Entwurf) */
+  --lila: #9e98c8;
+  --lila-hell: #e9e6f5;
+
+  --kopf: 64px;                       /* Höhe der Kopfzeile */
+  --rand: clamp(20px, 5vw, 56px);     /* Abstand links und rechts */
+
+  --display: "Display", "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  --fliesstext: "Text", "Helvetica Neue", Arial, sans-serif;
 }
+
+/* ----- Grundlagen ----- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  font-family: "Helvetica Neue", Arial, system-ui, sans-serif;
-  line-height: 1.7;
+  font-family: var(--fliesstext);
+  font-size: 1.05rem;
+  line-height: 1.65;
   color: var(--text);
-  background: var(--blau-hell);
+  background: var(--weiss);
 }
 
-img,
-video {
-  max-width: 100%;
-  display: block;
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
 }
 
-/* ===== Kopfbereich / Navigation ===== */
-header {
+a { color: inherit; }
+img, video { display: block; max-width: 100%; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+:focus-visible {
+  outline: 3px solid var(--violett);
+  outline-offset: 3px;
+}
+
+@keyframes einblenden { from { opacity: 0; } to { opacity: 1; } }
+@keyframes schweben {
+  from { transform: translateY(0) rotate(-2deg); }
+  to   { transform: translateY(-14px) rotate(2deg); }
+}
+@keyframes blinken { 50% { opacity: 0; } }
+@keyframes puls {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: .35; }
+}
+
+/* =====================================================
+   Ablauf auf der Startseite
+   data-stage="intro"     -> Video + CRAAAASH
+   data-stage="gate"      -> Logo-Seite
+   data-stage="portfolio" -> Portfolio
+   (ohne JavaScript wird einfach das Portfolio gezeigt)
+   ===================================================== */
+.buehne, .tor { display: none; }
+
+html[data-stage="intro"] .buehne { display: flex; }
+html[data-stage="gate"] .tor { display: flex; }
+
+html[data-stage]:not([data-stage="portfolio"]) #portfolio { display: none; }
+html[data-stage]:not([data-stage="portfolio"]) body { overflow: hidden; }
+
+html[data-stage="portfolio"] #portfolio { animation: einblenden .8s ease both; }
+
+/* ----- 1. Video + Schreibmaschine ----- */
+.buehne {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  inset: 0;
   z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  padding: 1rem 2rem;
-  background: rgba(234, 244, 252, 0.92);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--blau-mittel);
-}
-
-.logo {
-  font-weight: 700;
-  font-size: 1.15rem;
-  letter-spacing: 0.04em;
-  color: var(--blau-dunkel);
-  text-decoration: none;
-}
-
-nav {
-  display: flex;
-  gap: 1.8rem;
-}
-
-nav a {
-  color: var(--text);
-  text-decoration: none;
-  font-size: 0.95rem;
-  letter-spacing: 0.05em;
-  padding-bottom: 0.2rem;
-  border-bottom: 2px solid transparent;
-  transition: border-color 0.2s, color 0.2s;
-}
-
-nav a:hover,
-nav a.aktiv {
-  color: var(--blau-dunkel);
-  border-bottom-color: var(--blau-akzent);
-}
-
-/* ===== Startseite: Hero mit Video ===== */
-.hero {
-  position: relative;
-  height: 100vh;
-  min-height: 520px;
-  display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  background: #000;
+  color: #fff;
   overflow: hidden;
-  background: linear-gradient(135deg, var(--blau-mittel), var(--blau-akzent));
+  transition: opacity .7s ease;
 }
+.buehne.weg { opacity: 0; }
 
-.hero video {
+.buehne video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background: #000;
+  transition: opacity .5s ease;
 }
+.buehne.video-aus video { opacity: 0; }
 
-.hero-text {
+.schreib {
   position: relative;
   z-index: 2;
-  padding: 1.5rem 2.5rem;
-  background: rgba(234, 244, 252, 0.78);
-  border-radius: 16px;
-}
-
-.hero-text h1 {
-  font-size: clamp(2.2rem, 7vw, 4.5rem);
-  font-weight: 300;
-  letter-spacing: 0.08em;
-  color: var(--blau-dunkel);
-}
-
-.hero-text p {
-  margin-top: 0.4rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-}
-
-/* ===== Über mich ===== */
-.about {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 6rem 2rem;
-  display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 3rem;
-  align-items: center;
-}
-
-.about img,
-.foto-platzhalter {
   width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(45, 106, 159, 0.18);
+  padding: 0 var(--rand);
+  visibility: hidden;
+  white-space: nowrap;
+  font-family: var(--display);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  font-size: min(9.8vw, 7.5rem);     /* so groß, dass die längste Zeile gerade noch passt */
+}
+.buehne.text-an .schreib { visibility: visible; }
+
+.schreib h1,
+.schreib p {
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
 }
 
-.foto-platzhalter {
-  display: flex;
+/* Buchstaben: erst unsichtbar (nehmen aber schon Platz ein), dann „getippt“ */
+.z { visibility: hidden; position: relative; }
+.z.an { visibility: visible; }
+.z.letzte::after {
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 6%;
+  width: .07em;
+  height: .92em;
+  margin-left: .04em;
+  background: currentColor;
+  animation: blinken 1s steps(1) infinite;
+}
+
+.abspielen {
+  position: absolute;
+  z-index: 3;
+  padding: .9em 1.6em;
+  border: 3px solid #fff;
+  background: transparent;
+  color: #fff;
+  font-family: var(--display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: .06em;
+  cursor: pointer;
+}
+.abspielen[hidden] { display: none; }
+
+/* ----- 2. Logo-Seite ----- */
+.tor {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--blau-mittel);
-  color: var(--blau-dunkel);
-  font-size: 0.9rem;
+  gap: 1.4rem;
+  padding: var(--rand);
+  background: #fff;
+  transition: opacity .5s ease;
+}
+html[data-stage="gate"] .tor { animation: einblenden .9s ease both; }
+.tor.weg { opacity: 0; }
+
+.tor-knopf {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 3.5vw, 32px);
+  border: 0;
+  background: none;
+  color: #000;
+  font: inherit;
+  cursor: pointer;
+}
+.tor-knopf img {
+  width: clamp(110px, 28vw, 240px);
+  height: auto;
+  transition: transform .4s ease;
+}
+.tor-knopf span {
+  font-family: var(--display);
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: left;
+  font-size: clamp(2rem, 7.4vw, 5.2rem);
+  line-height: .95;
+  letter-spacing: -0.02em;
+  text-decoration: underline .06em transparent;
+  text-underline-offset: .12em;
+  transition: text-decoration-color .2s ease;
+}
+.tor-knopf:hover img,
+.tor-knopf:focus-visible img { transform: rotate(-6deg) scale(1.06); }
+.tor-knopf:hover span,
+.tor-knopf:focus-visible span { text-decoration-color: currentColor; }
+
+.tor-hinweis {
+  font-family: var(--display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: .78rem;
+  letter-spacing: .16em;
+  animation: puls 2.4s ease-in-out infinite;
 }
 
-.about h2 {
-  font-weight: 300;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: var(--blau-dunkel);
+/* =====================================================
+   Kopfzeile + Menü (auf allen Seiten gleich)
+   ===================================================== */
+.kopf {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  height: var(--kopf);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--rand);
+  background: #fff;
 }
 
-/* ===== Unterseiten ===== */
-.seite {
-  max-width: 1100px;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #000;
+  text-decoration: none;
+}
+.logo img { height: 38px; width: auto; }
+.logo span {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: .62rem;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+
+/* drei Striche */
+.burger,
+.menue-zu {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  margin-right: -8px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.burger i {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  height: 2px;
+  background: #000;
+}
+.burger i:nth-child(1) { top: 14px; }
+.burger i:nth-child(2) { top: 21px; }
+.burger i:nth-child(3) { top: 28px; }
+
+/* X zum Schließen */
+.menue-zu::before,
+.menue-zu::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 21px;
+  height: 2px;
+  background: #000;
+}
+.menue-zu::before { transform: rotate(45deg); }
+.menue-zu::after  { transform: rotate(-45deg); }
+
+/* lila Menü-Fläche */
+.menue {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 80;
+  padding: calc(var(--kopf) + 6px) var(--rand) clamp(28px, 6vw, 56px);
+  background: var(--lila);
+  transform: translateY(-102%);
+  visibility: hidden;
+  transition: transform .45s cubic-bezier(.2, .8, .2, 1), visibility 0s .45s;
+}
+.menue.offen {
+  transform: none;
+  visibility: visible;
+  transition: transform .45s cubic-bezier(.2, .8, .2, 1), visibility 0s;
+}
+.menue-zu {
+  position: absolute;
+  top: calc((var(--kopf) - 44px) / 2);
+  right: var(--rand);
+}
+.menue ul { list-style: none; }
+.menue a {
+  display: inline-block;
+  padding: .08em 0;
+  color: #000;
+  text-decoration: none;
+  font-family: var(--display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(1.6rem, 6.8vw, 3.4rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  transition: color .2s ease, transform .2s ease;
+}
+.menue a:hover,
+.menue a:focus-visible,
+.menue a[aria-current="page"] { color: #fff; }
+.menue a:hover { transform: translateX(6px); }
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background: rgba(0, 0, 0, .28);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease, visibility 0s .3s;
+}
+.scrim.offen {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .3s ease, visibility 0s;
+}
+body.menue-offen { overflow: hidden; }
+
+/* =====================================================
+   Portfolio-Startseite
+   ===================================================== */
+.hallo {
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 8rem 2rem 4rem;
+  padding: calc(var(--kopf) + clamp(32px, 8vw, 96px)) var(--rand) clamp(40px, 8vw, 100px);
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+.hallo-text { container-type: inline-size; }
+.hallo h1 {
+  font-size: min(11.5vw, 4.4rem);           /* Ersatz für ältere Browser */
+  font-size: min(13.4cqw, 7.5rem);
+  line-height: 1;
+}
+.hallo h1 .zeile { display: block; }
+.hallo h1 .name { margin-left: 1.5em; }     /* Name rückt ein, wie in deinem Entwurf */
+
+.hallo-bild {
+  width: min(78%, 460px);
+  justify-self: center;
+  animation: schweben 9s ease-in-out infinite alternate;
 }
 
+@media (min-width: 820px) {
+  .hallo { grid-template-columns: 1.25fr .75fr; gap: 4rem; }
+  .hallo-bild { width: 100%; }
+}
+
+.abschnitt {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: clamp(40px, 8vw, 96px) var(--rand);
+}
+.abschnitt > h2 {
+  margin-bottom: 1.6rem;
+  padding-top: 1rem;
+  border-top: 3px solid #000;
+  font-size: clamp(2rem, 7vw, 4.2rem);
+}
+
+.ueber { display: grid; gap: 2rem; }
+.ueber p {
+  max-width: 60ch;
+  margin-bottom: 1.1em;
+  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+}
+.foto {
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+@media (min-width: 820px) {
+  .ueber { grid-template-columns: 1.3fr 1fr; gap: 4rem; align-items: start; }
+  .ueber.ohne-foto { grid-template-columns: 1fr; }
+}
+
+.kontakt-liste { list-style: none; }
+.kontakt-liste li {
+  display: grid;
+  gap: .1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #000;
+}
+.kontakt-liste li:first-child { border-top: 1px solid #000; }
+.kontakt-liste .label {
+  font-size: .8rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.kontakt-liste a {
+  font-family: var(--display);
+  font-weight: 900;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: clamp(1.3rem, 5.4vw, 2.6rem);
+  line-height: 1.15;
+  word-break: break-word;
+  transition: color .2s ease;
+}
+.kontakt-liste a:hover,
+.kontakt-liste a:focus-visible { color: var(--violett); }
+
+.fuss {
+  padding: 26px var(--rand);
+  border-top: 3px solid #000;
+  font-size: .85rem;
+}
+
+/* =====================================================
+   Unterseiten (Animation, Illustration, …)
+   ===================================================== */
+.seite {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: calc(var(--kopf) + 36px) var(--rand) 80px;
+}
 .zurueck {
   display: inline-block;
-  margin-bottom: 1.5rem;
-  color: var(--blau-dunkel);
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #000;
+  font-family: var(--display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: .8rem;
+  letter-spacing: .08em;
   text-decoration: none;
-  font-size: 0.95rem;
 }
+.zurueck:hover { color: var(--violett); border-color: var(--violett); }
 
-.zurueck:hover {
-  text-decoration: underline;
+.seite-titel {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  font-size: clamp(2.4rem, 11vw, 8rem);
 }
-
-.seite h1 {
-  font-weight: 300;
-  font-size: clamp(2rem, 5vw, 3rem);
-  letter-spacing: 0.05em;
-  color: var(--blau-dunkel);
-  margin-bottom: 0.5rem;
+.seite-titel::after {
+  content: "";
+  display: block;
+  height: .14em;
+  margin-top: .1em;
+  background: var(--akzent, var(--orange));
 }
-
-.seite .einleitung {
-  margin-bottom: 2.5rem;
-  max-width: 600px;
+.einleitung {
+  max-width: 56ch;
+  margin: 1.2rem 0 2.8rem;
+  font-size: 1.15rem;
 }
 
 .galerie {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: clamp(16px, 3vw, 32px);
 }
-
-.arbeit {
-  background: var(--weiss);
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 4px 16px rgba(45, 106, 159, 0.12);
-  transition: transform 0.25s, box-shadow 0.25s;
-}
-
-.arbeit:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(45, 106, 159, 0.2);
-}
-
 .arbeit img,
 .arbeit video,
 .platzhalter {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+  background: var(--lila-hell);
 }
-
+.arbeit video { background: #000; }
 .platzhalter {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--blau-mittel);
-  color: var(--blau-dunkel);
-  font-size: 0.9rem;
+  padding: 1rem;
+  text-align: center;
+  color: var(--lila);
+  font-family: var(--display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 1rem;
 }
-
 .arbeit figcaption {
-  padding: 0.9rem 1.1rem;
-  font-size: 0.95rem;
+  padding-top: .7rem;
+  font-family: var(--display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: .9rem;
 }
-
 .arbeit figcaption span {
   display: block;
-  font-size: 0.8rem;
-  opacity: 0.7;
+  font-family: var(--fliesstext);
+  font-weight: 400;
+  text-transform: none;
+  font-size: .85rem;
+  opacity: .7;
 }
 
-/* ===== Fußbereich ===== */
-footer {
-  text-align: center;
-  padding: 2rem 1rem;
-  font-size: 0.85rem;
-  color: var(--blau-dunkel);
-  border-top: 1px solid var(--blau-mittel);
-}
-
-/* ===== Handy-Ansicht ===== */
-@media (max-width: 700px) {
-  header {
-    padding: 0.8rem 1rem;
-    justify-content: center;
-  }
-
-  nav {
-    gap: 1.1rem;
-  }
-
-  .about {
-    grid-template-columns: 1fr;
-    padding: 4rem 1.5rem;
-  }
-
-  .seite {
-    padding-top: 9rem;
+/* =====================================================
+   Weniger Bewegung, wenn das System es so eingestellt hat
+   ===================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition-duration: .01ms !important;
   }
 }

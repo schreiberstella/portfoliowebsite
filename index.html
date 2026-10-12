@@ -4,66 +4,121 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stella Schreiber – Portfolio</title>
-  <meta name="description" content="Portfolio von Stella Schreiber: Animation, Illustration und Grafik Design.">
+  <meta name="description" content="Portfolio von Stella Schreiber: Animation, Illustration, Fotografie und Game Design.">
+  <link rel="icon" href="logo.png">
+  <link rel="preload" href="inter-black.woff" as="font" type="font/woff" crossorigin>
   <link rel="stylesheet" href="style.css">
+  <!-- Entscheidet vor dem ersten Bild, ob das Intro läuft (index.html) oder direkt das Portfolio kommt (index.html#portfolio) -->
+  <script>
+    document.documentElement.setAttribute('data-stage', location.hash === '#portfolio' ? 'portfolio' : 'intro');
+  </script>
 </head>
 <body>
 
-  <header>
-    <a class="logo" href="index.html">Stella Schreiber</a>
-    <nav>
-      <a href="animation.html">Animation</a>
-      <a href="illustration.html">Illustration</a>
-      <a href="grafik-design.html">Grafik Design</a>
+  <!-- ============ 1. INTRO: Video, dann CRAAAAAAASH ============ -->
+  <section class="buehne" id="buehne" aria-label="Intro">
+    <!-- Dein Video: Datei A_1.mp4 liegt im Hauptordner neben dieser index.html -->
+    <video id="introVideo" muted playsinline preload="auto" poster="A_1-poster.jpg">
+      <source src="A_1.mp4" type="video/mp4">
+    </video>
+
+    <button class="abspielen" id="abspielen" hidden>Abspielen</button>
+
+    <!-- Texte: Zeilenumbrüche mit <br>, keine Leerzeichen neben dem <br> -->
+    <div class="schreib">
+      <h1 id="crash">CRAAAAAAASH</h1>
+      <p id="panik">ABER KEINE PANIK<br>ES IST NUR EINE<br>ANIMATION</p>
+    </div>
+  </section>
+
+  <!-- ============ 2. LOGO-SEITE ============ -->
+  <section class="tor" id="tor" aria-label="Willkommen">
+    <button class="tor-knopf" id="eintreten" type="button" aria-label="Portfolio von Stella Schreiber öffnen">
+      <img src="logo.png" alt="">
+      <span>Stella<br>Schreiber</span>
+    </button>
+    <p class="tor-hinweis" aria-hidden="true">Portfolio öffnen &rarr;</p>
+  </section>
+
+  <!-- ============ 3. PORTFOLIO ============ -->
+  <div id="portfolio">
+
+    <header class="kopf">
+      <a class="logo" href="index.html#portfolio" aria-label="Stella Schreiber – Startseite">
+        <img src="logo.png" alt="">
+        <span>Stella<br>Schreiber</span>
+      </a>
+      <button class="burger" id="menueAuf" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menue">
+        <i></i><i></i><i></i>
+      </button>
+    </header>
+
+    <div class="scrim" id="scrim"></div>
+    <nav class="menue" id="menue" aria-label="Bereiche">
+      <button class="menue-zu" id="menueZu" type="button" aria-label="Menü schließen"></button>
+      <ul>
+        <li><a href="animation.html">Animation</a></li>
+        <li><a href="illustration.html">Illustration</a></li>
+        <li><a href="fotografie.html">Fotografie</a></li>
+        <li><a href="game-design.html">Game Design</a></li>
+      </ul>
     </nav>
-  </header>
 
-  <main>
+    <main>
+      <section class="hallo">
+        <div class="hallo-text">
+          <h1>
+            <span class="zeile">Hello, ich bin</span>
+            <span class="zeile name">Stella<br>Schreiber</span>
+          </h1>
+        </div>
+        <img class="hallo-bild" src="logo.png" alt="Bunte Illustration von Stella Schreiber">
+      </section>
 
-    <!-- Startbereich: Name + Loop-Video -->
-    <section class="hero">
-      <!--
-        Dein Animationsvideo: Lege die Datei "animation-loop.mp4" in den Hauptordner
-        (neben index.html). Optional kannst du ein Vorschaubild "vorschau.jpg" ergänzen.
-      -->
-      <video autoplay muted loop playsinline poster="vorschau.jpg">
-        <source src="animation-loop.mp4" type="video/mp4">
-      </video>
+      <section class="abschnitt" id="about">
+        <h2>About me</h2>
+        <div class="ueber">
+          <div>
+            <!-- Hier deinen eigenen Text einsetzen -->
+            <p>
+              Hallo, ich bin Stella. Ich arbeite in den Bereichen Animation, Illustration,
+              Fotografie und Game Design und erzähle am liebsten Geschichten mit Bildern,
+              mal laut und knallbunt, mal leise und genau beobachtet.
+            </p>
+            <p>
+              Hier zeige ich dir eine Auswahl meiner Arbeiten. Über das Menü oben rechts
+              kommst du direkt zu den einzelnen Bereichen.
+            </p>
+          </div>
+          <!-- Dein Foto: Datei foto.jpg in den Hauptordner legen. Fehlt sie, verschwindet dieser Platz automatisch. -->
+          <img class="foto" src="foto.jpg" alt="Foto von Stella Schreiber"
+               onerror="this.parentNode.classList.add('ohne-foto'); this.remove();">
+        </div>
+      </section>
 
-      <div class="hero-text">
-        <h1>Stella Schreiber</h1>
-        <p>Animation &middot; Illustration &middot; Grafik Design</p>
-      </div>
-    </section>
+      <section class="abschnitt" id="kontakt">
+        <h2>Kontakt</h2>
+        <ul class="kontakt-liste">
+          <li>
+            <span class="label">E-Mail</span>
+            <!-- Hier deine E-Mail-Adresse eintragen (zweimal: im Link und im Text) -->
+            <a href="mailto:deine@email.de">deine@email.de</a>
+          </li>
+          <li>
+            <span class="label">Instagram</span>
+            <!-- Hier deinen Instagram-Namen eintragen oder die ganze Zeile löschen -->
+            <a href="https://www.instagram.com/deinname" target="_blank" rel="noopener">@deinname</a>
+          </li>
+        </ul>
+      </section>
+    </main>
 
-    <!-- Über mich -->
-    <section class="about" id="about">
-      <!--
-        Dein Foto: Lege die Datei "foto.jpg" in den Hauptordner.
-        Solange sie fehlt, wird der blaue Platzhalter angezeigt.
-      -->
-      <img src="foto.jpg" alt="Foto von Stella Schreiber"
-           onerror="this.outerHTML='<div class=&quot;foto-platzhalter&quot;>Hier kommt dein Foto hin (foto.jpg)</div>'">
+    <footer class="fuss">
+      <p>&copy; 2026 Stella Schreiber</p>
+    </footer>
 
-      <div>
-        <h2>Über mich</h2>
-        <p>
-          Hallo, ich bin Stella! Ich gestalte Animationen, Illustrationen und
-          Grafikdesign mit viel Liebe zum Detail. Hier zeige ich dir eine Auswahl
-          meiner Arbeiten. Ersetze diesen Text durch ein paar Sätze über dich,
-          deine Ausbildung oder dein Studium und das, was dich antreibt.
-        </p>
-        <p style="margin-top: 1rem;">
-          Kontakt: <a href="mailto:deine@email.de">deine@email.de</a>
-        </p>
-      </div>
-    </section>
+  </div>
 
-  </main>
-
-  <footer>
-    <p>&copy; 2026 Stella Schreiber</p>
-  </footer>
-
+  <script src="script.js"></script>
 </body>
 </html>

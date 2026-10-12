@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Design – Stella Schreiber</title>
+  <meta name="description" content="Game Design von Stella Schreiber.">
+  <link rel="icon" href="logo.png">
+  <link rel="preload" href="inter-black.woff" as="font" type="font/woff" crossorigin>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="kopf">
+    <a class="logo" href="index.html#portfolio" aria-label="Stella Schreiber – Startseite">
+      <img src="logo.png" alt="">
+      <span>Stella<br>Schreiber</span>
+    </a>
+    <button class="burger" id="menueAuf" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menue">
+      <i></i><i></i><i></i>
+    </button>
+  </header>
+
+  <div class="scrim" id="scrim"></div>
+  <nav class="menue" id="menue" aria-label="Bereiche">
+    <button class="menue-zu" id="menueZu" type="button" aria-label="Menü schließen"></button>
+    <ul>
+      <li><a href="animation.html">Animation</a></li>
+      <li><a href="illustration.html">Illustration</a></li>
+      <li><a href="fotografie.html">Fotografie</a></li>
+      <li><a href="game-design.html" aria-current="page">Game Design</a></li>
+    </ul>
+  </nav>
+
+  <main class="seite" style="--akzent: var(--lila);">
+    <a class="zurueck" href="index.html#portfolio">&larr; Startseite</a>
+    <h1 class="seite-titel">Game Design</h1>
+    <p class="einleitung">Eine Auswahl meiner Arbeiten im Game Design.</p>
+
+    <div class="galerie">
+      <!-- So fügst du eine Arbeit ein: Bild in den Hauptordner legen und den Platzhalter-Block durch das Bild ersetzen. -->
+      <figure class="arbeit">
+        <div class="platzhalter">Platzhalter Game 1</div>
+        <!-- <img src="game-1.jpg" alt="Beschreibung der Arbeit"> -->
+        <figcaption>Titel der Arbeit<span>Jahr &middot; Technik</span></figcaption>
+      </figure>
+
+      <!-- Noch eine Arbeit -->
+      <figure class="arbeit">
+        <div class="platzhalter">Platzhalter Game 2</div>
+        <!-- <img src="game-2.jpg" alt="Beschreibung der Arbeit"> -->
+        <figcaption>Titel der Arbeit<span>Jahr &middot; Technik</span></figcaption>
+      </figure>
+
+      <!-- Noch eine Arbeit -->
+      <figure class="arbeit">
+        <div class="platzhalter">Platzhalter Game 3</div>
+        <!-- <img src="game-3.jpg" alt="Beschreibung der Arbeit"> -->
+        <figcaption>Titel der Arbeit<span>Jahr &middot; Technik</span></figcaption>
+      </figure>
+    </div>
+  </main>
+
+  <footer class="fuss">
+    <p>&copy; 2026 Stella Schreiber</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

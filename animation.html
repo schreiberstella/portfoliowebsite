@@ -4,55 +4,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Animation – Stella Schreiber</title>
+  <meta name="description" content="Animation von Stella Schreiber.">
+  <link rel="icon" href="logo.png">
+  <link rel="preload" href="inter-black.woff" as="font" type="font/woff" crossorigin>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
-    <a class="logo" href="index.html">Stella Schreiber</a>
-    <nav>
-      <a href="animation.html" class="aktiv">Animation</a>
-      <a href="illustration.html">Illustration</a>
-      <a href="grafik-design.html">Grafik Design</a>
-    </nav>
+  <header class="kopf">
+    <a class="logo" href="index.html#portfolio" aria-label="Stella Schreiber – Startseite">
+      <img src="logo.png" alt="">
+      <span>Stella<br>Schreiber</span>
+    </a>
+    <button class="burger" id="menueAuf" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menue">
+      <i></i><i></i><i></i>
+    </button>
   </header>
 
-  <main class="seite">
-    <a class="zurueck" href="index.html">&larr; Zurück zur Startseite</a>
-    <h1>Animation</h1>
-    <p class="einleitung">Eine Auswahl meiner animierten Arbeiten.</p>
+  <div class="scrim" id="scrim"></div>
+  <nav class="menue" id="menue" aria-label="Bereiche">
+    <button class="menue-zu" id="menueZu" type="button" aria-label="Menü schließen"></button>
+    <ul>
+      <li><a href="animation.html" aria-current="page">Animation</a></li>
+      <li><a href="illustration.html">Illustration</a></li>
+      <li><a href="fotografie.html">Fotografie</a></li>
+      <li><a href="game-design.html">Game Design</a></li>
+    </ul>
+  </nav>
+
+  <main class="seite" style="--akzent: var(--orange);">
+    <a class="zurueck" href="index.html#portfolio">&larr; Startseite</a>
+    <h1 class="seite-titel">Animation</h1>
+    <p class="einleitung">Kleine Geschichten in Bewegung. Eine Auswahl meiner Animationen.</p>
 
     <div class="galerie">
-
-      <!--
-        So fügst du eine Arbeit ein: Video in den Hauptordner legen
-        (z. B. "animation-1.mp4") und den Platzhalter-Block durch das
-        auskommentierte <video> ersetzen.
-      -->
+      <!-- Erste Arbeit: dein Intro-Video. Zum Entfernen den ganzen <figure>-Block löschen. -->
       <figure class="arbeit">
-        <div class="platzhalter">Platzhalter Animation 1</div>
-        <!-- <video src="animation-1.mp4" controls muted loop playsinline></video> -->
-        <figcaption>Titel der Animation<span>Jahr &middot; Technik</span></figcaption>
+        <video src="A_1.mp4" poster="A_1-poster.jpg" controls muted loop playsinline preload="metadata"></video>
+        <figcaption>CRAAAAAAASH<span>Animation</span></figcaption>
       </figure>
 
+      <!-- So fügst du eine Arbeit ein: Video in den Hauptordner legen und den Platzhalter-Block durch das Video ersetzen. -->
       <figure class="arbeit">
         <div class="platzhalter">Platzhalter Animation 2</div>
         <!-- <video src="animation-2.mp4" controls muted loop playsinline></video> -->
-        <figcaption>Titel der Animation<span>Jahr &middot; Technik</span></figcaption>
+        <figcaption>Titel der Arbeit<span>Jahr &middot; Technik</span></figcaption>
       </figure>
 
+      <!-- Noch eine Arbeit -->
       <figure class="arbeit">
         <div class="platzhalter">Platzhalter Animation 3</div>
         <!-- <video src="animation-3.mp4" controls muted loop playsinline></video> -->
-        <figcaption>Titel der Animation<span>Jahr &middot; Technik</span></figcaption>
+        <figcaption>Titel der Arbeit<span>Jahr &middot; Technik</span></figcaption>
       </figure>
-
     </div>
   </main>
 
-  <footer>
+  <footer class="fuss">
     <p>&copy; 2026 Stella Schreiber</p>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
