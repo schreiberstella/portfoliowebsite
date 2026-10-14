@@ -86,7 +86,6 @@ img, video { display: block; max-width: 100%; }
   from { transform: translateY(0) rotate(-2deg); }
   to   { transform: translateY(-14px) rotate(2deg); }
 }
-@keyframes blinken { 50% { opacity: 0; } }
 @keyframes puls {
   0%, 100% { opacity: 1; }
   50%      { opacity: .35; }
@@ -94,14 +93,12 @@ img, video { display: block; max-width: 100%; }
 
 /* =====================================================
    Ablauf auf der Startseite
-   data-stage="intro"     -> Video + CRAAAASH
    data-stage="gate"      -> Logo-Seite
    data-stage="portfolio" -> Portfolio
    (ohne JavaScript wird einfach das Portfolio gezeigt)
    ===================================================== */
-.buehne, .tor { display: none; }
+.tor { display: none; }
 
-html[data-stage="intro"] .buehne { display: flex; }
 html[data-stage="gate"] .tor { display: flex; }
 
 html[data-stage]:not([data-stage="portfolio"]) #portfolio { display: none; }
@@ -109,86 +106,7 @@ html[data-stage]:not([data-stage="portfolio"]) body { overflow: hidden; }
 
 html[data-stage="portfolio"] #portfolio { animation: einblenden .8s ease both; }
 
-/* ----- 1. Video + Schreibmaschine ----- */
-.buehne {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  align-items: center;
-  justify-content: center;
-  background: #000;
-  color: #fff;
-  overflow: hidden;
-  transition: opacity .7s ease;
-}
-.buehne.weg { opacity: 0; }
-
-.buehne video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  background: #000;
-  transition: opacity .5s ease;
-}
-.buehne.video-aus video { opacity: 0; }
-
-.schreib {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  padding: 0 var(--rand);
-  visibility: hidden;
-  white-space: nowrap;
-  font-family: var(--display);
-  font-weight: 900;
-  text-transform: uppercase;
-  line-height: 1.04;
-  letter-spacing: -0.02em;
-  font-size: min(9.8vw, 7.5rem);     /* so groß, dass die längste Zeile gerade noch passt */
-}
-.buehne.text-an .schreib { visibility: visible; }
-
-.schreib h1,
-.schreib p {
-  font: inherit;
-  letter-spacing: inherit;
-  line-height: inherit;
-}
-
-/* Buchstaben: erst unsichtbar (nehmen aber schon Platz ein), dann „getippt“ */
-.z { visibility: hidden; position: relative; }
-.z.an { visibility: visible; }
-.z.letzte::after {
-  content: "";
-  position: absolute;
-  left: 100%;
-  top: 6%;
-  width: .07em;
-  height: .92em;
-  margin-left: .04em;
-  background: currentColor;
-  animation: blinken 1s steps(1) infinite;
-}
-
-.abspielen {
-  position: absolute;
-  z-index: 3;
-  padding: .9em 1.6em;
-  border: 3px solid #fff;
-  background: transparent;
-  color: #fff;
-  font-family: var(--display);
-  font-weight: 900;
-  text-transform: uppercase;
-  font-size: 1rem;
-  letter-spacing: .06em;
-  cursor: pointer;
-}
-.abspielen[hidden] { display: none; }
-
-/* ----- 2. Logo-Seite ----- */
+/* ----- Logo-Seite ----- */
 .tor {
   position: fixed;
   inset: 0;
@@ -542,6 +460,210 @@ body.menue-offen { overflow: hidden; }
   font-size: .85rem;
   opacity: .7;
 }
+
+
+/* =====================================================
+   Fotografie: Projektübersicht (Vorschau links, Liste rechts)
+   ===================================================== */
+[hidden] { display: none !important; }
+
+.seite-titel--mittel { font-size: clamp(2.4rem, 9vw, 6.5rem); }
+
+.projekte-layout {
+  display: grid;
+  gap: 2rem;
+  margin-top: clamp(1.5rem, 4vw, 3rem);
+}
+@media (min-width: 820px) {
+  .projekte-layout {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: start;
+  }
+}
+
+/* feste Höhe: so springt nichts, wenn Hoch- und Querformat wechseln */
+.vorschau-buehne {
+  position: relative;
+  height: clamp(260px, 78vw, 460px);
+}
+@media (min-width: 820px) {
+  .vorschau-buehne { height: clamp(320px, 52vh, 600px); }
+}
+.vorschau-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.vorschau-link img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  transition: opacity .2s ease;
+}
+.vorschau-link img.weg { opacity: 0; }
+
+/* Wenn ein Vorschaubild fehlt, zeigt die Fläche den Projektnamen */
+.vorschau-buehne.leer .vorschau-link {
+  background: var(--lila-hell);
+  color: var(--lila);
+  font-family: var(--display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.vorschau-buehne.leer .vorschau-link::after { content: attr(data-titel); }
+.vorschau-buehne.leer .vorschau-link img { display: none; }
+
+/* runde Pfeile (Vorschau und Projektseite) */
+.pfeil {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  transform: translateY(-50%);
+  border: 2px solid #000;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+.pfeil::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+  transition: border-color .2s ease;
+}
+.pfeil-links  { left: 8px; }
+.pfeil-rechts { right: 8px; }
+.pfeil-links::before  { transform: translateX(2px) rotate(-135deg); }
+.pfeil-rechts::before { transform: translateX(-2px) rotate(45deg); }
+.pfeil:hover,
+.pfeil:focus-visible { background: #000; }
+.pfeil:hover::before,
+.pfeil:focus-visible::before { border-color: #fff; }
+
+.projekte-liste h2 {
+  margin-bottom: .4rem;
+  padding-bottom: .7rem;
+  border-bottom: 3px solid #000;
+  font-size: 1.05rem;
+  letter-spacing: .04em;
+}
+.projekte-liste ol { list-style: none; }
+.projekte-liste li { border-bottom: 1px solid #000; }
+.projekte-liste a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 8px 1rem 0;
+  text-decoration: none;
+  font-size: clamp(1.3rem, 3.4vw, 1.8rem);
+  line-height: 1.2;
+}
+.projekte-liste a::after {
+  content: "\2192";
+  flex: none;
+  transition: transform .2s ease;
+}
+.projekte-liste li.aktiv a span {
+  text-decoration: underline;
+  text-decoration-thickness: .08em;
+  text-underline-offset: .2em;
+}
+.projekte-liste li.aktiv a::after,
+.projekte-liste a:hover::after { transform: translateX(6px); }
+
+.hinweis {
+  max-width: 56ch;
+  padding: 1rem 1.2rem;
+  background: var(--lila-hell);
+}
+
+/* =====================================================
+   Projektseite: große Bilder, Titel, Beschreibung
+   ===================================================== */
+.projekt-spalte {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.slider { position: relative; }
+.spur {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.spur::-webkit-scrollbar { display: none; }
+
+/* Jedes Bild liegt mittig in seiner Fläche: Querformat füllt die Breite,
+   Hochformat die Höhe. Die Fläche richtet sich nach dem höchsten Bild. */
+.folie {
+  flex: 0 0 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: center;
+}
+.folie img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(100vh - 200px);
+  max-height: calc(100svh - 200px);
+}
+.folie.leer {
+  min-height: 40vh;
+  background: var(--lila-hell);
+}
+.folie.leer::after {
+  content: attr(data-hinweis);
+  width: 100%;
+  overflow-wrap: anywhere;
+  padding: 1rem 4rem;
+  text-align: center;
+  color: var(--lila);
+  font-family: var(--display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: .9rem;
+}
+
+.projekt-info { margin-top: 1.2rem; }
+.bild-zaehler {
+  margin-bottom: .6rem;
+  font-size: .8rem;
+  letter-spacing: .14em;
+}
+.projekt-name {
+  font-family: var(--fliesstext);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  font-size: clamp(1.7rem, 5vw, 2.6rem);
+}
+.projekt-text { margin-top: 1rem; }
+.projekt-text p {
+  max-width: 62ch;
+  margin-bottom: 1em;
+  white-space: pre-line;
+}
+.zurueck-unten { text-align: right; margin-top: 2.5rem; }
+.zurueck-unten .zurueck { margin-bottom: 0; }
 
 /* =====================================================
    Weniger Bewegung, wenn das System es so eingestellt hat

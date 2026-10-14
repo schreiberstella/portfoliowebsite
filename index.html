@@ -6,32 +6,15 @@
   <title>Stella Schreiber – Portfolio</title>
   <meta name="description" content="Portfolio von Stella Schreiber: Animation, Illustration, Fotografie und Game Design.">
   <link rel="icon" href="logo.png">
-  <link rel="preload" href="inter-black.woff" as="font" type="font/woff" crossorigin>
   <link rel="stylesheet" href="style.css">
-  <!-- Entscheidet vor dem ersten Bild, ob das Intro läuft (index.html) oder direkt das Portfolio kommt (index.html#portfolio) -->
+  <!-- Entscheidet vor dem ersten Bild: erst die Logo-Seite (index.html) oder direkt das Portfolio (index.html#portfolio) -->
   <script>
-    document.documentElement.setAttribute('data-stage', location.hash === '#portfolio' ? 'portfolio' : 'intro');
+    document.documentElement.setAttribute('data-stage', location.hash === '#portfolio' ? 'portfolio' : 'gate');
   </script>
 </head>
 <body>
 
-  <!-- ============ 1. INTRO: Video, dann CRAAAAAAASH ============ -->
-  <section class="buehne" id="buehne" aria-label="Intro">
-    <!-- Dein Video: Datei A_1.mp4 liegt im Hauptordner neben dieser index.html -->
-    <video id="introVideo" muted playsinline preload="auto" poster="A_1-poster.jpg">
-      <source src="A_1.mp4" type="video/mp4">
-    </video>
-
-    <button class="abspielen" id="abspielen" hidden>Abspielen</button>
-
-    <!-- Texte: Zeilenumbrüche mit <br>, keine Leerzeichen neben dem <br> -->
-    <div class="schreib">
-      <h1 id="crash">CRAAAAAAASH</h1>
-      <p id="panik">ABER KEINE PANIK<br>ES IST NUR EINE<br>ANIMATION</p>
-    </div>
-  </section>
-
-  <!-- ============ 2. LOGO-SEITE ============ -->
+  <!-- ============ 1. LOGO-SEITE ============ -->
   <section class="tor" id="tor" aria-label="Willkommen">
     <button class="tor-knopf" id="eintreten" type="button" aria-label="Portfolio von Stella Schreiber öffnen">
       <img src="logo.png" alt="">
@@ -40,7 +23,7 @@
     <p class="tor-hinweis" aria-hidden="true">Portfolio öffnen &rarr;</p>
   </section>
 
-  <!-- ============ 3. PORTFOLIO ============ -->
+  <!-- ============ 2. PORTFOLIO ============ -->
   <div id="portfolio">
 
     <header class="kopf">

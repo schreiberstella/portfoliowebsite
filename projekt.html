@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projekt – Stella Schreiber</title>
+  <meta name="description" content="Fotoprojekt von Stella Schreiber.">
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="kopf">
+    <a class="logo" href="index.html#portfolio" aria-label="Stella Schreiber – Startseite">
+      <img src="logo.png" alt="">
+      <span>Stella<br>Schreiber</span>
+    </a>
+    <button class="burger" id="menueAuf" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menue">
+      <i></i><i></i><i></i>
+    </button>
+  </header>
+
+  <div class="scrim" id="scrim"></div>
+  <nav class="menue" id="menue" aria-label="Bereiche">
+    <button class="menue-zu" id="menueZu" type="button" aria-label="Menü schließen"></button>
+    <ul>
+      <li><a href="animation.html">Animation</a></li>
+      <li><a href="illustration.html">Illustration</a></li>
+      <li><a href="fotografie.html" aria-current="page">Fotografie</a></li>
+      <li><a href="game-design.html">Game Design</a></li>
+    </ul>
+  </nav>
+
+  <main class="seite" id="projektDetail">
+    <div class="projekt-spalte">
+      <a class="zurueck" id="zurueckOben" href="fotografie.html">&larr; Fotografie</a>
+
+      <div class="slider" id="projektSlider">
+        <div class="spur" id="projektSpur" tabindex="0" aria-label="Bilder des Projekts"></div>
+        <button class="pfeil pfeil-links" id="bildVor" type="button" aria-label="Voriges Bild"></button>
+        <button class="pfeil pfeil-rechts" id="bildWeiter" type="button" aria-label="Nächstes Bild"></button>
+      </div>
+
+      <div class="projekt-info">
+        <p class="bild-zaehler" id="bildZaehler" aria-live="polite"></p>
+        <h1 class="projekt-name" id="projektTitel"></h1>
+        <div class="projekt-text" id="projektText"></div>
+      </div>
+
+      <p class="zurueck-unten"><a class="zurueck" id="zurueckUnten" href="fotografie.html">&larr; Fotografie</a></p>
+    </div>
+    <noscript><p class="hinweis">Für diese Seite wird JavaScript benötigt.</p></noscript>
+  </main>
+
+  <footer class="fuss">
+    <p>&copy; 2026 Stella Schreiber</p>
+  </footer>
+
+  <script src="projekte.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

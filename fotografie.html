@@ -4,9 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fotografie – Stella Schreiber</title>
-  <meta name="description" content="Fotografie von Stella Schreiber.">
+  <meta name="description" content="Fotografie von Stella Schreiber: Projekte und Serien.">
   <link rel="icon" href="logo.png">
-  <link rel="preload" href="inter-black.woff" as="font" type="font/woff" crossorigin>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -34,37 +33,35 @@
 
   <main class="seite" style="--akzent: var(--gelb);">
     <a class="zurueck" href="index.html#portfolio">&larr; Startseite</a>
-    <h1 class="seite-titel">Fotografie</h1>
-    <p class="einleitung">Eine Auswahl meiner Fotografien.</p>
+    <h1 class="seite-titel seite-titel--mittel">Fotografie</h1>
 
-    <div class="galerie">
-      <!-- So fügst du eine Arbeit ein: Bild in den Hauptordner legen und den Platzhalter-Block durch das Bild ersetzen. -->
-      <figure class="arbeit">
-        <div class="platzhalter">Platzhalter Foto 1</div>
-        <!-- <img src="foto-1.jpg" alt="Beschreibung des Fotos"> -->
-        <figcaption>Titel der Arbeit<span>Jahr &middot; Technik</span></figcaption>
-      </figure>
+    <!-- Die Projekte und Bilder stehen in der Datei projekte.js -->
+    <div class="projekte-layout" id="projektUebersicht" data-bereich="fotografie">
 
-      <!-- Noch eine Arbeit -->
-      <figure class="arbeit">
-        <div class="platzhalter">Platzhalter Foto 2</div>
-        <!-- <img src="foto-2.jpg" alt="Beschreibung des Fotos"> -->
-        <figcaption>Titel der Arbeit<span>Jahr &middot; Technik</span></figcaption>
-      </figure>
+      <div class="vorschau">
+        <div class="vorschau-buehne" id="vorschauBuehne">
+          <a class="vorschau-link" id="vorschauLink" href="#">
+            <img id="vorschauBild" alt="">
+          </a>
+          <button class="pfeil pfeil-links" id="vorschauZurueck" type="button" aria-label="Voriges Projekt"></button>
+          <button class="pfeil pfeil-rechts" id="vorschauWeiter" type="button" aria-label="Nächstes Projekt"></button>
+        </div>
+      </div>
 
-      <!-- Noch eine Arbeit -->
-      <figure class="arbeit">
-        <div class="platzhalter">Platzhalter Foto 3</div>
-        <!-- <img src="foto-3.jpg" alt="Beschreibung des Fotos"> -->
-        <figcaption>Titel der Arbeit<span>Jahr &middot; Technik</span></figcaption>
-      </figure>
+      <nav class="projekte-liste" aria-label="Projekte">
+        <h2>Projekte</h2>
+        <ol id="projektListe"></ol>
+      </nav>
+
     </div>
+    <noscript><p class="hinweis">Für diese Seite wird JavaScript benötigt.</p></noscript>
   </main>
 
   <footer class="fuss">
     <p>&copy; 2026 Stella Schreiber</p>
   </footer>
 
+  <script src="projekte.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
