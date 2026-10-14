@@ -389,8 +389,7 @@ body.menue-offen { overflow: hidden; }
 }
 .zurueck {
   display: inline-block;
-  margin-bottom: 2rem;
-  border-bottom: 2px solid #000;
+  margin-bottom: 1.2rem;
   font-family: var(--display);
   font-weight: 900;
   text-transform: uppercase;
@@ -398,12 +397,14 @@ body.menue-offen { overflow: hidden; }
   letter-spacing: .08em;
   text-decoration: none;
 }
-.zurueck:hover { color: var(--violett); border-color: var(--violett); }
+.zurueck:hover { color: var(--violett); }
 
 .seite-titel {
   display: block;
   max-width: 100%;
-  font-size: clamp(2rem, 7vw, 4.5rem);
+  font-size: clamp(1rem, 2.4vw, 1.4rem);
+  letter-spacing: .02em;
+  text-decoration: none;
 }
 
 
@@ -415,11 +416,11 @@ body.menue-offen { overflow: hidden; }
 .projekte-layout {
   display: grid;
   gap: 2rem;
-  margin-top: clamp(1.5rem, 4vw, 3rem);
+  margin-top: clamp(1.2rem, 3vw, 2rem);
 }
 @media (min-width: 820px) {
   .projekte-layout {
-    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
     gap: clamp(2rem, 6vw, 6rem);
     align-items: start;
   }
@@ -428,10 +429,10 @@ body.menue-offen { overflow: hidden; }
 /* feste Höhe: so springt nichts, wenn Hoch- und Querformat wechseln */
 .vorschau-buehne {
   position: relative;
-  height: clamp(260px, 78vw, 460px);
+  height: clamp(300px, 100vw, 540px);
 }
 @media (min-width: 820px) {
-  .vorschau-buehne { height: clamp(320px, 52vh, 600px); }
+  .vorschau-buehne { height: clamp(420px, 68vh, 760px); }
 }
 .vorschau-link {
   display: flex;
@@ -497,11 +498,10 @@ body.menue-offen { overflow: hidden; }
 .pfeil:focus-visible::before { border-color: #fff; }
 
 .projekte-liste h2 {
-  margin-bottom: .4rem;
-  padding-bottom: .7rem;
-  border-bottom: 3px solid #000;
-  font-size: 1.05rem;
-  letter-spacing: .04em;
+  margin-bottom: .6rem;
+  font-size: .8rem;
+  letter-spacing: .08em;
+  text-decoration: none;
 }
 .projekte-liste ol { list-style: none; }
 .projekte-liste li { border-bottom: 1px solid #000; }
@@ -510,21 +510,17 @@ body.menue-offen { overflow: hidden; }
   align-items: baseline;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1rem 8px 1rem 0;
+  padding: 1.1rem 8px 1.1rem 0;
   text-decoration: none;
-  font-size: clamp(1.3rem, 3.4vw, 1.8rem);
-  line-height: 1.2;
+  font-size: clamp(1.6rem, 4.6vw, 2.6rem);
+  line-height: 1.1;
 }
 .projekte-liste a::after {
   content: "\2192";
   flex: none;
   transition: transform .2s ease;
 }
-.projekte-liste li.aktiv a span {
-  text-decoration: underline;
-  text-decoration-thickness: .08em;
-  text-underline-offset: .2em;
-}
+.projekte-liste li.aktiv a { color: var(--violett); }
 .projekte-liste li.aktiv a::after,
 .projekte-liste a:hover::after { transform: translateX(6px); }
 
@@ -588,6 +584,24 @@ body.menue-offen { overflow: hidden; }
 }
 
 .projekt-info { margin-top: 1.2rem; }
+
+/* Illustration: Galerie ohne Projekte, nur Bild + kurzer Name */
+.galerie-leiste {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.galerie-name {
+  font-family: var(--fliesstext);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  font-size: clamp(1.2rem, 3vw, 1.7rem);
+}
+.galerie-leiste .bild-zaehler { margin: 0; flex: none; }
 .bild-zaehler {
   margin-bottom: .6rem;
   font-size: .8rem;
@@ -617,4 +631,13 @@ body.menue-offen { overflow: hidden; }
     animation: none !important;
     transition-duration: .01ms !important;
   }
+}
+
+/* Illustration: Bild + Name sollen zusammen auf den Bildschirm passen */
+.galerie .slider { margin-top: 1.2rem; }
+.galerie .folie img,
+.galerie .folie video {
+  max-height: calc(100vh - 330px);
+  max-height: calc(100svh - 330px);
+  min-height: 200px;
 }

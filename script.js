@@ -224,29 +224,73 @@
     });
 
     // Bilder und Videos
-    var spur = document.getElementById('projektSpur');
-    var bilder = projekt.bilder || [];
-    bilder.forEach(function (eintrag, i) {
+    var bilder = (projekt.bilder || []).map(function (eintrag) {
       var info = bildInfo(eintrag);
-      var quelle = pfad(projekt, info.datei);
+      return {
+        quelle: pfad(projekt, info.datei),
+        datei: info.datei,
+        alt: info.alt || '',
+        poster: info.poster ? pfad(projekt, info.poster)
+              : (projekt.vorschau ? pfad(projekt, projekt.vorschau) : ''),
+        titel: projekt.titel
+      };
+    });
+    sliderStarten(bilder, document.getElementById('projektSpur'),
+      document.getElementById('bildVor'), document.getElementById('bildWeiter'),
+      document.getElementById('bildZaehler'), null);
+  }
+
+  /* ----- Illustration: nur Bilder, darunter der kurze Name ----- */
+  function galerieStarten(el) {
+    var key = el.getAttribute('data-bereich');
+    var bereich = daten[key];
+    var liste = bereich && bereich.bilder;
+
+    if (!liste || !liste.length) {
+      hinweis(el, 'Hier sind noch keine Illustrationen eingetragen. ' +
+        'Falls du schon welche eingetragen hast, prüfe die Datei projekte.js ' +
+        '(fehlt irgendwo ein Komma oder ein Anführungszeichen?).');
+      return;
+    }
+
+    var ordner = bereich.ordner || '';
+    var bilder = liste.map(function (eintrag) {
+      var info = bildInfo(eintrag);
+      return {
+        quelle: ordner + info.datei,
+        datei: info.datei,
+        alt: info.alt || info.titel || '',
+        poster: info.poster ? ordner + info.poster : '',
+        titel: info.titel || ''
+      };
+    });
+    var name = document.getElementById('galerieName');
+    sliderStarten(bilder, document.getElementById('galerieSpur'),
+      document.getElementById('galerieVor'), document.getElementById('galerieWeiter'),
+      document.getElementById('galerieZaehler'), function (i) {
+        name.textContent = bilder[i].titel;
+      });
+  }
+
+  /* ----- gemeinsamer Slider (Projektseite und Illustration) ----- */
+  function sliderStarten(bilder, spur, vor, weiter, zaehlerEl, beiWechsel) {
+    bilder.forEach(function (b, i) {
       var fig = document.createElement('figure');
       fig.className = 'folie';
       var medium;
 
-      if (istVideo(info.datei)) {
+      if (istVideo(b.datei)) {
         medium = document.createElement('video');
-        medium.src = quelle;
+        medium.src = b.quelle;
         medium.controls = true;
         medium.playsInline = true;
         medium.preload = 'metadata';
-        var poster = info.poster ? pfad(projekt, info.poster)
-                   : (projekt.vorschau ? pfad(projekt, projekt.vorschau) : '');
-        if (poster) medium.poster = poster;
-        medium.setAttribute('aria-label', info.alt || projekt.titel);
+        if (b.poster) medium.poster = b.poster;
+        medium.setAttribute('aria-label', b.alt || b.titel);
       } else {
         medium = document.createElement('img');
-        medium.src = quelle;
-        medium.alt = info.alt || (projekt.titel + ' – Bild ' + (i + 1));
+        medium.src = b.quelle;
+        medium.alt = b.alt || (b.titel + ' – Bild ' + (i + 1));
         medium.decoding = 'async';
         if (i > 0) medium.loading = 'lazy';
       }
@@ -254,7 +298,7 @@
       medium.addEventListener('error', function () {
         // Hilfe beim Einrichten: zeigt, welche Datei nicht gefunden wurde
         fig.classList.add('leer');
-        fig.setAttribute('data-hinweis', 'Datei nicht gefunden: ' + quelle);
+        fig.setAttribute('data-hinweis', 'Datei nicht gefunden: ' + b.quelle);
         medium.remove();
       });
       fig.appendChild(medium);
@@ -262,14 +306,12 @@
     });
 
     var n = bilder.length;
-    var zaehlerEl = document.getElementById('bildZaehler');
-    var vor = document.getElementById('bildVor');
-    var weiter = document.getElementById('bildWeiter');
     var index = 0;
 
     function aktualisieren() {
       zaehlerEl.textContent = (index + 1) + ' / ' + n;
       Array.prototype.forEach.call(spur.querySelectorAll('video'), function (v) { v.pause(); });
+      if (beiWechsel) beiWechsel(index);
     }
 
     function gehe(i) {
@@ -277,33 +319,37 @@
       spur.scrollTo({ left: i * spur.clientWidth, behavior: reduce ? 'auto' : 'smooth' });
     }
 
+    if (beiWechsel) beiWechsel(0);
     if (n < 2) {
       vor.hidden = true;
       weiter.hidden = true;
       zaehlerEl.hidden = true;
-    } else {
-      aktualisieren();
-      vor.addEventListener('click', function () { gehe(index - 1); });
-      weiter.addEventListener('click', function () { gehe(index + 1); });
-
-      // Wischen oder Scrollen: Zähler mitführen
-      spur.addEventListener('scroll', function () {
-        var i = Math.round(spur.scrollLeft / Math.max(spur.clientWidth, 1));
-        if (i !== index) { index = i; aktualisieren(); }
-      }, { passive: true });
-
-      // Bei Größenänderung am aktuellen Bild bleiben
-      window.addEventListener('resize', function () {
-        spur.scrollTo({ left: index * spur.clientWidth, behavior: 'auto' });
-      });
-
-      document.addEventListener('keydown', function (e) {
-        if (menueOffen() || e.altKey || e.ctrlKey || e.metaKey) return;
-        if (e.key === 'ArrowLeft') gehe(index - 1);
-        if (e.key === 'ArrowRight') gehe(index + 1);
-      });
+      return;
     }
+    aktualisieren();
+    vor.addEventListener('click', function () { gehe(index - 1); });
+    weiter.addEventListener('click', function () { gehe(index + 1); });
+
+    // Wischen oder Scrollen: Zähler mitführen
+    spur.addEventListener('scroll', function () {
+      var i = Math.round(spur.scrollLeft / Math.max(spur.clientWidth, 1));
+      if (i !== index) { index = i; aktualisieren(); }
+    }, { passive: true });
+
+    // Bei Größenänderung am aktuellen Bild bleiben
+    window.addEventListener('resize', function () {
+      spur.scrollTo({ left: index * spur.clientWidth, behavior: 'auto' });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (menueOffen() || e.altKey || e.ctrlKey || e.metaKey) return;
+      if (e.key === 'ArrowLeft') gehe(index - 1);
+      if (e.key === 'ArrowRight') gehe(index + 1);
+    });
   }
+
+  var galerie = document.getElementById('illustrationGalerie');
+  if (galerie) galerieStarten(galerie);
 
   var uebersicht = document.getElementById('projektUebersicht');
   if (uebersicht) uebersichtStarten(uebersicht);

@@ -27,7 +27,7 @@
       <li><a href="animation.html">Animation</a></li>
       <li><a href="illustration.html" aria-current="page">Illustration</a></li>
       <li><a href="fotografie.html">Fotografie</a></li>
-      <li><a href="game-design.html">Game Design</a></li>
+      <li><a href="grafik-design.html">Grafik Design</a></li>
     </ul>
   </nav>
 
@@ -35,24 +35,17 @@
     <a class="zurueck" href="index.html#portfolio">&larr; Startseite</a>
     <h1 class="seite-titel">Illustration</h1>
 
-    <!-- Die Projekte, Bilder und Texte stehen in der Datei projekte.js -->
-    <div class="projekte-layout" id="projektUebersicht" data-bereich="illustration">
-
-      <div class="vorschau">
-        <div class="vorschau-buehne" id="vorschauBuehne">
-          <a class="vorschau-link" id="vorschauLink" href="#">
-            <img id="vorschauBild" alt="">
-          </a>
-          <button class="pfeil pfeil-links" id="vorschauZurueck" type="button" aria-label="Voriges Projekt"></button>
-          <button class="pfeil pfeil-rechts" id="vorschauWeiter" type="button" aria-label="Nächstes Projekt"></button>
-        </div>
+    <!-- Die Illustrationen stehen in der Datei projekte.js -->
+    <div class="projekt-spalte galerie" id="illustrationGalerie" data-bereich="illustration">
+      <div class="slider">
+        <div class="spur" id="galerieSpur" tabindex="0" aria-label="Illustrationen"></div>
+        <button class="pfeil pfeil-links" id="galerieVor" type="button" aria-label="Vorige Illustration"></button>
+        <button class="pfeil pfeil-rechts" id="galerieWeiter" type="button" aria-label="Nächste Illustration"></button>
       </div>
-
-      <nav class="projekte-liste" aria-label="Projekte">
-        <h2>Projekte</h2>
-        <ol id="projektListe"></ol>
-      </nav>
-
+      <div class="galerie-leiste">
+        <p class="galerie-name" id="galerieName" aria-live="polite"></p>
+        <p class="bild-zaehler" id="galerieZaehler"></p>
+      </div>
     </div>
     <noscript><p class="hinweis">Für diese Seite wird JavaScript benötigt.</p></noscript>
   </main>

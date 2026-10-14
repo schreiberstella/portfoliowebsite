@@ -4,8 +4,9 @@
 
    So funktioniert es
    ------------------
-   - Es gibt vier Bereiche: animation, illustration, fotografie, game-design.
-     In jedem Bereich stehen mehrere Projekte.
+   - Es gibt vier Bereiche: animation, illustration, fotografie, grafik-design.
+     (Illustration ist anders: dort stehen direkt die Bilder, siehe unten.)
+     In jedem Bereich (außer Illustration) stehen mehrere Projekte.
    - Jedes Projekt ist ein Block von { bis },. Die Reihenfolge hier ist
      die Reihenfolge auf der Seite.
    - NEUES PROJEKT: einen ganzen Block kopieren, direkt darunter einfügen
@@ -95,48 +96,20 @@ window.PORTFOLIO = {
     ],
   },
 
-  /* ========================== ILLUSTRATION ========================== */
+  /* ========================== ILLUSTRATION ==========================
+     Hier gibt es KEINE Projekte: Die Illustrationen werden direkt gezeigt,
+     man klickt sich durch. Pro Bild: datei + titel (kurzer Name, steht
+     unter dem Bild). Neue Illustration = eine Zeile kopieren und ändern.
+     ================================================================== */
   illustration: {
     titel: 'Illustration',
+    ordner: 'bilder/',   // Ordner der Bilder (mit / am Ende), z. B. 'bilder/illustration/'
 
-    projekte: [
-
-      {
-        id: 'projekt-1',
-        titel: 'Projekt 1',
-        ordner: 'bilder/',
-        vorschau: 'platzhalter-quer.svg',
-        bilder: [
-          'platzhalter-quer.svg',
-          'platzhalter-quer.svg',
-        ],
-        text: `Hier kommt der Beschreibungstext zu Projekt 1 hin.
-
-Einen neuen Absatz beginnst du mit einer Leerzeile.`,
-      },
-
-      {
-        id: 'projekt-2',
-        titel: 'Projekt 2',
-        ordner: 'bilder/',
-        vorschau: 'platzhalter-hoch.svg',
-        bilder: [
-          'platzhalter-hoch.svg',
-        ],
-        text: `Hier kommt der Beschreibungstext zu Projekt 2 hin.`,
-      },
-
-      {
-        id: 'projekt-3',
-        titel: 'Projekt 3',
-        ordner: 'bilder/',
-        vorschau: 'platzhalter-quer.svg',
-        bilder: [
-          'platzhalter-quer.svg',
-        ],
-        text: `Hier kommt der Beschreibungstext zu Projekt 3 hin.`,
-      },
-
+    bilder: [
+      { datei: 'platzhalter-quer.svg', titel: 'Illustration 1' },
+      { datei: 'platzhalter-hoch.svg', titel: 'Illustration 2' },
+      { datei: 'platzhalter-quer.svg', titel: 'Illustration 3' },
+      // { datei: '04.jpg', titel: 'Name der Illustration', alt: 'Was zu sehen ist' },
     ],
   },
 
@@ -193,9 +166,9 @@ Einen neuen Absatz beginnst du mit einer Leerzeile.`,
     ],
   },
 
-  /* =========================== GAME DESIGN =========================== */
-  'game-design': {
-    titel: 'Game Design',
+  /* =========================== GRAFIK DESIGN =========================== */
+  'grafik-design': {
+    titel: 'Grafik Design',
 
     projekte: [
 
