@@ -1,9 +1,11 @@
 /* =====================================================================
-   PROJEKTE – HIER TRÄGST DU DEINE BILDER UND TEXTE EIN
+   PROJEKTE – HIER TRÄGST DU DEINE BILDER, VIDEOS UND TEXTE EIN
    =====================================================================
 
    So funktioniert es
    ------------------
+   - Es gibt vier Bereiche: animation, illustration, fotografie, game-design.
+     In jedem Bereich stehen mehrere Projekte.
    - Jedes Projekt ist ein Block von { bis },. Die Reihenfolge hier ist
      die Reihenfolge auf der Seite.
    - NEUES PROJEKT: einen ganzen Block kopieren, direkt darunter einfügen
@@ -11,21 +13,24 @@
    - Achte auf die Kommas am Ende der Zeilen und auf die Anführungszeichen.
      Fehlt eins, bleibt die Seite leer.
 
-   Die Felder
-   ----------
+   Die Felder eines Projekts
+   -------------------------
    id        Kurzname für die Internetadresse. Nur kleine Buchstaben,
              Zahlen und Bindestriche, keine Leerzeichen oder Umlaute.
-             Jede id darf nur einmal vorkommen.
+             Innerhalb eines Bereichs darf jede id nur einmal vorkommen.
    titel     Der Name des Projekts, so wie er auf der Seite steht.
-   ordner    Der Ordner im Repository, in dem die Bilder dieses Projekts
+   ordner    Der Ordner im Repository, in dem die Dateien dieses Projekts
              liegen. Mit einem / am Ende.
-   vorschau  Das Vorschaubild auf der Fotografie-Seite (Dateiname im Ordner).
-   bilder    Die großen Bilder des Projekts, in der Reihenfolge, in der man
+   vorschau  Das Vorschaubild in der Projektliste (Dateiname im Ordner).
+   bilder    Die großen Bilder oder Videos, in der Reihenfolge, in der man
              sie durchblättert. Hochformat und Querformat dürfen gemischt
              werden, die Seite passt sich an.
-             Einfach: '02.jpg'
-             Mit Bildbeschreibung (gut für Blinde und Suchmaschinen):
-             { datei: '02.jpg', alt: 'Was auf dem Bild zu sehen ist' }
+             Bild:   '02.jpg'
+             Video:  '02.mp4'
+             Mit Beschreibung (gut für Blinde und Suchmaschinen):
+                     { datei: '02.jpg', alt: 'Was auf dem Bild zu sehen ist' }
+             Video mit eigenem Startbild:
+                     { datei: '02.mp4', poster: '02.jpg' }
    text      Die Beschreibung unter den Bildern. Zwischen die Backticks `
              schreiben. Neue Absätze trennst du mit einer Leerzeile.
              Bitte kein weiteres Backtick ` im Text verwenden.
@@ -38,10 +43,104 @@
       ergänzen, am Ende mit Komma.
    Tipp: Bilder vorher auf etwa 2000 Pixel Kantenlänge verkleinern
    (JPG), dann laden sie schnell.
+
+   Platzhalter ersetzen
+   --------------------
+   Die Projekte "Projekt 1, 2, 3" mit den grauen Platzhalterbildern sind nur
+   Vorlagen. Ersetze bei ihnen titel, ordner, vorschau, bilder und text durch
+   deine eigenen Angaben (oder lösche den ganzen Block).
    ===================================================================== */
 
 window.PORTFOLIO = {
 
+  /* =========================== ANIMATION =========================== */
+  animation: {
+    titel: 'Animation',
+
+    projekte: [
+
+      {
+        id: 'craaaaaaash',
+        titel: 'CRAAAAAAASH',
+        ordner: '',                      // die Dateien liegen im Hauptordner
+        vorschau: 'A_1-poster.jpg',
+        bilder: [
+          { datei: 'A_1.mp4', poster: 'A_1-poster.jpg', alt: 'Animation: ein Lastwagen wird von einem roten Auto gerammt und fängt Feuer' },
+        ],
+        text: `Hier kommt der Beschreibungstext zu "CRAAAAAAASH" hin.`,
+      },
+
+      {
+        id: 'projekt-2',
+        titel: 'Projekt 2',
+        ordner: 'bilder/',
+        vorschau: 'platzhalter-hoch.svg',
+        bilder: [
+          'platzhalter-hoch.svg',
+        ],
+        text: `Hier kommt der Beschreibungstext zu Projekt 2 hin.`,
+      },
+
+      {
+        id: 'projekt-3',
+        titel: 'Projekt 3',
+        ordner: 'bilder/',
+        vorschau: 'platzhalter-quer.svg',
+        bilder: [
+          'platzhalter-quer.svg',
+        ],
+        text: `Hier kommt der Beschreibungstext zu Projekt 3 hin.`,
+      },
+
+    ],
+  },
+
+  /* ========================== ILLUSTRATION ========================== */
+  illustration: {
+    titel: 'Illustration',
+
+    projekte: [
+
+      {
+        id: 'projekt-1',
+        titel: 'Projekt 1',
+        ordner: 'bilder/',
+        vorschau: 'platzhalter-quer.svg',
+        bilder: [
+          'platzhalter-quer.svg',
+          'platzhalter-quer.svg',
+        ],
+        text: `Hier kommt der Beschreibungstext zu Projekt 1 hin.
+
+Einen neuen Absatz beginnst du mit einer Leerzeile.`,
+      },
+
+      {
+        id: 'projekt-2',
+        titel: 'Projekt 2',
+        ordner: 'bilder/',
+        vorschau: 'platzhalter-hoch.svg',
+        bilder: [
+          'platzhalter-hoch.svg',
+        ],
+        text: `Hier kommt der Beschreibungstext zu Projekt 2 hin.`,
+      },
+
+      {
+        id: 'projekt-3',
+        titel: 'Projekt 3',
+        ordner: 'bilder/',
+        vorschau: 'platzhalter-quer.svg',
+        bilder: [
+          'platzhalter-quer.svg',
+        ],
+        text: `Hier kommt der Beschreibungstext zu Projekt 3 hin.`,
+      },
+
+    ],
+  },
+
+  /* =========================== FOTOGRAFIE =========================== */
   fotografie: {
     titel: 'Fotografie',
 
@@ -89,6 +188,51 @@ Einen neuen Absatz beginnst du mit einer Leerzeile.`,
           // '03.jpg',
         ],
         text: `Hier kommt der Beschreibungstext zu "Filmzitate" hin.`,
+      },
+
+    ],
+  },
+
+  /* =========================== GAME DESIGN =========================== */
+  'game-design': {
+    titel: 'Game Design',
+
+    projekte: [
+
+      {
+        id: 'projekt-1',
+        titel: 'Projekt 1',
+        ordner: 'bilder/',
+        vorschau: 'platzhalter-quer.svg',
+        bilder: [
+          'platzhalter-quer.svg',
+          'platzhalter-quer.svg',
+        ],
+        text: `Hier kommt der Beschreibungstext zu Projekt 1 hin.
+
+Einen neuen Absatz beginnst du mit einer Leerzeile.`,
+      },
+
+      {
+        id: 'projekt-2',
+        titel: 'Projekt 2',
+        ordner: 'bilder/',
+        vorschau: 'platzhalter-hoch.svg',
+        bilder: [
+          'platzhalter-hoch.svg',
+        ],
+        text: `Hier kommt der Beschreibungstext zu Projekt 2 hin.`,
+      },
+
+      {
+        id: 'projekt-3',
+        titel: 'Projekt 3',
+        ordner: 'bilder/',
+        vorschau: 'platzhalter-quer.svg',
+        bilder: [
+          'platzhalter-quer.svg',
+        ],
+        text: `Hier kommt der Beschreibungstext zu Projekt 3 hin.`,
       },
 
     ],

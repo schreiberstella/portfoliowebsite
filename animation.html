@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Animation – Stella Schreiber</title>
-  <meta name="description" content="Animation von Stella Schreiber.">
+  <meta name="description" content="Animationen von Stella Schreiber.">
   <link rel="icon" href="logo.png">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -31,38 +31,37 @@
     </ul>
   </nav>
 
-  <main class="seite" style="--akzent: var(--orange);">
+  <main class="seite">
     <a class="zurueck" href="index.html#portfolio">&larr; Startseite</a>
     <h1 class="seite-titel">Animation</h1>
-    <p class="einleitung">Kleine Geschichten in Bewegung. Eine Auswahl meiner Animationen.</p>
 
-    <div class="galerie">
-      <!-- Erste Arbeit: dein Intro-Video. Zum Entfernen den ganzen <figure>-Block löschen. -->
-      <figure class="arbeit">
-        <video src="A_1.mp4" poster="A_1-poster.jpg" controls muted loop playsinline preload="metadata"></video>
-        <figcaption>CRAAAAAAASH<span>Animation</span></figcaption>
-      </figure>
+    <!-- Die Projekte, Bilder und Texte stehen in der Datei projekte.js -->
+    <div class="projekte-layout" id="projektUebersicht" data-bereich="animation">
 
-      <!-- So fügst du eine Arbeit ein: Video in den Hauptordner legen und den Platzhalter-Block durch das Video ersetzen. -->
-      <figure class="arbeit">
-        <div class="platzhalter">Platzhalter Animation 2</div>
-        <!-- <video src="animation-2.mp4" controls muted loop playsinline></video> -->
-        <figcaption>Titel der Arbeit<span>Jahr &middot; Technik</span></figcaption>
-      </figure>
+      <div class="vorschau">
+        <div class="vorschau-buehne" id="vorschauBuehne">
+          <a class="vorschau-link" id="vorschauLink" href="#">
+            <img id="vorschauBild" alt="">
+          </a>
+          <button class="pfeil pfeil-links" id="vorschauZurueck" type="button" aria-label="Voriges Projekt"></button>
+          <button class="pfeil pfeil-rechts" id="vorschauWeiter" type="button" aria-label="Nächstes Projekt"></button>
+        </div>
+      </div>
 
-      <!-- Noch eine Arbeit -->
-      <figure class="arbeit">
-        <div class="platzhalter">Platzhalter Animation 3</div>
-        <!-- <video src="animation-3.mp4" controls muted loop playsinline></video> -->
-        <figcaption>Titel der Arbeit<span>Jahr &middot; Technik</span></figcaption>
-      </figure>
+      <nav class="projekte-liste" aria-label="Projekte">
+        <h2>Projekte</h2>
+        <ol id="projektListe"></ol>
+      </nav>
+
     </div>
+    <noscript><p class="hinweis">Für diese Seite wird JavaScript benötigt.</p></noscript>
   </main>
 
   <footer class="fuss">
     <p>&copy; 2026 Stella Schreiber</p>
   </footer>
 
+  <script src="projekte.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

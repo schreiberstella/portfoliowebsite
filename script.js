@@ -75,6 +75,10 @@
     return (typeof eintrag === 'string') ? { datei: eintrag } : eintrag;
   }
 
+  function istVideo(datei) {
+    return /\.(mp4|webm|mov|m4v)$/i.test(datei);
+  }
+
   function pfad(projekt, datei) {
     return (projekt.ordner || '') + datei;
   }
@@ -190,12 +194,14 @@
     }
 
     var rueckZiel = bereich ? (key + '.html') : 'index.html#portfolio';
-    var rueckText = '← ' + (bereich && bereich.titel ? bereich.titel : 'Startseite');
-    ['zurueckOben', 'zurueckUnten'].forEach(function (nameId) {
-      var a = document.getElementById(nameId);
-      a.href = rueckZiel;
-      a.textContent = rueckText;
-    });
+    var rueckText = '\u2190 ' + (bereich && bereich.titel ? bereich.titel : 'Startseite');
+    var zurueck = document.getElementById('zurueck');
+    zurueck.href = rueckZiel;
+    zurueck.textContent = rueckText;
+
+    // Menüpunkt des Bereichs als aktuell markieren
+    var menueLink = document.querySelector('#menue a[href="' + key + '.html"]');
+    if (menueLink) menueLink.setAttribute('aria-current', 'page');
 
     if (!projekt) {
       document.title = 'Projekt nicht gefunden – Stella Schreiber';
@@ -217,25 +223,41 @@
       textBox.appendChild(p);
     });
 
-    // Bilder
+    // Bilder und Videos
     var spur = document.getElementById('projektSpur');
     var bilder = projekt.bilder || [];
     bilder.forEach(function (eintrag, i) {
       var info = bildInfo(eintrag);
+      var quelle = pfad(projekt, info.datei);
       var fig = document.createElement('figure');
       fig.className = 'folie';
-      var img = document.createElement('img');
-      img.src = pfad(projekt, info.datei);
-      img.alt = info.alt || (projekt.titel + ' – Bild ' + (i + 1));
-      img.decoding = 'async';
-      if (i > 0) img.loading = 'lazy';
-      img.addEventListener('error', function () {
+      var medium;
+
+      if (istVideo(info.datei)) {
+        medium = document.createElement('video');
+        medium.src = quelle;
+        medium.controls = true;
+        medium.playsInline = true;
+        medium.preload = 'metadata';
+        var poster = info.poster ? pfad(projekt, info.poster)
+                   : (projekt.vorschau ? pfad(projekt, projekt.vorschau) : '');
+        if (poster) medium.poster = poster;
+        medium.setAttribute('aria-label', info.alt || projekt.titel);
+      } else {
+        medium = document.createElement('img');
+        medium.src = quelle;
+        medium.alt = info.alt || (projekt.titel + ' – Bild ' + (i + 1));
+        medium.decoding = 'async';
+        if (i > 0) medium.loading = 'lazy';
+      }
+
+      medium.addEventListener('error', function () {
         // Hilfe beim Einrichten: zeigt, welche Datei nicht gefunden wurde
         fig.classList.add('leer');
-        fig.setAttribute('data-hinweis', 'Bild nicht gefunden: ' + pfad(projekt, info.datei));
-        img.remove();
+        fig.setAttribute('data-hinweis', 'Datei nicht gefunden: ' + quelle);
+        medium.remove();
       });
-      fig.appendChild(img);
+      fig.appendChild(medium);
       spur.appendChild(fig);
     });
 
@@ -247,6 +269,7 @@
 
     function aktualisieren() {
       zaehlerEl.textContent = (index + 1) + ' / ' + n;
+      Array.prototype.forEach.call(spur.querySelectorAll('video'), function (v) { v.pause(); });
     }
 
     function gehe(i) {
