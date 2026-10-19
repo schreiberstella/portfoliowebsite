@@ -48,8 +48,10 @@
    Eigene Projektseite (wie bei "Sooderso")
    ----------------------------------------
    Steht bei einem Projekt  seite: 'sooderso.html',  dann öffnet ein Klick
-   auf das Projekt diese eigene Seite. Die Bilder und Texte dieser Seite
-   pflegst du direkt in der Datei sooderso.html (Anleitung steht dort oben).
+   auf das Projekt diese eigene Seite. Oben sieht sie aus wie jede andere
+   Projektseite (Titel, Kurzbeschreibung, Vorschaubild aus diesem Block,
+   dazu optional  meta: '5 min | 2026').  Darunter folgt der Prozess, den
+   du direkt in der Datei sooderso.html pflegst (Anleitung steht dort).
 
    Platzhalter ersetzen
    --------------------
@@ -69,11 +71,17 @@ window.PORTFOLIO = {
       {
         id: 'sooderso',
         titel: 'Sooderso',
-        seite: 'sooderso.html',          // dieses Projekt hat eine eigene, ausführliche Seite
+        seite: 'sooderso.html',          // eigene Seite: oben wie jedes Projekt, darunter der Prozess (siehe sooderso.html)
         ordner: 'bilder/sooderso/',
         vorschau: 'still-01.jpg',
-        bilder: [],
-        text: ``,
+        meta: '5 min | 2026',
+        bilder: [
+          { datei: 'still-01.jpg', alt: 'Sooderso: Autos im Stau, ein Lastwagen brennt' },
+          // später z. B. das Video: { datei: 'video-hero.mp4', poster: 'still-01.jpg' },
+        ],
+        text: `Ein interaktives Story-Game. Die Spielenden entscheiden durch ihre Bewegung im Raum über den Verlauf einer Geschichte. Immer wieder hält die Geschichte an. Mit jeder Wahl stellt sich die Frage: Ist das Leben Schicksal oder Zufall?
+
+Das Spiel entstand im Kurs Expander Animation. Es bespielt zwei Projektionsflächen an der Wand und am Boden.`,
       },
 
       {

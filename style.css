@@ -680,56 +680,56 @@ body.menue-offen { overflow: hidden; }
 }
 
 /* =====================================================
-   Ausführliche Projektseite (Sooderso)
-   Layout nach dem Entwurf (PDF): alle Maße sind Anteile der Seitenbreite,
-   die Seite skaliert also gleichmäßig. Auf schmalen Bildschirmen (Handy)
-   werden die Felder untereinander angeordnet.
+   Sooderso: Prozessbereich nach dem Entwurf (PDF)
+   Alle Maße (--x, --w, --gap …) sind Anteile der Seitenbreite, die Seite
+   skaliert also gleichmäßig. Texte laufen normal im Textfluss, damit sie
+   auf dem Handy lesbar bleiben.
    ===================================================== */
-.sd-main { padding-left: 0; padding-right: 0; }
+.projekt-meta { margin-top: .6rem; font-size: .85rem; letter-spacing: .08em; }
+
 .sd-seite {
   container: sd / inline-size;
-  max-width: 900px;
-  margin: 0 auto;
-  background: #fff;
+  max-width: 1000px;
+  margin: clamp(3rem, 9vw, 6rem) auto 0;
 }
-.sd-zurueck { margin: 0 0 1rem 4cqw; }
-
-/* --- Grundformat (schmal): Felder untereinander --- */
-.sd-stage {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  padding: 0 16px 32px;
+.sd-row { position: relative; margin-top: calc(var(--gap, 0) * 1cqw); }
+.sd-mrow { height: calc(var(--rh) * 1cqw); }
+.sd-mrow > .sd-el {
+  position: absolute;
+  left: calc(var(--x) * 1cqw);
+  top: calc(var(--dy) * 1cqw);
+  width: calc(var(--w) * 1cqw);
+  height: calc(var(--h) * 1cqw);
 }
-.sd-el { grid-column: 1 / -1; min-width: 0; }
-.sd-stage .medium.sd-still,
-.sd-stage .medium:not(.sd-video):not(.sd-foto):not(.sd-anim) { grid-column: span 1; }
-.sd-text { font-size: 15px; line-height: 1.2; }
+.sd-trow > .sd-text {
+  margin-left: calc(var(--x) * 1cqw);
+  width: calc(var(--w) * 1cqw);
+  max-width: calc(100cqw - var(--x) * 1cqw);
+}
+.sd-text {
+  font-size: clamp(14px, calc(17 / 841.89 * 100cqw), 18px);
+  line-height: 1.2;
+  text-align: left;
+}
 .sd-text p + p { margin-top: .5em; }
-.sd-titel {
-  font-size: clamp(2.2rem, 11vw, 3.4rem);
-  margin-top: 8px;
-}
 .sd-h2 {
   font-family: var(--fliesstext);
   font-weight: 400;
   -webkit-text-stroke: .03em currentColor;
   text-transform: none;
   letter-spacing: 0;
-  font-size: 18px;
+  text-decoration: none;
+  font-size: clamp(18px, calc(25 / 841.89 * 100cqw), 26px);
   line-height: 1.2;
-  margin-top: 1.2rem;
 }
-.sd-meta { text-align: left; }
-.sd-bildtext { white-space: normal; }
 
-.medium { position: relative; margin: 0; aspect-ratio: var(--ar, 16 / 9); background: #000; overflow: hidden; }
+.medium { position: relative; margin: 0; background: #000; overflow: hidden; }
 .medium img,
 .medium video { position: absolute; inset: 0; width: 100%; height: 100%; }
 .medium img { object-fit: cover; }
 .medium video { object-fit: contain; background: #000; }
 
-/* Platzhalter (schwarz, weiße Schrift wie im Entwurf) */
+/* Platzhalter: schwarz mit weißer Schrift wie im Entwurf */
 .medium.leer { display: grid; place-items: center; color: #fff; }
 .medium.leer::after {
   content: attr(data-label);
@@ -737,15 +737,16 @@ body.menue-offen { overflow: hidden; }
   text-align: center;
   font-family: var(--display);
   font-weight: 900;
-  font-size: clamp(1.1rem, 5.7cqw, 2.6rem);
+  font-size: calc(48 / 841.89 * 100cqw);
   line-height: 1.2;
 }
+.medium.sd-f3.leer::after { font-size: calc(34 / 841.89 * 100cqw); }
 .medium.leer::before {
   content: attr(data-hinweis);
   position: absolute;
-  left: 0; right: 0; bottom: .6em;
+  left: 0; right: 0; bottom: .5em;
   text-align: center;
-  font-size: 11px;
+  font-size: max(9px, calc(12 / 841.89 * 100cqw));
   letter-spacing: .04em;
   opacity: .7;
 }
@@ -754,56 +755,8 @@ body.menue-offen { overflow: hidden; }
 .sd-band {
   background: #000;
   color: #fff;
-  padding: 16px;
-  display: grid;
-  gap: 12px;
-  margin-top: 1.5rem;
+  padding-bottom: calc(var(--pb) * 1cqw);
 }
-.sd-band .sd-h2 { color: #fff; margin-top: 0; }
-.sd-band .sd-el { position: static; }
-.sd-band .sd-el.medium { position: relative; }
+.sd-band .sd-h2 { color: #fff; }
 .sd-band .medium.sd-anim { background: transparent; outline: 1px solid #fff; outline-offset: -1px; }
 .sd-band .medium.leer::after { content: none; }
-
-/* --- Breite Darstellung: exakt wie der Entwurf --- */
-@container sd (min-width: 700px) {
-  .sd-zurueck { font-size: .8rem; }
-  .sd-stage {
-    display: block;
-    position: relative;
-    height: calc(526.52 * 1cqw);
-    padding: 0;
-  }
-  .sd-el {
-    position: absolute;
-    left: calc(var(--x) * 1cqw);
-    top: calc(var(--y) * 1cqw);
-    width: calc(var(--w, 40) * 1cqw);
-    margin: 0;
-  }
-  .sd-el.medium { height: calc(var(--h) * 1cqw); aspect-ratio: auto; }
-  .sd-text { font-size: calc(17 / 841.89 * 100cqw); line-height: 1.2; }
-  .sd-text p + p { margin-top: calc(8.4 / 841.89 * 100cqw); }
-  .sd-titel {
-    margin: 0;
-    width: auto;
-    font-size: calc(48 / 841.89 * 100cqw);
-    line-height: 1.2;
-    white-space: nowrap;
-  }
-  .sd-h2 { font-size: calc(25 / 841.89 * 100cqw); margin-top: 0; white-space: nowrap; }
-  .sd-meta { text-align: right; }
-  .sd-bildtext { white-space: nowrap; }
-
-  .sd-band {
-    display: block;
-    padding: 0;
-    margin: 0;
-    height: calc(var(--h) * 1cqw);
-  }
-  .sd-band .sd-el,
-  .sd-band .sd-el.medium { position: absolute; }
-  .sd-band .sd-el.medium { height: calc(var(--h) * 1cqw); }
-  .sd-band .medium.leer::before { font-size: calc(12 / 841.89 * 100cqw); }
-  .medium.leer::after { font-size: calc(48 / 841.89 * 100cqw); }
-}

@@ -185,8 +185,8 @@
   /* ----- Projektseite: große Bilder, Titel, Text ----- */
   function detailStarten(el) {
     var params = new URLSearchParams(window.location.search);
-    var key = params.get('b') || 'fotografie';
-    var id = params.get('p');
+    var key = params.get('b') || el.getAttribute('data-bereich') || 'fotografie';
+    var id = params.get('p') || el.getAttribute('data-projekt');
     var bereich = daten[key];
     var projekt = null;
 
@@ -213,6 +213,11 @@
 
     document.title = projekt.titel + ' – ' + (bereich.titel || '') + ' – Stella Schreiber';
     document.getElementById('projektTitel').textContent = projekt.titel;
+    if (projekt.meta) {
+      var metaEl = document.getElementById('projektMeta');
+      metaEl.textContent = projekt.meta;
+      metaEl.hidden = false;
+    }
 
     // Text: Leerzeile = neuer Absatz
     var textBox = document.getElementById('projektText');
@@ -390,7 +395,7 @@
     });
   }
 
-  if (document.getElementById('sooderso')) medienStarten();
+  if (document.querySelector('.medium[data-datei]')) medienStarten();
 
   var galerie = document.getElementById('illustrationGalerie');
   if (galerie) galerieStarten(galerie);
