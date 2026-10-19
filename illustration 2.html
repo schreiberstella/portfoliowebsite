@@ -43,7 +43,7 @@
       .i3-item.i3-mitte { cursor: default; }
       .i3-bild { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
       .i3-bild img { display: block; width: auto; height: auto; max-width: 100%; }
-      .i3-titel { position: absolute; left: -10%; right: -10%; margin: 0; text-align: center; font-family: var(--fliesstext); font-size: .9rem; line-height: 1.25; }
+      .i3-titel { position: absolute; left: -10%; right: -10%; margin: 0; text-align: center; font-family: var(--fliesstext); font-size: .9rem; line-height: 1.25; transform-origin: 50% 0; transition: transform .5s cubic-bezier(.4, 0, .2, 1); }
       .i3-pfeil { align-self: start; width: 2rem; height: 2rem; margin-top: calc(var(--bh, 300px) / 2 - 1rem); background: none; border: 0; padding: 0; cursor: pointer; position: relative; color: #000; }
       .i3-pfeil::before { content: ""; position: absolute; left: 50%; top: 50%; width: .8rem; height: .8rem; border-top: 2px solid currentColor; border-right: 2px solid currentColor; }
       .i3-links::before { transform: translate(-30%, -50%) rotate(-135deg); }
@@ -70,7 +70,7 @@
         var spur = document.getElementById('i3Spur'), box = document.getElementById('i3'), fenster = spur.parentNode;
         if (!d || !d.bilder || !d.bilder.length) { spur.innerHTML = '<li class="hinweis">Hier sind noch keine Illustrationen eingetragen.</li>'; return; }
         var n = d.bilder.length, idx = 0, items = [], imgs = [], caps = [], offs = [];
-        var RATIO = 0.72, SIDE = 0.5, CAP = 44;      // Seitenverhältnis der Bildfläche, Verkleinerung der Seitenbilder, Platz für den Titel
+        var RATIO = 0.72, SIDE = 0.3, CAP = 34;      // Seitenverhältnis der Bildfläche, Verkleinerung der Seitenbilder, Platz für den Titel
         var hc = 0;
 
         d.bilder.forEach(function (b, k) {
@@ -91,10 +91,10 @@
         function place() {
           var W = fenster.clientWidth;
           if (!W) return;
-          var wMax = W < 700 ? 0.6 * W : (W < 1000 ? 0.46 * W : 0.4 * W);
-          var wc = Math.min(wMax, Math.max(200, window.innerHeight - 300) * RATIO);
-          hc = wc / RATIO;
           var g = W < 700 ? 8 : 18;
+          var wc0 = (W / 2 - g) / (0.5 + SIDE);                                   // so breit darf das Mittelbild höchstens sein (Seitenbilder bleiben im Fenster)
+          hc = Math.max(300, Math.min(window.innerHeight - 205, wc0 / RATIO + 2 * CAP));   // Karussellhöhe: fast die ganze Fensterhöhe
+          var wc = Math.min(wc0, hc - 2 * CAP);
           spur.style.height = hc + 'px';
           box.style.setProperty('--bh', hc + 'px');
           items.forEach(function (li, i) {
@@ -114,6 +114,7 @@
             offs[i] = o;
             var im = imgs[i];
             im.style.maxHeight = (hc - 2 * CAP) + 'px';
+            caps[i].style.transform = 'scale(' + ((a >= 1 ? 0.75 : 1) / sc) + ')';        // Titel bleiben auch bei kleinen Seitenbildern lesbar
             caps[i].style.top = (hc / 2 + im.offsetHeight / 2 + 8) + 'px';     // Titel direkt unter dem Bild; Bild selbst bleibt vertikal zentriert
           });
           document.getElementById('i3Zaehler').textContent = (idx + 1) + ' / ' + n;
