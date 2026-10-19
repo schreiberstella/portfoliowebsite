@@ -760,3 +760,37 @@ body.menue-offen { overflow: hidden; }
 .sd-band .sd-h2 { color: #fff; }
 .sd-band .medium.sd-anim { background: transparent; outline: 1px solid #fff; outline-offset: -1px; }
 .sd-band .medium.leer::after { content: none; }
+
+/* =====================================================
+   Animations-Unterseiten (Sooderso, DO YOU MIND?): Verfeinerung
+   Gleiche Anordnung wie im Entwurf, nur ruhigere Abstände,
+   klarere Typografie und etwas größere Bilder.
+   ===================================================== */
+.sd-seite { max-width: 1120px; margin-top: clamp(4rem, 10vw, 7.5rem); }
+
+/* mehr Weißraum, bewusst gestaffelt: vor Überschriften am meisten */
+.sd-mrow, .sd-trow { margin-top: calc(var(--gap, 0) * 1.2cqw); }
+.sd-trow:has(.sd-h2) { margin-top: calc(var(--gap, 0) * 1.5cqw); }
+.sd-trow:has(.sd-h2) + .sd-trow { margin-top: calc(var(--gap, 0) * .9cqw); }
+.sd-band { margin-top: calc(var(--gap, 0) * 1.5cqw); padding-bottom: calc(var(--pb) * 1.3cqw); }
+
+/* Typografie: ruhiger Fließtext, kurze Zeilen, klare Überschriften */
+.sd-text {
+  font-size: clamp(15px, calc(17.5 / 841.89 * 100cqw), 19px);
+  line-height: 1.55;
+  color: #1a1a1a;
+}
+.sd-trow > .sd-text { width: min(calc(var(--w) * 1cqw), 36em); }
+.sd-text p + p { margin-top: .9em; }
+.sd-h2 {
+  font-size: clamp(17px, calc(21 / 841.89 * 100cqw), 24px);
+  line-height: 1.2;
+  letter-spacing: -.01em;
+  -webkit-text-stroke: .02em currentColor;
+  color: #000;
+}
+.sd-text.sd-bildtext { font-size: clamp(13px, calc(14 / 841.89 * 100cqw), 15px); color: #555; }
+
+/* Animationsbereich: zarte Rahmen statt harter Linien */
+.sd-band .medium.sd-anim { outline-color: rgba(255, 255, 255, .55); }
+.sd-band .sd-text { color: #fff; }
