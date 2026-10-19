@@ -126,17 +126,26 @@ Das Spiel entstand im Kurs Expander Animation. Es bespielt zwei Projektionsfläc
       /* ---------- Projekt 1 ---------- */
       {
         id: 'every-photo-a-page',
-        titel: 'every photo a page',
+        titel: 'Every photo a page',
         ordner: 'bilder/fotografie/every-photo-a-page/',
         vorschau: 'vorschau.jpg',
         bilder: [
-          { datei: '01.jpg', alt: 'Aufgeklapptes Buch mit blauen Einbänden, auf die Dia-Rahmen genäht sind; dazwischen leuchtend pinke Seiten, zwei schwarze Kabel führen nach oben' },
-          // '02.jpg',
-          // '03.jpg',
+          { datei: '01.jpg', alt: 'Aufgestelltes Buch mit blauen Einbänden, auf die Dias genäht sind, dazwischen pinke Seiten, zwei Kabel führen nach oben' },
+          { datei: '02.jpg', alt: 'Geschlossenes Buch von der Seite: pinker Buchschnitt, blaue Deckel, Dias auf dem Cover' },
+          { datei: '03.jpg', alt: 'Aufgeschlagenes Buch: schwarz-weiß Foto zweier Personen auf blauer Folie, daneben weißes Papier' },
+          { datei: '04.jpg', alt: 'Aufgeschlagenes Buch: Foto von Personen im hohen Gras auf grünem Papier' },
+          { datei: '05.jpg', alt: 'Aufgeschlagenes Buch: Foto zweier Personen in blauen Badeanzügen auf weißem Papier' },
+          { datei: '06.jpg', alt: 'Aufgeschlagenes Buch: schwarz-weiß Foto einer Person mit Mütze, türkise Folie und schwarzes Papier' },
+          { datei: '07.jpg', alt: 'Aufgeschlagenes Buch: Foto mit Person mit Sonnenbrille, silberne und schwarze Folie' },
+          { datei: '08.jpg', alt: 'Aufgeschlagenes Buch: Foto einer Person im Zug mit Bergen im Fenster, hellblaues Papier' },
+          { datei: '09.jpg', alt: 'Aufgeschlagenes Buch: schwarz-weiß Foto einer Person an einer Kleiderstange, rote Folie' },
+          { datei: '10.jpg', alt: 'Cover mit zwölf Dias, schräg von oben' },
+          { datei: '11.jpg', alt: 'Detail der Dias, mit Faden zusammengenäht' },
+          { datei: '12.jpg', alt: 'Detail der Dias, nahe Perspektive' },
+          { datei: '13.jpg', alt: 'Beleuchtetes Cover: zwölf Dias leuchten im Dunkeln, von schräg oben' },
+          { datei: '14.jpg', alt: 'Beleuchtetes Cover: zwölf Dias leuchten im Dunkeln, von der Seite' },
         ],
-        text: `Hier kommt der Beschreibungstext zu "every photo a page" hin.
-
-Einen neuen Absatz beginnst du mit einer Leerzeile.`,
+        text: `Ein experimentelles Fotobuch, bei dem jede Seite durch unterschiedliche Papiere und Materialien individuell auf das jeweilige Bild abgestimmt ist. Das Cover besteht aus zwei beleuchteten Lichtplatten, die darauf montierte Dias sichtbar machen.`,
       },
 
       /* ---------- Projekt 2 ---------- */
@@ -146,11 +155,10 @@ Einen neuen Absatz beginnst du mit einer Leerzeile.`,
         ordner: 'bilder/fotografie/etagen/',
         vorschau: 'vorschau.jpg',
         bilder: [
-          { datei: '01.jpg', alt: 'Unordentliches Zimmer mit Bett, Sofa, Kleiderhaufen auf dem Boden und einem orangen Vorhang am Fenster' },
-          // '02.jpg',
-          // '03.jpg',
+          { datei: '01.jpg', alt: 'Wohnzimmer im Erdgeschoss: braune Ledersofas, Glastisch, Zimmerpflanzen, Waschbrett und Teppichklopfer an der Wand' },
+          { datei: '02.jpg', alt: 'Derselbe Raum in der dritten Etage: Bett, Sofa mit Decken, Kleiderhaufen auf dem Boden, oranger Vorhang am Fenster' },
         ],
-        text: `Hier kommt der Beschreibungstext zu "Etagen" hin.`,
+        text: `Ein fotografisches Kurzzeitprojekt zum Thema Identität. Innerhalb einer Woche habe ich den identischen Wohnraum auf verschiedenen Etagen eines Mehrfamilienhauses aus derselben Perspektive fotografiert. Die Bildserie zeigt, wie unterschiedlich Menschen denselben Raum gestalten und ihm ihre persönliche Identität verleihen.`,
       },
 
       /* ---------- Projekt 3 ---------- */
@@ -160,11 +168,12 @@ Einen neuen Absatz beginnst du mit einer Leerzeile.`,
         ordner: 'bilder/fotografie/filmzitate/',
         vorschau: 'vorschau.jpg',
         bilder: [
-          { datei: '01.jpg', alt: 'Plakat "60 Years Kino International": ein rosa Telefonhörer und eine welke violette Rose auf rosa Grund' },
-          // '02.jpg',
-          // '03.jpg',
+          { datei: '01.jpg', alt: 'Plakat „60 Years Kino International“: ein rosa Telefonhörer und eine welke violette Rose auf rosa Grund, Zitat aus Her' },
+          { datei: '02.jpg', alt: 'Plakat „60 Years Kino International“: Spielkarten (drei Asse) in einer Mausefalle auf rotem Grund, Zitat aus Casino Royale' },
+          { datei: '03.jpg', alt: 'Plakat „60 Years Kino International“: ein Stück Kirschkuchen in einer Drahtfalle auf fliederfarbenem Grund, Zitat aus The Godfather' },
+          { datei: '04.jpg', alt: 'Plakat „60 Years Kino International“: ein schwarzer Motorradhelm mit Spiralmuster im Visier, Zitat aus James Bond 007 Skyfall' },
         ],
-        text: `Hier kommt der Beschreibungstext zu "Filmzitate" hin.`,
+        text: `Anlässlich des 60-jährigen Jubiläums des Kino International entstand eine Plakatreihe, in der berühmte Filmzitate in eine eigene Bildsprache übersetzt und visuell interpretiert wurden.`,
       },
 
     ],
