@@ -969,3 +969,7 @@ body.menue-offen { overflow: hidden; }
   .dm-szenen > .dm-bild { width: 100%; margin: 0 0 1rem; }
   .dm-abfolge { margin-left: 0; width: 100%; margin-top: 1.6rem; }
 }
+
+/* DO YOU MIND?: Abstand Kopf -> Video wie im Entwurf (ca. 20 Punkte unter der Kurzbeschreibung) */
+[data-projekt="do-you-mind"] .sd-seite { margin-top: 0; }
+[data-projekt="do-you-mind"] .dm-hero { margin-top: calc(var(--vg, 0) * 1cqw); }
