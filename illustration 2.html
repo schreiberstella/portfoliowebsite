@@ -33,33 +33,34 @@
 
   <main class="seite i3-seite">
     <style>
-      /* ===== Illustration: Endlos-Karussell, großes Mittelbild, kleinere Seitenbilder, Titel unter den Bildern ===== */
+      /* ===== Illustration: Endlos-Karussell nach Entwurf (Überschrift links, großes Mittelbild, kleine Seitenbilder an der Unterkante) ===== */
       .i3-seite { max-width: 1400px; }
-      .i3 { display: grid; grid-template-columns: 2rem minmax(0, 1fr) 2rem; align-items: start; column-gap: .4rem; margin-top: clamp(.4rem, 1.5vh, 1rem); }
-      .i3-fenster { overflow: hidden; }
+      .i3-seite .seite-titel { position: relative; z-index: 3; }
+      .i3 { position: relative; margin-top: clamp(.4rem, 1.5vh, 1rem); }
+      .i3-fenster { overflow: hidden; position: relative; }
       .i3-spur { position: relative; list-style: none; margin: 0; padding: 0; }
       .i3-item { position: absolute; left: 50%; top: 0; margin: 0; cursor: pointer; transform-origin: 50% 50%;
                  transition: transform .5s cubic-bezier(.4, 0, .2, 1), opacity .5s ease; will-change: transform; }
       .i3-item.i3-mitte { cursor: default; }
       .i3-bild { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
-      .i3-bild img { display: block; width: auto; height: auto; max-width: 100%; }
-      .i3-titel { position: absolute; left: -10%; right: -10%; margin: 0; text-align: center; font-family: var(--fliesstext); font-size: .9rem; line-height: 1.25; transform-origin: 50% 0; transition: transform .5s cubic-bezier(.4, 0, .2, 1); }
-      .i3-pfeil { align-self: start; width: 2rem; height: 2rem; margin-top: calc(var(--bh, 300px) / 2 - 1rem); background: none; border: 0; padding: 0; cursor: pointer; position: relative; color: #000; }
+      .i3-bild img { display: block; width: auto; height: auto; }
+      .i3-titel { position: absolute; margin: 0; text-align: left; font-family: var(--fliesstext); font-size: .9rem; line-height: 1.25;
+                  transform-origin: 0 0; transition: transform .5s cubic-bezier(.4, 0, .2, 1); }
+      .i3-pfeil { position: absolute; z-index: 4; width: 2rem; height: 2rem; margin: -1rem 0 0 -1rem; background: none; border: 0; padding: 0; cursor: pointer; color: #000; }
       .i3-pfeil::before { content: ""; position: absolute; left: 50%; top: 50%; width: .8rem; height: .8rem; border-top: 2px solid currentColor; border-right: 2px solid currentColor; }
       .i3-links::before { transform: translate(-30%, -50%) rotate(-135deg); }
       .i3-rechts::before { transform: translate(-70%, -50%) rotate(45deg); }
       .i3-pfeil:hover, .i3-pfeil:focus-visible { color: var(--violett, #8b3ff0); outline: none; }
       .i3-zaehler { margin-top: .6rem; font-size: .7rem; letter-spacing: .14em; text-align: center; }
-      @media (max-width: 560px) { .i3 { grid-template-columns: 1.6rem minmax(0, 1fr) 1.6rem; } }
-      @media (prefers-reduced-motion: reduce) { .i3-item { transition: none; } }
+      @media (prefers-reduced-motion: reduce) { .i3-item, .i3-titel { transition: none; } }
     </style>
     <a class="zurueck" href="index.html#portfolio">&larr; Startseite</a>
-    <h1 class="seite-titel">Illustration</h1>
+    <h1 class="seite-titel" id="i3Titel">Illustration</h1>
 
     <!-- Die Illustrationen stehen in der Datei projekte.js -->
     <div class="i3" id="i3" data-bereich="illustration">
+      <div class="i3-fenster" id="i3Fenster"><ul class="i3-spur" id="i3Spur"></ul></div>
       <button class="i3-pfeil i3-links" id="i3Zurueck" type="button" aria-label="Vorige Illustration"></button>
-      <div class="i3-fenster"><ul class="i3-spur" id="i3Spur"></ul></div>
       <button class="i3-pfeil i3-rechts" id="i3Weiter" type="button" aria-label="Nächste Illustration"></button>
     </div>
     <p class="i3-zaehler" id="i3Zaehler" aria-live="polite"></p>
@@ -67,11 +68,10 @@
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         var d = window.PORTFOLIO && window.PORTFOLIO.illustration;
-        var spur = document.getElementById('i3Spur'), box = document.getElementById('i3'), fenster = spur.parentNode;
+        var spur = document.getElementById('i3Spur'), box = document.getElementById('i3'), fenster = document.getElementById('i3Fenster');
+        var titel = document.getElementById('i3Titel'), pl = document.getElementById('i3Zurueck'), pr = document.getElementById('i3Weiter');
         if (!d || !d.bilder || !d.bilder.length) { spur.innerHTML = '<li class="hinweis">Hier sind noch keine Illustrationen eingetragen.</li>'; return; }
         var n = d.bilder.length, idx = 0, items = [], imgs = [], caps = [], offs = [];
-        var RATIO = 0.72, SIDE = 0.3, CAP = 34;      // Seitenverhältnis der Bildfläche, Verkleinerung der Seitenbilder, Platz für den Titel
-        var hc = 0;
 
         d.bilder.forEach(function (b, k) {
           var e = typeof b === 'string' ? { datei: b } : b;
@@ -89,40 +89,60 @@
         function offset(i) { var h = Math.floor(n / 2); return ((i - idx + n + h) % n + n) % n - h; }
 
         function place() {
-          var W = fenster.clientWidth;
-          if (!W) return;
-          var g = W < 700 ? 8 : 18;
-          var wc0 = (W / 2 - g) / (0.5 + SIDE);                                   // so breit darf das Mittelbild höchstens sein (Seitenbilder bleiben im Fenster)
-          hc = Math.max(300, Math.min(window.innerHeight - 205, wc0 / RATIO + 2 * CAP));   // Karussellhöhe: fast die ganze Fensterhöhe
-          var wc = Math.min(wc0, hc - 2 * CAP);
-          spur.style.height = hc + 'px';
-          box.style.setProperty('--bh', hc + 'px');
+          var S = fenster.clientWidth;                       // Breite der Bühne (Entwurf: 1100 px)
+          if (!S) return;
+          var klein = S < 700;
+          // Maße aus dem Entwurf, als Anteil der Bühnenbreite: Hauptbild 518/1101 hoch, Seitenbilder 198/518 davon, Seitenbilder 0,319 links/rechts der Mitte
+          var wb = (klein ? 0.5 : 0.40) * S;                  // Breite der Bildfläche des Hauptbilds
+          var H = klein ? Math.max(240, Math.min(window.innerHeight - 300, wb / 0.72)) : Math.min(0.47 * S, Math.max(300, window.innerHeight - 250));
+          var sc = klein ? 0.36 : 198 / 518;                  // Seitenbilder = 38 % der Hauptbildgröße (Hauptbild ≈ 2,6 × so hoch)
+          var sx = (klein ? 0.38 : 0.319) * S;                // Mitte der Seitenbilder
+          var B = H * 0.98;                                   // Unterkante der Seitenbilder
+          var CAPH = klein ? 92 : 56;
+          spur.style.height = (H + CAPH) + 'px';
+          imgs.forEach(function (im) { im.style.maxWidth = wb + 'px'; im.style.maxHeight = H + 'px'; });
+
+          // Überschrift steht links neben dem Karussell (Entwurf): Bühne beginnt auf Höhe der Überschrift
+          box.style.marginTop = '';
+          if (!klein) { var dy = box.getBoundingClientRect().top - titel.getBoundingClientRect().top; box.style.marginTop = (-dy) + 'px'; }
+          box.style.paddingBottom = klein ? '2.8rem' : '';
+          pl.style.left = (klein ? S / 2 - 3 * 16 : 0.287 * S) + 'px'; pr.style.left = (klein ? S / 2 + 3 * 16 : 0.718 * S) + 'px';
+          pl.style.top = pr.style.top = klein ? 'auto' : (0.55 * H) + 'px';
+          pl.style.bottom = pr.style.bottom = klein ? '1rem' : 'auto';
+          if (klein) { pl.style.marginTop = pr.style.marginTop = '0'; } else { pl.style.marginTop = pr.style.marginTop = ''; }
+
           items.forEach(function (li, i) {
             var o = offset(i), prev = offs[i];
-            var a = Math.abs(o), x = 0, sc = 1;
-            if (a >= 1) { sc = SIDE; x = (o < 0 ? -1 : 1) * (wc / 2 + g + SIDE * wc / 2 + (a - 1) * (SIDE * wc + g)); }
+            var a = Math.abs(o), x = 0, y = 0, k = 1;
+            var im = imgs[i], ih = im.offsetHeight, iw = im.offsetWidth;
+            if (a >= 1) {
+              k = sc; x = (o < 0 ? -1 : 1) * (a === 1 ? sx : sx + 0.5 * S);
+              y = B - (H / 2 + k * ih / 2);                   // Unterkante des Bildes auf die gemeinsame Linie
+            }
             var weit = prev !== null && Math.abs(o - prev) > 2;       // Bild läuft unsichtbar von einem Ende zum anderen
-            if (weit) li.style.transition = 'none';
-            li.style.width = wc + 'px'; li.style.height = hc + 'px'; li.style.marginLeft = (-wc / 2) + 'px';
-            li.style.transform = 'translateX(' + x + 'px) scale(' + sc + ')';
+            if (weit) { li.style.transition = 'none'; caps[i].style.transition = 'none'; }
+            li.style.width = wb + 'px'; li.style.height = H + 'px'; li.style.marginLeft = (-wb / 2) + 'px';
+            li.style.transform = 'translate(' + x + 'px,' + y + 'px) scale(' + k + ')';
             li.style.opacity = a <= 1 ? 1 : 0;
             li.style.zIndex = 10 - a;
             li.style.pointerEvents = a <= 1 ? 'auto' : 'none';
             li.classList.toggle('i3-mitte', o === 0);
             li.setAttribute('aria-hidden', a <= 1 ? 'false' : 'true');
-            if (weit) { void li.offsetWidth; li.style.transition = ''; }
+            // Titel: direkt unter dem Bild, linksbündig; bei Seitenbildern lesbar gehalten
+            var net = a >= 1 ? 0.8 : 1;
+            caps[i].style.transform = 'scale(' + (net / k) + ')';
+            caps[i].style.left = ((wb - iw) / 2) + 'px';
+            caps[i].style.top = (H / 2 + ih / 2 + 8) + 'px';
+            caps[i].style.width = (Math.max(a >= 1 ? 0.16 * S : iw, 60) * (a >= 1 ? 1 / net : 1) ) / (a >= 1 ? 1 : 1) + 'px';
+            if (weit) { void li.offsetWidth; li.style.transition = ''; caps[i].style.transition = ''; }
             offs[i] = o;
-            var im = imgs[i];
-            im.style.maxHeight = (hc - 2 * CAP) + 'px';
-            caps[i].style.transform = 'scale(' + ((a >= 1 ? 0.75 : 1) / sc) + ')';        // Titel bleiben auch bei kleinen Seitenbildern lesbar
-            caps[i].style.top = (hc / 2 + im.offsetHeight / 2 + 8) + 'px';     // Titel direkt unter dem Bild; Bild selbst bleibt vertikal zentriert
           });
           document.getElementById('i3Zaehler').textContent = (idx + 1) + ' / ' + n;
         }
 
         function geh(r) { idx = ((idx + r) % n + n) % n; place(); }
-        document.getElementById('i3Zurueck').addEventListener('click', function () { geh(-1); });
-        document.getElementById('i3Weiter').addEventListener('click', function () { geh(1); });
+        pl.addEventListener('click', function () { geh(-1); });
+        pr.addEventListener('click', function () { geh(1); });
         document.addEventListener('keydown', function (e) { if (e.altKey || e.ctrlKey || e.metaKey) return; if (e.key === 'ArrowLeft') geh(-1); if (e.key === 'ArrowRight') geh(1); });
         var x0 = null;
         box.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
