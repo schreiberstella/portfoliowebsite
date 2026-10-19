@@ -85,25 +85,16 @@ Das Spiel entstand im Kurs Expander Animation. Es bespielt zwei Projektionsfläc
       },
 
       {
-        id: 'craaaaaaash',
-        titel: 'CRAAAAAAASH',
-        ordner: '',                      // die Dateien liegen im Hauptordner
-        vorschau: 'A_1-poster.jpg',
+        id: 'do-you-mind',
+        titel: 'DO YOU MIND?',
+        seite: 'do-you-mind.html',       // eigene Seite: oben wie jedes Projekt, darunter der Prozess
+        ordner: 'bilder/do-you-mind/',
+        vorschau: 'titelbild.jpg',
+        meta: '2 min | 2025',
         bilder: [
-          { datei: 'A_1.mp4', poster: 'A_1-poster.jpg', alt: 'Animation: ein Lastwagen wird von einem roten Auto gerammt und fängt Feuer' },
+          { datei: 'titelbild.jpg', alt: 'DO YOU MIND?: rote Schrift auf blauem Grund' },
         ],
-        text: `Hier kommt der Beschreibungstext zu "CRAAAAAAASH" hin.`,
-      },
-
-      {
-        id: 'projekt-3',
-        titel: 'Projekt 3',
-        ordner: 'bilder/',
-        vorschau: 'platzhalter-quer.svg',
-        bilder: [
-          'platzhalter-quer.svg',
-        ],
-        text: `Hier kommt der Beschreibungstext zu Projekt 3 hin.`,
+        text: `Ein animierter Kurzfilm über Impulskontrolle. Was ist in einer Gesellschaft erlaubt und was verboten? Und warum halten wir uns eigentlich an diese Regeln?`,
       },
 
     ],
