@@ -90,7 +90,7 @@ Das Spiel entstand im Kurs Expander Animation. Es bespielt zwei Projektionsfläc
         seite: 'do-you-mind.html',       // eigene Seite: oben wie jedes Projekt, darunter der Prozess
         ordner: 'bilder/do-you-mind/',
         vorschau: 'titelbild.jpg',
-        meta: '2 min | 2025',
+        meta: '3 min | 2025',
         bilder: [
           { datei: 'titelbild.jpg', alt: 'DO YOU MIND?: rote Schrift auf blauem Grund' },
         ],

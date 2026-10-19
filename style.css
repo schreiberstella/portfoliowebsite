@@ -917,3 +917,55 @@ body.menue-offen { overflow: hidden; }
 [data-projekt="sooderso"] .sx-text p + p { margin-top: calc(19.6 / 841.89 * 100cqw); }
 [data-projekt="sooderso"] .sx-text .sd-h2 { margin-bottom: calc(3 / 841.89 * 100cqw); }
 [data-projekt="sooderso"] .sd-band .sd-h2 { color: #fff; }
+
+/* =====================================================
+   DO YOU MIND? (nach entwurf_doyoumind.pdf): Maße, Schriftgrößen und Abstände wie im Entwurf.
+   1 Entwurfs-Punkt = 100/841,89 % der Seitenbreite. Gilt nur für die Seite DO YOU MIND?
+   ===================================================== */
+[data-projekt="do-you-mind"] .sd-text {
+  font-size: max(13px, calc(15.5 / 841.89 * 100cqw));
+  line-height: max(18px, calc(20.4 / 841.89 * 100cqw));
+  color: #000;
+}
+[data-projekt="do-you-mind"] .sd-text p + p { margin-top: calc(19.6 / 841.89 * 100cqw); }
+[data-projekt="do-you-mind"] .sd-h2 {
+  font-size: max(17px, calc(25 / 841.89 * 100cqw));
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: #000;
+  margin-bottom: calc(var(--hm, 4) * 1cqw);
+}
+.dm-hero { margin: calc(var(--gap) * 1cqw) 0 0 calc(var(--x) * 1cqw); width: calc(var(--w) * 1cqw); }
+.dm-hero video { display: block; width: 100%; height: auto; aspect-ratio: 5 / 3; background: transparent; }
+.dm-row { margin-top: calc(var(--gap, 0) * 1cqw); min-height: calc(var(--rh) * 1cqw); }
+.dm-pair {
+  display: grid;
+  grid-template-columns: calc(var(--w1) * 1cqw) calc(var(--w2) * 1cqw);
+  column-gap: calc(var(--cg) * 1cqw);
+  margin-left: calc(var(--x1) * 1cqw);
+  align-items: start;
+}
+.dm-pair > .dm-bild { display: block; width: 100%; height: auto; }
+.dm-pair > .dm-text { margin-top: calc(var(--ty, 0) * 1cqw); }
+.dm-block > .dm-text { margin-left: calc(var(--x) * 1cqw); width: calc(var(--w) * 1cqw); max-width: calc(100cqw - var(--x) * 1cqw); }
+.dm-szenen { display: flex; align-items: flex-start; }
+.dm-szenen > .dm-bild {
+  display: block; flex: none;
+  width: calc(var(--w) * 1cqw); height: auto; aspect-ratio: var(--ar);
+  margin-left: calc(var(--ml) * 1cqw); margin-top: calc(var(--dy) * 1cqw);
+}
+.dm-abfolge { margin: 0 0 calc(var(--pb) * 1cqw) calc(var(--x) * 1cqw); width: calc(var(--w) * 1cqw); }
+.dm-abfolge img { display: block; width: 100%; height: auto; }
+
+@container sd (max-width: 640px) {
+  .dm-hero { margin-left: 0; width: 100%; }
+  .dm-row { min-height: 0; }
+  .dm-pair { display: block; margin-left: 0; margin-top: 2.2rem; }
+  .dm-pair > .dm-bild { margin-top: 1.4rem; }
+  .dm-pair > .dm-text { margin-top: 0; }
+  .dm-block { margin-top: 2.2rem; }
+  .dm-block > .dm-text { margin-left: 0; width: 100%; max-width: none; }
+  .dm-szenen { display: block; margin-top: 1.4rem; }
+  .dm-szenen > .dm-bild { width: 100%; margin: 0 0 1rem; }
+  .dm-abfolge { margin-left: 0; width: 100%; margin-top: 1.6rem; }
+}

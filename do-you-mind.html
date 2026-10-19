@@ -51,58 +51,37 @@
 
     <!-- =====================================================================
          PROZESS (weiter unten auf der Seite) – so pflegst du ihn
-         Layout = dein Entwurf. Titel, Kurzbeschreibung und Vorschaubild oben
-         stehen in projekte.js (Projekt "DO YOU MIND?").
+         Das Layout entspricht deinem Entwurf (entwurf_doyoumind.pdf).
+         Titel, Kurzbeschreibung, Jahr und das Bild ganz oben stehen in
+         projekte.js (Projekt "DO YOU MIND?").
          TEXTE: einfach hier im Text ändern.
-         BILDER UND VIDEOS: jedes Feld ist ein <figure ... data-datei="bilder/do-you-mind/NAME.jpg">.
-         Datei in den Ordner bilder/do-you-mind/ hochladen, Name muss genau
-         passen. Fehlt sie, steht dort ein schwarzer Platzhalter.
-         .mp4 = Video, .jpg = Bild (nur die Endung ändern).
-         data-auto="ja" = stumm in Dauerschleife.
-         Das Bild "programm.jpg" ist vorläufig ein Platzhalter-Screenshot –
-         einfach mit deinem eigenen überschreiben.
+         BILDER/VIDEO (Ordner bilder/do-you-mind/, gleicher Name = ersetzen):
+           video-hero.mp4 (+ video-hero-poster.jpg als Startbild)
+           skizze.jpg (Idee) | konzept-01.jpg, konzept-02.jpg, konzept-03.jpg
+           bildabfolge.jpg (alle Animationsframes in einem Bild)
          ===================================================================== -->
     <div class="sd-seite">
       <div class="sd-stage">
-      <div class="sd-row sd-mrow" style="--gap:7.36;--rh:39.34">
-        <figure class="sd-el medium sd-video" style="--x:3.68;--dy:0;--w:92.65;--h:39.34;--ar:779.99 / 331.18" data-datei="bilder/do-you-mind/video-hero.mp4" data-alt="DO YOU MIND?: Ausschnitt aus dem Film" data-label="videoframe&#10;platzhalter" data-poster="bilder/do-you-mind/titelbild.jpg"></figure>
+      <div class="dm-hero" style="--gap:7.16;--x:4.09;--w:91.66">
+        <video controls playsinline preload="metadata" src="bilder/do-you-mind/video-hero.mp4" poster="bilder/do-you-mind/video-hero-poster.jpg" aria-label="DO YOU MIND?: der Film"></video>
       </div>
-      <div class="sd-row sd-trow" style="--gap:5.15"><h2 class="sd-text sd-h2" style="--x:6.62;--w:35.63">Fragestellung</h2></div>
-      <div class="sd-row sd-trow" style="--gap:1.58"><div class="sd-text " style="--x:6.62;--w:76.02"><p>Jeder Mensch hat Impulse und Wünsche. Doch in einer Gesellschaft können wir nicht allem nachgeben. Es gibt Regeln und Grenzen. Manche sind geschrieben. Andere sind unausgesprochen.</p><p>Als Hintergrund diente Sigmund Freuds Buch „Das Unbehagen in der Kultur“. Freud beschreibt darin, dass Zusammenleben nur funktioniert, wenn wir unsere Triebe einschränken. Genau das erzeugt aber auch Unbehagen. Wie sollten wir uns also verhalten? Und wie viel Kontrolle ist nötig?</p></div></div>
-      <div class="sd-row sd-mrow" style="--gap:1.84;--rh:38.6">
-        <figure class="sd-el medium sd-titelbild" style="--x:31.99;--dy:0;--w:64.34;--h:38.6;--ar:541.66 / 324.99" data-datei="bilder/do-you-mind/titelbild.jpg" data-alt="DO YOU MIND?: rote Schrift auf blauem Grund" data-label=""></figure>
+      <div class="dm-row dm-pair" style="--gap:8.53;--rh:61.17;--x1:7.19;--w1:39.79;--w2:39.11;--cg:2.93">
+        <div class="sd-text dm-text" style="--ty:6.84;--hm:1.54"><h2 class="sd-h2">Idee</h2><p>Jeder Mensch hat Impulse und Wünsche. Doch in einer Gesellschaft können wir nicht allem nachgeben. Es gibt Regeln und Grenzen. Manche sind geschrieben. Andere sind unausgesprochen.</p><p>Als Hintergrund diente Sigmund Freuds Buch „Das Unbehagen in der Kultur“. Freud beschreibt darin, dass Zusammenleben nur funktioniert, wenn wir unsere Triebe einschränken. Genau das erzeugt aber auch Unbehagen. Wie sollten wir uns also verhalten? Und wie viel Kontrolle ist nötig?</p></div>
+        <img class="dm-bild" src="bilder/do-you-mind/skizze.jpg" alt="Handgezeichnete Skizze: Ideen und Szenen zu DO YOU MIND?">
       </div>
-      <div class="sd-row sd-trow" style="--gap:6.25"><h2 class="sd-text sd-h2" style="--x:6.62;--w:35.63">Konzept</h2></div>
-      <div class="sd-row sd-trow" style="--gap:1.22"><div class="sd-text " style="--x:6.99;--w:76.02"><p>Der Film besteht aus drei Szenen. Jede zeigt eine Situation, in der ein Impuls auf eine gesellschaftliche Regel trifft. Die Struktur ist offen angelegt. So lässt sich der Film beliebig um weitere Szenen erweitern.</p><p>Durch seine kurze und klare Form eignet sich der Film auch als Kampagnenfilm.</p></div></div>
-      <div class="sd-row sd-mrow" style="--gap:4.41;--rh:23.16">
-        <figure class="sd-el medium " style="--x:3.57;--dy:0;--w:46.69;--h:23.16;--ar:393.09 / 195" data-datei="bilder/do-you-mind/konzept-01.mp4" data-alt="Szene aus dem Film" data-label="platzhalter"></figure>
-        <figure class="sd-el medium " style="--x:52.21;--dy:0;--w:46.69;--h:23.16;--ar:393.09 / 195" data-datei="bilder/do-you-mind/konzept-02.mp4" data-alt="Szene aus dem Film" data-label="platzhalter"></figure>
+      <div class="dm-row dm-block" style="--gap:2.8;--rh:19.75">
+        <div class="sd-text dm-text" style="--x:7.19;--w:76.02;--hm:1.54"><h2 class="sd-h2">Konzept</h2><p>Der Film besteht aus drei Szenen. Jede zeigt eine Situation, in der ein Impuls auf eine gesellschaftliche Regel trifft. Die Struktur ist offen angelegt. So lässt sich der Film beliebig um weitere Szenen erweitern.<br>Durch seine kurze und klare Form eignet sich der Film auch als Kampagnenfilm.</p></div>
       </div>
-      <div class="sd-row sd-trow" style="--gap:11.76"><h2 class="sd-text sd-h2" style="--x:6.62;--w:35.63">Umsetzung</h2></div>
-      <div class="sd-row sd-trow" style="--gap:0.48"><div class="sd-text " style="--x:6.99;--w:76.02"><p>Alle Szenen wurden Frame für Frame von Hand gezeichnet. Anschließend wurden sie digital zu einem Animationsfilm zusammengesetzt.</p></div></div>
-      <div class="sd-row sd-mrow" style="--gap:16.91;--rh:28.68">
-        <figure class="sd-el medium " style="--x:1.47;--dy:1.84;--w:46.69;--h:23.16;--ar:393.09 / 195" data-datei="bilder/do-you-mind/umsetzung-01.mp4" data-alt="Making-of der Animation" data-label="platzhalter"></figure>
-        <figure class="sd-el medium " style="--x:50.37;--dy:0;--w:49.26;--h:28.68;--ar:414.75 / 241.42" data-datei="bilder/do-you-mind/programm.jpg" data-alt="Ansicht des Animationsprogramms" data-label=""></figure>
+      <div class="dm-row dm-szenen" style="--gap:0;--rh:16.3">
+        <img class="dm-bild" src="bilder/do-you-mind/konzept-01.jpg" alt="Szene im Bus: Eine Frau hält einem Mann das Ohr zu, er telefoniert" style="--ml:7.16;--dy:0.18;--w:27.31;--ar:229.9 / 134.1">
+        <img class="dm-bild" src="bilder/do-you-mind/konzept-02.jpg" alt="Szene im Supermarkt" style="--ml:2.35;--dy:0.26;--w:27.31;--ar:229.9 / 132.7">
+        <img class="dm-bild" src="bilder/do-you-mind/konzept-03.jpg" alt="Szene im Kino" style="--ml:4.34;--dy:0;--w:27.31;--ar:229.9 / 137.2">
       </div>
-      <div class="sd-row sd-trow" style="--gap:6.25"><h2 class="sd-text sd-h2" style="--x:6.62;--w:35.63">still frames</h2></div>
-      <div class="sd-row sd-mrow" style="--gap:1.22;--rh:77.94">
-        <figure class="sd-el medium sd-still" style="--x:3.68;--dy:0;--w:42.28;--h:23.9;--ar:355.95 / 201.19" data-datei="bilder/do-you-mind/still-01.jpg" data-alt="Still Frame: Szene im Bus" data-label=""></figure>
-        <figure class="sd-el medium sd-still" style="--x:3.68;--dy:26.1;--w:42.28;--h:24.26;--ar:355.95 / 204.28" data-datei="bilder/do-you-mind/still-02.jpg" data-alt="Still Frame: Szene im Supermarkt" data-label=""></figure>
-        <figure class="sd-el medium sd-still" style="--x:3.68;--dy:52.94;--w:42.28;--h:25;--ar:355.95 / 210.47" data-datei="bilder/do-you-mind/still-03.jpg" data-alt="Still Frame: Szene im Kino" data-label=""></figure>
-        <figure class="sd-el medium sd-still" style="--x:50.37;--dy:20.96;--w:20.59;--h:23.16;--ar:173.33 / 195" data-datei="bilder/do-you-mind/still-04.jpg" data-alt="Still Frame: Nahaufnahme im Bus" data-label=""></figure>
-        <figure class="sd-el medium sd-still" style="--x:73.9;--dy:8.09;--w:19.85;--h:31.25;--ar:167.14 / 263.09" data-datei="bilder/do-you-mind/still-05.jpg" data-alt="Still Frame: Person vor dem Supermarktregal" data-label=""></figure>
-        <figure class="sd-el medium sd-still" style="--x:73.9;--dy:43.75;--w:20.96;--h:27.21;--ar:176.43 / 229.04" data-datei="bilder/do-you-mind/still-06.jpg" data-alt="Still Frame: Nahaufnahme im Kino" data-label=""></figure>
+      <div class="dm-row dm-block" style="--gap:7.66;--rh:13.33">
+        <div class="sd-text dm-text" style="--x:7.16;--w:76.02;--hm:0.48"><h2 class="sd-h2">Umsetzung</h2><p>Alle Szenen wurden Frame für Frame von Hand gezeichnet. Anschließend wurden sie digital zu einem Animationsfilm zusammengesetzt.</p></div>
       </div>
-      <div class="sd-row sd-band" style="--gap:9.19;--pb:25">
-        <div class="sd-row sd-trow" style="--gap:2.94"><h2 class="sd-text sd-h2" style="--x:6.62;--w:35.63">animation</h2></div>
-        <div class="sd-row sd-mrow" style="--gap:4.89;--rh:22.43">
-          <figure class="sd-el medium sd-anim" style="--x:4.96;--dy:0;--w:36.03;--h:21.32;--ar:303.33 / 179.52" data-datei="bilder/do-you-mind/animation-01.mp4" data-alt="Animation 1" data-label="" data-auto="ja"></figure>
-          <figure class="sd-el medium sd-anim" style="--x:44.85;--dy:0;--w:52.57;--h:22.43;--ar:442.61 / 188.81" data-datei="bilder/do-you-mind/animation-02.mp4" data-alt="Animation 2" data-label="" data-auto="ja"></figure>
-        </div>
-        <div class="sd-row sd-mrow" style="--gap:2.94;--rh:25">
-          <figure class="sd-el medium sd-anim" style="--x:5.88;--dy:0;--w:22.98;--h:25;--ar:193.45 / 210.47" data-datei="bilder/do-you-mind/animation-03.mp4" data-alt="Animation 3" data-label="" data-auto="ja"></figure>
-          <figure class="sd-el medium sd-anim" style="--x:32.54;--dy:1.1;--w:64.89;--h:23.9;--ar:546.3 / 201.19" data-datei="bilder/do-you-mind/animation-04.mp4" data-alt="Animation 4" data-label="" data-auto="ja"></figure>
-        </div>
+      <div class="dm-abfolge" style="--x:7.84;--w:81.95;--pb:4.51">
+        <img src="bilder/do-you-mind/bildabfolge.jpg" alt="Bildabfolge: die einzelnen Animationsframes der Busszene in sechs Spalten" width="2875" height="3642">
       </div>
       </div>
     </div>
