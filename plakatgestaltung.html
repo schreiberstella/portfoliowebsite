@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plakatgestaltung – Stella Schreiber</title>
+  <meta name="description" content="Plakatgestaltung von Stella Schreiber.">
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="kopf">
+    <a class="logo" href="index.html#portfolio" aria-label="Stella Schreiber – Startseite">
+      <img src="logo.png" alt="">
+      <span>Stella<br>Schreiber</span>
+    </a>
+    <button class="burger" id="menueAuf" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menue">
+      <i></i><i></i><i></i>
+    </button>
+  </header>
+
+  <div class="scrim" id="scrim"></div>
+  <nav class="menue" id="menue" aria-label="Bereiche">
+    <button class="menue-zu" id="menueZu" type="button" aria-label="Menü schließen"></button>
+    <ul>
+      <li><a href="animation.html">Animation</a></li>
+      <li><a href="illustration.html">Illustration</a></li>
+      <li><a href="fotografie.html">Fotografie</a></li>
+      <li><a href="grafik-design.html" aria-current="page">Grafik Design</a></li>
+    </ul>
+  </nav>
+
+  <!-- Layout-Version: Plakatgestaltung (Karussell wie Illustration v37) (Überschrift links, Hauptbild gross, Seitenbilder 1/4) -->
+  <main class="seite i3-seite">
+    <style>
+      /* ===== Illustration: Endlos-Karussell nach Entwurf (Überschrift links, großes Mittelbild, kleine Seitenbilder an der Unterkante) ===== */
+      .i3-seite { max-width: 1400px; }
+      .i3-seite .seite-titel { position: relative; z-index: 3; }
+      .i3 { position: relative; margin-top: clamp(.4rem, 1.5vh, 1rem); }
+      .i3-fenster { overflow: hidden; position: relative; }
+      .i3-spur { position: relative; list-style: none; margin: 0; padding: 0; }
+      .i3-item { position: absolute; left: 50%; top: 0; margin: 0; cursor: pointer; transform-origin: 50% 50%;
+                 transition: transform .5s cubic-bezier(.4, 0, .2, 1), opacity .5s ease; will-change: transform; }
+      .i3-item.i3-mitte { cursor: default; }
+      .i3-bild { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+      .i3-bild img { display: block; width: auto; height: auto; }
+      .i3-titel { position: absolute; margin: 0; text-align: left; font-family: var(--fliesstext); font-size: .9rem; line-height: 1.25;
+                  transform-origin: 0 0; transition: transform .5s cubic-bezier(.4, 0, .2, 1); }
+      .i3-pfeil { position: absolute; z-index: 4; width: 2rem; height: 2rem; margin: -1rem 0 0 -1rem; background: none; border: 0; padding: 0; cursor: pointer; color: #000; }
+      .i3-pfeil::before { content: ""; position: absolute; left: 50%; top: 50%; width: .8rem; height: .8rem; border-top: 2px solid currentColor; border-right: 2px solid currentColor; }
+      .i3-links::before { transform: translate(-30%, -50%) rotate(-135deg); }
+      .i3-rechts::before { transform: translate(-70%, -50%) rotate(45deg); }
+      .i3-pfeil:hover, .i3-pfeil:focus-visible { color: var(--violett, #8b3ff0); outline: none; }
+      .i3-zaehler { margin-top: .6rem; font-size: .7rem; letter-spacing: .14em; text-align: center; }
+      @media (prefers-reduced-motion: reduce) { .i3-item, .i3-titel { transition: none; } }
+    </style>
+    <a class="zurueck" href="grafik-design.html">&larr; Grafik Design</a>
+    <h1 class="seite-titel" id="i3Titel">Plakatgestaltung</h1>
+
+    <!-- Die Illustrationen stehen in der Datei projekte.js -->
+    <div class="i3" id="i3" data-bereich="plakatgestaltung">
+      <div class="i3-fenster" id="i3Fenster"><ul class="i3-spur" id="i3Spur"></ul></div>
+      <button class="i3-pfeil i3-links" id="i3Zurueck" type="button" aria-label="Vorige Illustration"></button>
+      <button class="i3-pfeil i3-rechts" id="i3Weiter" type="button" aria-label="Nächste Illustration"></button>
+    </div>
+    <p class="i3-zaehler" id="i3Zaehler" aria-live="polite"></p>
+    <noscript><p class="hinweis">Für diese Seite wird JavaScript benötigt.</p></noscript>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var d = window.PORTFOLIO && window.PORTFOLIO.plakatgestaltung;
+        var spur = document.getElementById('i3Spur'), box = document.getElementById('i3'), fenster = document.getElementById('i3Fenster');
+        var titel = document.getElementById('i3Titel'), pl = document.getElementById('i3Zurueck'), pr = document.getElementById('i3Weiter');
+        if (!d || !d.bilder || !d.bilder.length) { spur.innerHTML = '<li class="hinweis">Hier sind noch keine Plakate eingetragen.</li>'; return; }
+        var n = d.bilder.length, idx = 0, items = [], imgs = [], caps = [], offs = [];
+
+        d.bilder.forEach(function (b, k) {
+          var e = typeof b === 'string' ? { datei: b } : b;
+          var li = document.createElement('li'); li.className = 'i3-item';
+          var f = document.createElement('div'); f.className = 'i3-bild';
+          var im = document.createElement('img'); im.src = (d.ordner || '') + e.datei; im.alt = e.alt || e.titel || ''; im.draggable = false;
+          im.addEventListener('load', function () { place(); });
+          f.appendChild(im); li.appendChild(f);
+          var t = document.createElement('p'); t.className = 'i3-titel'; t.textContent = e.titel || ''; li.appendChild(t);
+          li.addEventListener('click', function () { var o = offs[k]; if (o) geh(o); });
+          spur.appendChild(li); items.push(li); imgs.push(im); caps.push(t); offs.push(null);
+        });
+
+        // Abstand zur Mitte im Kreis: -n/2 … +n/2 (so ist jedes Bild einmal in der Mitte, auch das erste und das letzte)
+        function offset(i) { var h = Math.floor(n / 2); return ((i - idx + n + h) % n + n) % n - h; }
+
+        function place() {
+          var S = fenster.clientWidth;                       // Breite der Bühne (Entwurf: 1100 px)
+          if (!S) return;
+          var klein = S < 700;
+          // Maße aus dem Entwurf, als Anteil der Bühnenbreite: Hauptbild 518/1101 hoch, Seitenbilder 198/518 davon, Seitenbilder 0,319 links/rechts der Mitte
+          var wb = (klein ? 0.5 : 0.40) * S;                  // Breite der Bildfläche des Hauptbilds
+          var H = klein ? Math.max(240, Math.min(window.innerHeight - 300, wb / 0.72)) : Math.min(0.525 * S, Math.max(300, window.innerHeight - 235));
+          var sc = klein ? 0.36 : 0.25;                     // Seitenbilder = 25 % der Hauptbildgröße (Hauptbild = 4 × so hoch)
+          var sx = (klein ? 0.38 : 0.319) * S;                // Mitte der Seitenbilder
+          var B = H * 0.98;                                   // Unterkante der Seitenbilder
+          var CAPH = klein ? 92 : 56;
+          spur.style.height = (H + CAPH) + 'px';
+          imgs.forEach(function (im) { im.style.maxWidth = wb + 'px'; im.style.maxHeight = H + 'px'; });
+
+          // Überschrift steht links neben dem Karussell (Entwurf): Bühne beginnt auf Höhe der Überschrift
+          box.style.marginTop = '';
+          if (!klein) { var dy = box.getBoundingClientRect().top - titel.getBoundingClientRect().top; box.style.marginTop = (-dy) + 'px'; }
+          box.style.paddingBottom = klein ? '2.8rem' : '';
+          pl.style.left = (klein ? S / 2 - 3 * 16 : 0.287 * S) + 'px'; pr.style.left = (klein ? S / 2 + 3 * 16 : 0.718 * S) + 'px';
+          pl.style.top = pr.style.top = klein ? 'auto' : (0.55 * H) + 'px';
+          pl.style.bottom = pr.style.bottom = klein ? '1rem' : 'auto';
+          if (klein) { pl.style.marginTop = pr.style.marginTop = '0'; } else { pl.style.marginTop = pr.style.marginTop = ''; }
+
+          items.forEach(function (li, i) {
+            var o = offset(i), prev = offs[i];
+            var a = Math.abs(o), x = 0, y = 0, k = 1;
+            var im = imgs[i], ih = im.offsetHeight, iw = im.offsetWidth;
+            if (a >= 1) {
+              k = sc; x = (o < 0 ? -1 : 1) * (a === 1 ? sx : sx + 0.5 * S);
+              y = B - (H / 2 + k * ih / 2);                   // Unterkante des Bildes auf die gemeinsame Linie
+            }
+            var weit = prev !== null && Math.abs(o - prev) > 2;       // Bild läuft unsichtbar von einem Ende zum anderen
+            if (weit) { li.style.transition = 'none'; caps[i].style.transition = 'none'; }
+            li.style.width = wb + 'px'; li.style.height = H + 'px'; li.style.marginLeft = (-wb / 2) + 'px';
+            li.style.transform = 'translate(' + x + 'px,' + y + 'px) scale(' + k + ')';
+            li.style.opacity = a <= 1 ? 1 : 0;
+            li.style.zIndex = 10 - a;
+            li.style.pointerEvents = a <= 1 ? 'auto' : 'none';
+            li.classList.toggle('i3-mitte', o === 0);
+            li.setAttribute('aria-hidden', a <= 1 ? 'false' : 'true');
+            // Titel: direkt unter dem Bild, linksbündig; bei Seitenbildern lesbar gehalten
+            var net = a >= 1 ? 0.8 : 1;
+            caps[i].style.transform = 'scale(' + (net / k) + ')';
+            caps[i].style.left = ((wb - iw) / 2) + 'px';
+            caps[i].style.top = (H / 2 + ih / 2 + 8) + 'px';
+            caps[i].style.width = (Math.max(a >= 1 ? 0.16 * S : iw, 60) * (a >= 1 ? 1 / net : 1) ) / (a >= 1 ? 1 : 1) + 'px';
+            if (weit) { void li.offsetWidth; li.style.transition = ''; caps[i].style.transition = ''; }
+            offs[i] = o;
+          });
+          document.getElementById('i3Zaehler').textContent = (idx + 1) + ' / ' + n;
+        }
+
+        function geh(r) { idx = ((idx + r) % n + n) % n; place(); }
+        pl.addEventListener('click', function () { geh(-1); });
+        pr.addEventListener('click', function () { geh(1); });
+        document.addEventListener('keydown', function (e) { if (e.altKey || e.ctrlKey || e.metaKey) return; if (e.key === 'ArrowLeft') geh(-1); if (e.key === 'ArrowRight') geh(1); });
+        var x0 = null;
+        box.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+        box.addEventListener('touchend', function (e) { if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) geh(dx < 0 ? 1 : -1); x0 = null; }, { passive: true });
+        window.addEventListener('resize', place); window.addEventListener('load', place);
+        place();
+      });
+    </script>
+  </main>
+
+  <footer class="fuss">
+    <p>&copy; 2026 Stella Schreiber</p>
+  </footer>
+
+  <script src="projekte.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

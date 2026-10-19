@@ -32,6 +32,34 @@
   </nav>
 
   <main class="seite" id="projektDetail" data-bereich="animation" data-projekt="do-you-mind">
+    <style>
+      /* Projektbeginn (nur diese Seite): links Titel + Beschreibung, rechts Projektinfo, darunter das Hauptvideo */
+      main[data-projekt="do-you-mind"] .projekt-spalte { max-width: 1120px; padding: 0 4.25% 0 4.09%; }
+      main[data-projekt="do-you-mind"] #projektSlider, main[data-projekt="do-you-mind"] .bild-zaehler { display: none; }
+      main[data-projekt="do-you-mind"] .projekt-info { margin-top: clamp(1.6rem, 3.5vw, 3rem); display: grid; grid-template-columns: minmax(0, 1fr) minmax(8rem, 22%); column-gap: clamp(1.5rem, 6vw, 5rem); align-items: start; }
+      main[data-projekt="do-you-mind"] .projekt-name { grid-column: 1; grid-row: 1; font-size: clamp(2.4rem, 5.6vw, 4.8rem); line-height: 1.02; }
+      main[data-projekt="do-you-mind"] .projekt-text { grid-column: 1; grid-row: 2; margin-top: clamp(1rem, 2.2vw, 1.8rem); }
+      main[data-projekt="do-you-mind"] .projekt-meta { grid-column: 2; grid-row: 1 / span 2; margin: 0; padding-top: clamp(.5rem, 1.2vw, 1rem); font-size: 1rem; line-height: 1.6; letter-spacing: .08em; }
+      main[data-projekt="do-you-mind"] .sd-seite { margin-top: clamp(2.2rem, 4.5vw, 4rem); }
+      main[data-projekt="do-you-mind"] .sx-hero, main[data-projekt="do-you-mind"] .dm-hero { margin-top: 0; }
+      @media (max-width: 700px) {
+        main[data-projekt="do-you-mind"] .projekt-info { grid-template-columns: 1fr; }
+        main[data-projekt="do-you-mind"] .projekt-name, main[data-projekt="do-you-mind"] .projekt-text, main[data-projekt="do-you-mind"] .projekt-meta { grid-column: 1; grid-row: auto; }
+        main[data-projekt="do-you-mind"] .projekt-meta { margin-top: .8rem; padding-top: 0; }
+        main[data-projekt="do-you-mind"] .projekt-text { margin-top: 1rem; }
+      }
+    </style>
+    <script>
+      /* Dauer und Jahr (stehen in projekte.js als "5 min | 2026") untereinander anzeigen */
+      window.addEventListener('load', function () {
+        var m = document.getElementById('projektMeta');
+        if (!m || m.textContent.indexOf('|') < 0) return;
+        var teile = m.textContent.split('|').map(function (t) { return t.trim(); });
+        m.textContent = '';
+        teile.forEach(function (t, i) { if (i) m.appendChild(document.createElement('br')); m.appendChild(document.createTextNode(t)); });
+      });
+    </script>
+
     <div class="projekt-spalte">
       <a class="zurueck" id="zurueck" href="index.html#portfolio">&larr; Zurück</a>
 

@@ -120,8 +120,8 @@ Das Spiel entstand im Kurs Expander Animation. Es bespielt zwei Projektionsfläc
       { datei: 'hoffnungslos.jpg', titel: 'Hoffnungslos', alt: 'Illustration: ein Strauß steckt den Kopf in den Boden, darunter brennende Stadt, Schriftzug „Vielleicht gibt es doch Hoffnung“' },
       { datei: 'ich-bin-ich.jpg', titel: 'Ich bin ich.. mal mehr mal weniger', alt: 'Illustration: Collage bunter gemalter Gesichter mit den Worten „Ich bin ich, mal mehr, mal weniger“' },
       { datei: 'koepfe.jpg', titel: 'Köpfe', alt: 'Illustration: viele gezeichnete Köpfe, die ineinander übergehen' },
-      { datei: 'koepfe-kreis.jpg', titel: 'Kollektiv Stop', alt: 'Illustration: drei Köpfe in Orange, Blau und Pink überlagern sich in einem grünen Kreis, umlaufender schwarzer Schriftzug' },
-      { datei: 'koepfe-quadrat.jpg', titel: 'Kollektiv Stop', alt: 'Illustration: drei ineinander verschlungene Figuren in Orange, Blau und Pink auf grünem Quadrat' },
+      { datei: 'koepfe-kreis.jpg', titel: 'Kollektiv Skop', alt: 'Illustration: drei Köpfe in Orange, Blau und Pink überlagern sich in einem grünen Kreis, umlaufender schwarzer Schriftzug' },
+      { datei: 'koepfe-quadrat.jpg', titel: 'Kollektiv Skop', alt: 'Illustration: drei ineinander verschlungene Figuren in Orange, Blau und Pink auf grünem Quadrat' },
       // { datei: '04.jpg', titel: 'Name der Illustration', alt: 'Was zu sehen ist' },
     ],
   },
@@ -209,29 +209,34 @@ Das Spiel entstand im Kurs Expander Animation. Es bespielt zwei Projektionsfläc
         text: `What the Font? ist ein interaktives Kartenspiel, das Typografie auf spielerische Weise erfahrbar macht.`,
       },
 
-      /* Platzhalter: hier fehlen noch deine Bilder und Texte */
       {
-        id: 'etagen',
-        titel: 'Etagen',
-        ordner: 'bilder/',
-        vorschau: 'platzhalter-quer.svg',
+        id: 'plakatgestaltung',
+        titel: 'Plakatgestaltung',
+        seite: 'plakatgestaltung.html',   // eigene Seite: Karussell wie auf der Illustrationsseite (Plakate stehen weiter unten unter "plakatgestaltung")
+        ordner: 'bilder/plakatgestaltung/',
+        vorschau: '01.jpg',
         bilder: [
-          'platzhalter-quer.svg',
+          { datei: '01.jpg', alt: 'Plakat „Are you afraid of AI?“: rote Schrift auf lila Grund, eine Person mit Helm hält die Hände vors Gesicht' },
         ],
-        text: `Hier kommt der Beschreibungstext zu Etagen hin.`,
+        text: `Plakatgestaltung.`,
       },
 
-      {
-        id: 'filmzitate',
-        titel: 'Filmzitate',
-        ordner: 'bilder/',
-        vorschau: 'platzhalter-quer.svg',
-        bilder: [
-          'platzhalter-quer.svg',
-        ],
-        text: `Hier kommt der Beschreibungstext zu Filmzitate hin.`,
-      },
+    ],
+  },
 
+  /* ========================== PLAKATGESTALTUNG ==========================
+     Karussell wie auf der Illustrationsseite: Man klickt sich durch die Plakate.
+     Pro Plakat: datei + titel (steht unter dem Bild) + alt. Reihenfolge = Reihenfolge hier.
+     Neue Plakate: Datei in bilder/plakatgestaltung/ hochladen und eine Zeile kopieren.
+     ===================================================================== */
+  plakatgestaltung: {
+    titel: 'Plakatgestaltung',
+    ordner: 'bilder/plakatgestaltung/',
+    bilder: [
+      { datei: '01.jpg', titel: 'AI', alt: 'Plakat „Are you afraid of AI?“: rote Schrift auf lila Grund, eine Person mit Helm hält die Hände vors Gesicht' },
+      { datei: '02.jpg', titel: 'Summer Show', alt: 'Plakat Summer Show, Design Department, 12. bis 14.7.24: lila, rote und blaue Dreiecke und Muster mit heller Schrift' },
+      { datei: '03.jpg', titel: 'Kultur vor Asphalt', alt: 'Plakat „Kultur vor Asphalt – Stoppt die A100“: übereinanderliegende Straßen mit Autos und eine Pyramide mit Discokugel' },
+      { datei: '04.jpg', titel: 'Kino Poster', alt: 'Konzertplakat Silent Drift, Echoes beyond the Horizon Tour, Köln: Person mit roter Sternenmaske vor blauem Grund' },
     ],
   },
 
