@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What the Font – Stella Schreiber</title>
+  <meta name="description" content="What the Font: ein interaktives Kartenspiel von Stella Schreiber.">
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="kopf">
+    <a class="logo" href="index.html#portfolio" aria-label="Stella Schreiber – Startseite">
+      <img src="logo.png" alt="">
+      <span>Stella<br>Schreiber</span>
+    </a>
+    <button class="burger" id="menueAuf" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menue">
+      <i></i><i></i><i></i>
+    </button>
+  </header>
+
+  <div class="scrim" id="scrim"></div>
+  <nav class="menue" id="menue" aria-label="Bereiche">
+    <button class="menue-zu" id="menueZu" type="button" aria-label="Menü schließen"></button>
+    <ul>
+      <li><a href="animation.html">Animation</a></li>
+      <li><a href="illustration.html">Illustration</a></li>
+      <li><a href="fotografie.html">Fotografie</a></li>
+      <li><a href="grafik-design.html" aria-current="page">Grafik Design</a></li>
+    </ul>
+  </nav>
+
+  <main class="seite wf-seite" id="wtfSeite" data-projekt="what-the-font">
+    <a class="zurueck" href="grafik-design.html">&larr; Grafik Design</a>
+
+    <!-- =====================================================================
+         WHAT THE FONT – so pflegst du die Seite (Layout nach etwurf_whatthefont.pdf)
+         TEXTE: einfach hier im Text ändern.
+         BILDER (Ordner bilder/what-the-font/, gleicher Name = ersetzen):
+           hero-geschlossen.jpg | hero-offen.jpg      (die zwei Bilder oben)
+           idee.jpg                                    (Idee)
+           konzept-01.jpg | konzept-02.jpg | konzept-03.jpg
+           umsetzung-01.jpg | umsetzung-02.jpg
+           vorschau.jpg                                (Bild in der Übersicht Grafik Design)
+         ===================================================================== -->
+    <div class="sd-seite wf-stage">
+      <div class="wf-kopf" style="--x:3.91;--fs:50.2;--rh:8.37">
+        <h1 class="wf-titel" style="--dy:-8.5">What the Font</h1>
+      </div>
+      <div class="wf-intro" style="--rh:12.6">
+        <div class="sd-text wf-text" style="--x:3.94;--w:59.39"><p>What the Font? ist ein interaktives Kartenspiel, das Typografie auf spielerische Weise erfahrbar macht. Im Mittelpunkt steht die Schriftfamilie GT Flex, die mit ihren 112 Schriftstilen eine große gestalterische Vielfalt bietet. Das Spiel verbindet typografisches Wissen mit Kreativität und spielerischem Wettbewerb.</p></div>
+        <p class="sd-text wf-jahr" style="--x:83.67">2024</p>
+      </div>
+      <div class="wf-paar" style="--rh:43.22;--x1:7.16;--w1:42.65;--cg:5.07;--w2:38.7;--dy:4.81">
+        <img class="wf-bild wf-links" src="bilder/what-the-font/hero-geschlossen.jpg" width="1248" height="983" alt="Die geschlossene Spielbox What the Font: lila Schachtel mit schwarzer Typografie auf buntem Hintergrund">
+        <img class="wf-bild" src="bilder/what-the-font/hero-offen.jpg" width="1280" height="1430" alt="Die geöffnete Spielbox: der Deckel liegt schräg auf der Box, darin Buchstabenkarten und eine Challenge-Karte „Bold Only“">
+      </div>
+      <div class="wf-idee" style="--gap:13.46;--rh:34.01;--x1:7.69;--w1:48.15;--w2:36.81">
+        <div class="sd-text wf-text wf-idee-text" style="--ty:4.32;--tx:0.24;--tw:46.56;--hm:2.15"><h2 class="sd-h2">Idee</h2><p>Die Idee war es, die Unterschiede zwischen ver&shy;schiedenen Schriftschnitten wie Bold, Italic, Medium und Light auf eine einfache und unterhalt&shy;same Weise zu vermitteln. Statt Typografie nur theoretisch kennenzulernen, sollen die Spielenden selbst mit Buchstaben experimentieren und ein Gefühl für unterschiedliche Schriftstile entwickeln.</p></div>
+        <img class="wf-bild" src="bilder/what-the-font/idee.jpg" width="1223" height="1130" alt="Detailfoto der Spielbox: die typografische Gestaltung der Seitenfläche mit den Buchstaben X, Y, Z, a, B, C">
+      </div>
+      <div class="wf-block" style="--gap:4.66;--rh:26.77">
+        <div class="sd-text wf-text" style="--x:7.16;--w:76.61;--tx:0.02;--hm:2.11"><h2 class="sd-h2">Konzept</h2><p>Das Spielprinzip orientiert sich an Scrabble. Mithilfe von Buchstabenkarten werden Wörter gebildet, wobei zusätzliche Challenge-Karten typografische Aufgaben vorge&shy;ben. Beispielsweise darf ein Wort nur aus Bold-Buchstaben bestehen oder muss be&shy;stimmte Schriftstile kombinieren.<br>Durch das Tauschen, Ziehen und Ablegen von Karten entstehen immer neue Möglich&shy;keiten. Das Kartenset besteht aus 88 Alphabetkarten, 12 Challenge-Karten sowie zu&shy;sätzlichen häufig verwendeten Buchstaben und Vokalen in unterschiedlichen Schriftschnitten.</p></div>
+      </div>
+      <div class="wf-reihe" style="--rh:40.66">
+        <img class="wf-bild" src="bilder/what-the-font/konzept-01.jpg" width="1280" height="1920" alt="Personen halten Spielkarten am Tisch" style="--ml:3.97;--w:27.11;--ar:228.2 / 342.3">
+        <img class="wf-bild" src="bilder/what-the-font/konzept-02.jpg" width="1280" height="1920" alt="Ausgelegte Buchstabenkarten auf dem Tisch" style="--ml:2.28;--w:27.11;--ar:228.2 / 342.3">
+        <img class="wf-bild" src="bilder/what-the-font/konzept-03.jpg" width="1280" height="1563" alt="Die Spielanleitung, daneben liegen Challenge-Karten" style="--ml:2.28;--w:33.29;--ar:280.3 / 342.3">
+      </div>
+      <div class="wf-block" style="--gap:7.3;--rh:28.13">
+        <div class="sd-text wf-text" style="--x:6.95;--w:77.21;--tx:0.24;--hm:1.53"><h2 class="sd-h2">Umsetzung</h2><p>Die Gestaltung aller Spielkarten erfolgte digital in Adobe Illustrator. Dabei wurden die verschiedenen Schriftschnitte der GT Flex gezielt eingesetzt, um die typografischen Unterschiede sichtbar zu machen. Anschließend wurden die Karten gedruckt und von Hand zugeschnitten.</p><p>Auch die Verpackung wurde eigenständig gestaltet und umgesetzt. Die Spielbox wurde gebaut und mit dem zuvor entwickelten Design beklebt, sodass ein einheitliches Erscheinungsbild von Spiel und Verpackung entstand.</p></div>
+      </div>
+      <div class="wf-paar2" style="--rh:32.49;--x1:6.87;--w1:48.49;--cg:4.13;--w2:29.86">
+        <img class="wf-bild" src="bilder/what-the-font/umsetzung-01.jpg" width="1854" height="1242" alt="Die Spielbox mit Buchstabenkarten und Challenge-Karten, der Deckel liegt schräg darauf">
+        <img class="wf-bild" src="bilder/what-the-font/umsetzung-02.jpg" width="1280" height="1393" alt="Eine Hand hält fünf aufgefächerte Buchstabenkarten">
+      </div>
+      <div class="wf-ende" style="--pb:12.27"></div>
+    </div>
+  </main>
+
+  <footer class="fuss">
+    <p>&copy; 2026 Stella Schreiber</p>
+  </footer>
+
+  <script src="projekte.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

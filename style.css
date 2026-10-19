@@ -973,3 +973,88 @@ body.menue-offen { overflow: hidden; }
 /* DO YOU MIND?: Abstand Kopf -> Video wie im Entwurf (ca. 20 Punkte unter der Kurzbeschreibung) */
 [data-projekt="do-you-mind"] .sd-seite { margin-top: 0; }
 [data-projekt="do-you-mind"] .dm-hero { margin-top: calc(var(--vg, 0) * 1cqw); }
+
+/* =====================================================
+   WHAT THE FONT (nach etwurf_whatthefont.pdf): Maße, Schriftgrößen und Abstände wie im Entwurf.
+   1 Entwurfs-Punkt = 100/841,89 % der Seitenbreite. Gilt nur für die Seite WHAT THE FONT.
+   ===================================================== */
+.wf-seite .sd-seite { margin-top: 0; max-width: 1120px; }
+.wf-ende { height: calc(var(--pb, 0) * 1cqw); }
+.wf-kopf { margin: clamp(1.6rem, 5vw, 3.4rem) 0 0 calc(var(--x) * 1cqw); height: calc(var(--rh) * 1cqw); }
+.wf-titel {
+  font-family: var(--display);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 1;
+  position: relative;
+  top: calc(var(--dy, 0) / 841.89 * 100cqw);
+  font-size: calc(var(--fs, 44) / 841.89 * 100cqw);
+  margin: 0;
+  color: #000;
+  white-space: nowrap;
+}
+[data-projekt="what-the-font"] .sd-text {
+  font-size: max(13px, calc(15.5 / 841.89 * 100cqw));
+  line-height: max(18px, calc(20.4 / 841.89 * 100cqw));
+  color: #000;
+}
+[data-projekt="what-the-font"] .sd-text p + p { margin-top: calc(20.4 / 841.89 * 100cqw); }
+[data-projekt="what-the-font"] .sd-h2 {
+  font-size: max(17px, calc(25 / 841.89 * 100cqw));
+  line-height: 1;
+  letter-spacing: 0;
+  color: #000;
+  margin: 0 0 calc(var(--hm, 4) * 1cqw);
+}
+.wf-text p { margin-left: calc(var(--tx, 0) * 1cqw); max-width: calc(var(--tw, 100000) * 1cqw); }
+.wf-intro { position: relative; height: calc(var(--rh) * 1cqw); }
+.wf-intro > .wf-text { margin-left: calc(var(--x) * 1cqw); width: calc(var(--w) * 1cqw); max-width: 100%; }
+.wf-jahr { position: absolute; top: 0; left: calc(var(--x) * 1cqw); margin: 0; }
+.wf-bild { display: block; width: 100%; height: auto; }
+.wf-paar, .wf-paar2 {
+  display: grid;
+  grid-template-columns: calc(var(--w1) * 1cqw) calc(var(--w2) * 1cqw);
+  column-gap: calc(var(--cg) * 1cqw);
+  margin-left: calc(var(--x1) * 1cqw);
+  min-height: calc(var(--rh) * 1cqw);
+  align-items: start;
+}
+.wf-paar > .wf-links { margin-top: calc(var(--dy) * 1cqw); }
+.wf-idee {
+  display: grid;
+  grid-template-columns: calc(var(--w1) * 1cqw) calc(var(--w2) * 1cqw);
+  margin: calc(var(--gap) * 1cqw) 0 0 calc(var(--x1) * 1cqw);
+  min-height: calc(var(--rh) * 1cqw);
+  align-items: start;
+}
+.wf-idee > .wf-idee-text { margin-top: calc(var(--ty) * 1cqw); }
+.wf-block { margin-top: calc(var(--gap) * 1cqw); min-height: calc(var(--rh) * 1cqw); }
+.wf-block > .wf-text { margin-left: calc(var(--x) * 1cqw); width: calc(var(--w) * 1cqw); max-width: calc(100cqw - var(--x) * 1cqw); }
+.wf-reihe { display: flex; align-items: flex-start; height: calc(var(--rh) * 1cqw); }
+.wf-reihe > .wf-bild { flex: none; width: calc(var(--w) * 1cqw); height: auto; aspect-ratio: var(--ar); object-fit: cover; margin-left: calc(var(--ml) * 1cqw); }
+
+@container sd (max-width: 640px) {
+  .wf-kopf { height: auto; margin-left: 0; }
+  .wf-titel { white-space: normal; }
+  .wf-intro { height: auto; }
+  .wf-intro > .wf-text { margin-left: 0; width: 100%; margin-top: 1.4rem; }
+  .wf-jahr { position: static; margin-top: .8rem; }
+  .wf-paar, .wf-paar2, .wf-idee { display: block; margin-left: 0; min-height: 0; margin-top: 2rem; }
+  .wf-paar > .wf-links { margin: 0 0 1rem; }
+  .wf-paar2 > .wf-bild + .wf-bild { margin-top: 1rem; }
+  .wf-idee > .wf-idee-text { margin: 0 0 1.4rem; }
+  .wf-text p { margin-left: 0; max-width: none; }
+  .wf-block { margin-top: 2.4rem; min-height: 0; }
+  .wf-block > .wf-text { margin-left: 0; width: 100%; max-width: none; }
+  .wf-reihe { display: block; height: auto; margin-top: 1.6rem; }
+  .wf-reihe > .wf-bild { width: 100%; margin: 0 0 1rem; }
+}
+
+/* WHAT THE FONT: Schrift sitzt in der Zeile ca. 3,5 pt tiefer als im Entwurf, daher leicht nach oben */
+.wf-seite .wf-text, .wf-seite .wf-jahr { position: relative; top: calc(-3.5 / 841.89 * 100cqw); }
+.wf-seite .wf-jahr { position: absolute; }
+@container sd (max-width: 640px) {
+  .wf-seite .wf-text, .wf-seite .wf-jahr { top: 0; }
+  .wf-seite .wf-jahr { position: static; }
+}

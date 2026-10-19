@@ -195,39 +195,39 @@ Das Spiel entstand im Kurs Expander Animation. Es bespielt zwei Projektionsfläc
     projekte: [
 
       {
-        id: 'projekt-1',
-        titel: 'Projekt 1',
-        ordner: 'bilder/',
-        vorschau: 'platzhalter-quer.svg',
+        id: 'what-the-font',
+        titel: 'What the Font',
+        seite: 'what-the-font.html',     // eigene Seite nach deinem Entwurf (Texte und Bilder stehen in what-the-font.html)
+        ordner: 'bilder/what-the-font/',
+        vorschau: 'vorschau.jpg',
+        meta: '2024',
         bilder: [
-          'platzhalter-quer.svg',
-          'platzhalter-quer.svg',
+          { datei: 'vorschau.jpg', alt: 'Die geschlossene Spielbox What the Font: lila Schachtel mit schwarzer Typografie' },
         ],
-        text: `Hier kommt der Beschreibungstext zu Projekt 1 hin.
-
-Einen neuen Absatz beginnst du mit einer Leerzeile.`,
+        text: `What the Font? ist ein interaktives Kartenspiel, das Typografie auf spielerische Weise erfahrbar macht.`,
       },
 
+      /* Platzhalter: hier fehlen noch deine Bilder und Texte */
       {
-        id: 'projekt-2',
-        titel: 'Projekt 2',
-        ordner: 'bilder/',
-        vorschau: 'platzhalter-hoch.svg',
-        bilder: [
-          'platzhalter-hoch.svg',
-        ],
-        text: `Hier kommt der Beschreibungstext zu Projekt 2 hin.`,
-      },
-
-      {
-        id: 'projekt-3',
-        titel: 'Projekt 3',
+        id: 'etagen',
+        titel: 'Etagen',
         ordner: 'bilder/',
         vorschau: 'platzhalter-quer.svg',
         bilder: [
           'platzhalter-quer.svg',
         ],
-        text: `Hier kommt der Beschreibungstext zu Projekt 3 hin.`,
+        text: `Hier kommt der Beschreibungstext zu Etagen hin.`,
+      },
+
+      {
+        id: 'filmzitate',
+        titel: 'Filmzitate',
+        ordner: 'bilder/',
+        vorschau: 'platzhalter-quer.svg',
+        bilder: [
+          'platzhalter-quer.svg',
+        ],
+        text: `Hier kommt der Beschreibungstext zu Filmzitate hin.`,
       },
 
     ],
