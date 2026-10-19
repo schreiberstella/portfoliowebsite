@@ -155,8 +155,10 @@ Das Spiel entstand im Kurs Expander Animation. Es bespielt zwei Projektionsfläc
         ordner: 'bilder/fotografie/etagen/',
         vorschau: 'vorschau.jpg',
         bilder: [
-          { datei: '01.jpg', alt: 'Wohnzimmer im Erdgeschoss: braune Ledersofas, Glastisch, Zimmerpflanzen, Waschbrett und Teppichklopfer an der Wand' },
-          { datei: '02.jpg', alt: 'Derselbe Raum in der dritten Etage: Bett, Sofa mit Decken, Kleiderhaufen auf dem Boden, oranger Vorhang am Fenster' },
+          { datei: '01.jpg', alt: 'Wohnraum im Erdgeschoss: Sofa mit Kissen und dunkelblauem Sessel, Tisch, Löwenbild an der Wand' },
+          { datei: '02.jpg', alt: 'Wohnraum in der dritten Etage: Holzschrank, Esstisch mit weißer Decke, Stehlampe' },
+          { datei: '03.jpg', alt: 'Wohnraum mit Bett, Sofa, Kleiderhaufen auf dem Boden und einem orangen Vorhang am Fenster' },
+          { datei: '04.jpg', alt: 'Wohnraum mit braunen Ledersofas, Glastisch, Zimmerpflanzen, Waschbrett und Teppichklopfer an der Wand' },
         ],
         text: `Ein fotografisches Kurzzeitprojekt zum Thema Identität. Innerhalb einer Woche habe ich den identischen Wohnraum auf verschiedenen Etagen eines Mehrfamilienhauses aus derselben Perspektive fotografiert. Die Bildserie zeigt, wie unterschiedlich Menschen denselben Raum gestalten und ihm ihre persönliche Identität verleihen.`,
       },

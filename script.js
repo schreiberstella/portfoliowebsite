@@ -355,6 +355,12 @@
     var n = bilder.length;
     var index = 0;
 
+    // Immer bei Bild 1 beginnen (auch beim Zurückgehen im Browser oder nach dem Laden der Bilder)
+    function anfang() { spur.scrollLeft = 0; index = 0; }
+    anfang();
+    window.addEventListener('load', function () { if (!spur.scrollLeft || index === 0) anfang(); });
+    window.addEventListener('pageshow', function () { anfang(); if (zaehlerEl) zaehlerEl.textContent = '1 / ' + n; });
+
     function aktualisieren() {
       zaehlerEl.textContent = (index + 1) + ' / ' + n;
       Array.prototype.forEach.call(spur.querySelectorAll('video'), function (v) { v.pause(); });
