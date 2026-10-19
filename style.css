@@ -641,3 +641,40 @@ body.menue-offen { overflow: hidden; }
   max-height: calc(100svh - 330px);
   min-height: 200px;
 }
+
+/* =====================================================
+   Lebenslauf
+   ===================================================== */
+.cv-gruppe { margin-bottom: clamp(2rem, 5vw, 3.5rem); }
+.cv-gruppe h3 {
+  margin-bottom: .8rem;
+  font-size: .8rem;
+  letter-spacing: .14em;
+}
+.cv-liste { list-style: none; }
+.cv-liste > li {
+  display: grid;
+  gap: .3rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid #000;
+}
+.cv-liste > li:first-child { border-top: 1px solid #000; }
+.cv-liste .zeit {
+  font-size: .85rem;
+  letter-spacing: .08em;
+}
+.cv-liste h4 {
+  font-family: var(--display);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  font-size: clamp(1.15rem, 2.6vw, 1.6rem);
+}
+.cv-liste .ort { margin-top: .3rem; }
+.cv-liste .inhalt ul { list-style: none; margin-top: .4rem; }
+.cv-liste .inhalt ul li { margin-top: .2rem; max-width: 64ch; }
+@media (min-width: 820px) {
+  .cv-liste > li { grid-template-columns: minmax(150px, 1fr) 3fr; gap: 2rem; }
+  .cv-liste .zeit { padding-top: .35rem; }
+}
