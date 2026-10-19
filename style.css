@@ -888,3 +888,32 @@ body.menue-offen { overflow: hidden; }
   .sx-anim { margin: 0 0 1rem; width: 100%; }
   [data-projekt="sooderso"] .sd-band.sx-band { padding: 2.2rem 1rem 1.4rem; margin-top: calc(var(--gap, 0) * 1.5cqw + 6cqw); }
 }
+
+/* =====================================================
+   SOODERSO (Layoutkorrektur nach Entwurf): exakt die Abstände, Schriftgrößen und
+   Zeilenhöhen des PDF-Entwurfs (1 Entwurfs-Punkt = 100/841,89 % der Seitenbreite).
+   Gilt nur für die Seite Sooderso und überschreibt die gemeinsamen Verfeinerungen.
+   ===================================================== */
+[data-projekt="sooderso"] .sd-mrow,
+[data-projekt="sooderso"] .sd-trow,
+[data-projekt="sooderso"] .sd-trow:has(.sd-h2),
+[data-projekt="sooderso"] .sd-trow:has(.sd-h2) + .sd-trow,
+[data-projekt="sooderso"] .sx-pair,
+[data-projekt="sooderso"] .sx-hero { margin-top: calc(var(--gap, 0) * 1cqw); }
+[data-projekt="sooderso"] .sx-pair { min-height: calc(var(--rh) * 1cqw); }
+[data-projekt="sooderso"] .sd-text {
+  font-size: max(13px, calc(15.5 / 841.89 * 100cqw));
+  line-height: max(18px, calc(20.4 / 841.89 * 100cqw));
+  color: #000;
+}
+[data-projekt="sooderso"] .sd-h2 {
+  font-size: max(17px, calc(25 / 841.89 * 100cqw));
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+[data-projekt="sooderso"] .sd-trow > .sd-text { width: calc(var(--w) * 1cqw); max-width: calc(100cqw - var(--x) * 1cqw); }
+[data-projekt="sooderso"] .sx-pair > .sx-text { max-width: none; }
+[data-projekt="sooderso"] .sd-text p + p { margin-top: calc(8.6 / 841.89 * 100cqw); }
+[data-projekt="sooderso"] .sx-text p + p { margin-top: calc(19.6 / 841.89 * 100cqw); }
+[data-projekt="sooderso"] .sx-text .sd-h2 { margin-bottom: calc(3 / 841.89 * 100cqw); }
+[data-projekt="sooderso"] .sd-band .sd-h2 { color: #fff; }
