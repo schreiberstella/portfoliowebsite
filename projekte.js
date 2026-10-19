@@ -111,7 +111,7 @@ Das Spiel entstand im Kurs Expander Animation. Es bespielt zwei Projektionsfläc
 
     bilder: [
       { datei: 'dance.jpg', titel: 'Let us dance', alt: 'Illustration: viele tanzende Figuren mit Sonnengesichtern auf lila Grund, Schriftzug „Let us dance“' },
-      { datei: 'ohne-titel.jpg', titel: 'Ohne Titel', alt: 'Illustration: zwei schwebende Personen in einem Kreis, aus ihren Mündern ragen bunte Kegel mit Szenen aus Rick and Morty' },
+      { datei: 'ohne-titel.jpg', titel: 'Existieren', alt: 'Illustration: zwei schwebende Personen in einem Kreis, aus ihren Mündern ragen bunte Kegel mit Szenen aus Rick and Morty' },
       { datei: 'how-to.jpg', titel: 'How to get your brain through the current crisis', alt: 'Illustration: blauer Kopf mit offenem Gehirn und schwarzen Blitzen, Schriftzug „How to get your brain through the current crisis“' },
       { datei: 'turtles.jpg', titel: 'Save the turtles, smash the nazis', alt: 'Illustration: eine Schildkröte ringt einen Mann mit Hakenkreuz nieder, rosa Schriftzug „Save the turtles, smash the nazis“' },
       { datei: 'spaetkauf.jpg', titel: 'Spätkauf Trash', alt: 'Illustration: Gruppe junger Leute vor einem Spätkauf, in der Mitte das Wort „Trash“ in Orange' },
@@ -120,8 +120,8 @@ Das Spiel entstand im Kurs Expander Animation. Es bespielt zwei Projektionsfläc
       { datei: 'ich-bin-ich.jpg', titel: 'Ich bin ich.. mal mehr mal weniger', alt: 'Illustration: Collage bunter gemalter Gesichter mit den Worten „Ich bin ich, mal mehr, mal weniger“' },
       { datei: 'koepfe.jpg', titel: 'Köpfe', alt: 'Illustration: viele gezeichnete Köpfe, die ineinander übergehen' },
       { datei: 'spaeti.jpg', titel: 'Späti', alt: 'Illustration: Spätkauf bei Nacht mit Biertischgarnitur' },
-      { datei: 'koepfe-kreis.jpg', titel: 'Ohne Titel', alt: 'Illustration: drei Köpfe in Orange, Blau und Pink überlagern sich in einem grünen Kreis, umlaufender schwarzer Schriftzug' },
-      { datei: 'koepfe-quadrat.jpg', titel: 'Ohne Titel', alt: 'Illustration: drei ineinander verschlungene Figuren in Orange, Blau und Pink auf grünem Quadrat' },
+      { datei: 'koepfe-kreis.jpg', titel: 'Kollektiv Stop', alt: 'Illustration: drei Köpfe in Orange, Blau und Pink überlagern sich in einem grünen Kreis, umlaufender schwarzer Schriftzug' },
+      { datei: 'koepfe-quadrat.jpg', titel: 'Kollektiv Stop', alt: 'Illustration: drei ineinander verschlungene Figuren in Orange, Blau und Pink auf grünem Quadrat' },
       // { datei: '04.jpg', titel: 'Name der Illustration', alt: 'Was zu sehen ist' },
     ],
   },
