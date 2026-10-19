@@ -45,6 +45,12 @@
    Tipp: Bilder vorher auf etwa 2000 Pixel Kantenlänge verkleinern
    (JPG), dann laden sie schnell.
 
+   Eigene Projektseite (wie bei "Sooderso")
+   ----------------------------------------
+   Steht bei einem Projekt  seite: 'sooderso.html',  dann öffnet ein Klick
+   auf das Projekt diese eigene Seite. Die Bilder und Texte dieser Seite
+   pflegst du direkt in der Datei sooderso.html (Anleitung steht dort oben).
+
    Platzhalter ersetzen
    --------------------
    Die Projekte "Projekt 1, 2, 3" mit den grauen Platzhalterbildern sind nur
@@ -61,6 +67,16 @@ window.PORTFOLIO = {
     projekte: [
 
       {
+        id: 'sooderso',
+        titel: 'Sooderso',
+        seite: 'sooderso.html',          // dieses Projekt hat eine eigene, ausführliche Seite
+        ordner: 'bilder/sooderso/',
+        vorschau: 'still-01.jpg',
+        bilder: [],
+        text: ``,
+      },
+
+      {
         id: 'craaaaaaash',
         titel: 'CRAAAAAAASH',
         ordner: '',                      // die Dateien liegen im Hauptordner
@@ -69,17 +85,6 @@ window.PORTFOLIO = {
           { datei: 'A_1.mp4', poster: 'A_1-poster.jpg', alt: 'Animation: ein Lastwagen wird von einem roten Auto gerammt und fängt Feuer' },
         ],
         text: `Hier kommt der Beschreibungstext zu "CRAAAAAAASH" hin.`,
-      },
-
-      {
-        id: 'projekt-2',
-        titel: 'Projekt 2',
-        ordner: 'bilder/',
-        vorschau: 'platzhalter-hoch.svg',
-        bilder: [
-          'platzhalter-hoch.svg',
-        ],
-        text: `Hier kommt der Beschreibungstext zu Projekt 2 hin.`,
       },
 
       {

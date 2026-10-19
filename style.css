@@ -678,3 +678,102 @@ body.menue-offen { overflow: hidden; }
   .cv-liste > li { grid-template-columns: minmax(150px, 1fr) 3fr; gap: 2rem; }
   .cv-liste .zeit { padding-top: .35rem; }
 }
+
+/* =====================================================
+   Ausführliche Projektseite (Sooderso)
+   ===================================================== */
+.projektseite .seite-titel {
+  margin: 0;
+  font-size: clamp(2rem, 5.5vw, 3.6rem);
+}
+.sd-kopf {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+.sd-kopf p { max-width: 62ch; }
+.sd-meta { font-size: .9rem; letter-spacing: .08em; }
+@media (min-width: 820px) {
+  .sd-kopf {
+    grid-template-columns: 1fr minmax(0, 2fr) auto;
+    column-gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: start;
+  }
+  .sd-kopf .seite-titel { grid-column: 1 / -1; margin-bottom: .6rem; }
+  .sd-intro { grid-column: 2; }
+  .sd-meta { grid-column: 3; text-align: right; }
+}
+
+.sd-block { margin-top: clamp(2.5rem, 7vw, 5rem); }
+.sd-block h2 {
+  margin-bottom: .8rem;
+  font-size: 1.15rem;
+  text-transform: none;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+.sd-block > p { max-width: 62ch; margin-bottom: 1.2em; }
+.sd-bildtext { margin-left: auto; text-align: left; }
+@media (min-width: 820px) {
+  .sd-bildtext { max-width: 34ch; margin-right: 0; }
+}
+
+.sd-reihe {
+  display: grid;
+  gap: clamp(.8rem, 2vw, 1.4rem);
+  margin-bottom: clamp(1.2rem, 3vw, 2rem);
+  align-items: start;
+}
+@media (min-width: 600px) {
+  .sd-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sd-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.medium { margin: 0; background: transparent; }
+.medium img,
+.medium video { width: 100%; height: auto; }
+.medium video { background: #000; }
+.medium.gross { margin-bottom: 0; }
+
+/* Platzhalter: dunkle Fläche in passendem Seitenverhältnis */
+.medium.leer {
+  display: grid;
+  place-items: center;
+  background: #231f20;
+  color: #fff;
+  aspect-ratio: 16 / 9;
+}
+.medium.leer.r32 { aspect-ratio: 3 / 2; }
+.medium.leer.r45 { aspect-ratio: 4 / 5; }
+.medium.leer.r34 { aspect-ratio: 3 / 4; }
+.medium.leer::after {
+  content: attr(data-hinweis);
+  padding: 1rem;
+  text-align: center;
+  overflow-wrap: anywhere;
+  font-family: var(--display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(.9rem, 2.4vw, 1.4rem);
+  line-height: 1.15;
+}
+
+/* dunkler Animationsbereich */
+.sd-dunkel {
+  position: relative;
+  padding: clamp(1.5rem, 4vw, 2.5rem) 0 clamp(2rem, 5vw, 3.5rem);
+  color: #fff;
+}
+/* Hintergrund über die ganze Bildschirmbreite */
+.sd-dunkel::before {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: #231f20;
+  z-index: -1;
+}
+.sd-dunkel h2 { color: #fff; }
+.sd-dunkel .medium.leer { background: transparent; outline: 1px solid #fff; outline-offset: -1px; }

@@ -84,6 +84,7 @@
   }
 
   function projektLink(bereich, projekt) {
+    if (projekt.seite) return projekt.seite;   // eigene, ausführliche Projektseite
     return 'projekt.html?b=' + encodeURIComponent(bereich) +
            '&p=' + encodeURIComponent(projekt.id);
   }
@@ -272,6 +273,47 @@
       });
   }
 
+
+  /* ----- Ausführliche Projektseite (z. B. Sooderso): Bilder/Videos einsetzen ----- */
+  function medienStarten() {
+    var felder = document.querySelectorAll('.medium[data-datei]');
+    Array.prototype.forEach.call(felder, function (fig) {
+      var datei = fig.getAttribute('data-datei');
+      var alt = fig.getAttribute('data-alt') || '';
+      var medium;
+
+      function platzhalter() {
+        fig.classList.add('leer');
+        fig.setAttribute('data-hinweis', 'Platzhalter · ' + datei.split('/').pop());
+        if (medium) medium.remove();
+      }
+
+      if (istVideo(datei)) {
+        medium = document.createElement('video');
+        medium.src = datei;
+        medium.playsInline = true;
+        medium.preload = 'metadata';
+        var poster = fig.getAttribute('data-poster');
+        if (poster) medium.poster = poster;
+        if (fig.getAttribute('data-auto') === 'ja') {
+          medium.muted = true; medium.loop = true; medium.autoplay = true;
+        } else {
+          medium.controls = true;
+        }
+        medium.setAttribute('aria-label', alt);
+        medium.addEventListener('error', platzhalter);
+      } else {
+        medium = document.createElement('img');
+        medium.src = datei;
+        medium.alt = alt;
+        medium.decoding = 'async';
+        medium.loading = 'lazy';
+        medium.addEventListener('error', platzhalter);
+      }
+      fig.appendChild(medium);
+    });
+  }
+
   /* ----- gemeinsamer Slider (Projektseite und Illustration) ----- */
   function sliderStarten(bilder, spur, vor, weiter, zaehlerEl, beiWechsel) {
     bilder.forEach(function (b, i) {
@@ -347,6 +389,8 @@
       if (e.key === 'ArrowRight') gehe(index + 1);
     });
   }
+
+  if (document.getElementById('sooderso')) medienStarten();
 
   var galerie = document.getElementById('illustrationGalerie');
   if (galerie) galerieStarten(galerie);
