@@ -62,21 +62,21 @@
          dieser Stelle. Solange sie fehlt, steht dort ein schwarzer Platzhalter.
          .mp4 = Video, .jpg = Bild (nur die Endung ändern).
          Das große Video (video-hero.mp4) hat einen Play-Button und startet nicht von allein.
-         data-auto="ja" lässt ein Video stumm in Dauerschleife laufen (die vier Animationen unten).
-         data-poster="bilder/sooderso/NAME.jpg" = Startbild eines Videos.
+         Die vier Animationen unten (animation-01.mp4 bis animation-04.mp4) laufen stumm in Dauerschleife.
+         Idee/Konzept-Bilder: idee.jpg und konzept-skizze.jpg (gleiche Namen hochladen = ersetzen).
          ===================================================================== -->
     <div class="sd-seite">
       <div class="sd-stage">
-      <div class="sd-row sd-mrow" style="--gap:7.16;--rh:38.65">
-        <figure class="sd-el medium sd-video" style="--x:4.09;--dy:0;--w:91.66;--h:38.65;--ar:771.7 / 325.4" data-datei="bilder/sooderso/video-hero.mp4" data-alt="SOODERSO: Dokumentation des Story-Games" data-label="videoframe&#10;platzhalter" data-poster="bilder/sooderso/video-hero-poster.jpg"></figure>
+      <div class="sx-hero" style="--gap:7.16;--x:4.09;--w:91.66">
+        <video controls playsinline preload="metadata" src="bilder/sooderso/video-hero.mp4" poster="bilder/sooderso/video-hero-poster.jpg" aria-label="SOODERSO: Dokumentation des Story-Games"></video>
       </div>
-      <div class="sd-row sd-pair" style="--gap:14.4;--rh:29.92">
-        <figure class="sd-el medium " style="--x:7.82;--dy:0;--w:44.89;--h:29.92;--ar:377.9 / 251.9" data-datei="bilder/sooderso/idee.jpg" data-alt="Spielerin kniet vor der Projektion „Triff deine Wahl“" data-label="platzhalter"></figure>
-        <div class="sd-text sd-pt" style="--x:55.66;--w:43.71;--ty:3.84"><h2 class="sd-h2">Idee</h2><p>Jeder Mensch trifft täglich Entscheidungen. Manche sind bedeutungslos. Andere verändern alles. Doch wie viel liegt wirklich in unserer Hand?<br>Ich glaube eigentlich, dass nichts vorherbestimmt ist. Trotzdem prägen mich meine Herkunft und meine Persönlichkeit. Ist das Leben also Schicksal oder Zufall?</p></div>
+      <div class="sx-pair" style="--gap:14.4;--x1:7.82;--w1:44.89;--w2:43.71;--cg:2.96">
+        <img class="sx-bild" src="bilder/sooderso/idee.jpg" alt="Spielerin kniet vor der Projektion „Triff deine Wahl“" decoding="async" style="--dy:0;--ar:377.9 / 251.9">
+        <div class="sd-text sx-text" style="--ty:3.84"><h2 class="sd-h2">Idee</h2><p>Jeder Mensch trifft täglich Entscheidungen. Manche sind bedeutungslos. Andere verändern alles. Doch wie viel liegt wirklich in unserer Hand?<br>Ich glaube eigentlich, dass nichts vorherbestimmt ist. Trotzdem prägen mich meine Herkunft und meine Persönlichkeit. Ist das Leben also Schicksal oder Zufall?</p></div>
       </div>
-      <div class="sd-row sd-pair" style="--gap:12.29;--rh:34.86">
-        <div class="sd-text sd-pt" style="--x:7.8;--w:39.79;--ty:0"><h2 class="sd-h2">Konzept</h2><p>Das Spiel ist eine interaktive Installation mit zwei Projektionsflächen. Auf der Wand läuft das Story-Game. Darunter liegt eine Bodenprojektion. Sie dient als Interaktionsfläche.</p><p>An verschiedenen Stellen hält die Geschichte an. Die Spieler*innen haben dann immer zwei Möglichkeiten. Durch ihre Bewegung auf der Bodenfläche entscheiden sie sich für eine davon. So beeinflussen sie den weiteren Verlauf der Geschichte.</p></div>
-        <figure class="sd-el medium " style="--x:50.98;--dy:0.56;--w:46.59;--h:34.3;--ar:392.2 / 288.8" data-datei="bilder/sooderso/konzept-skizze.jpg" data-alt="Skizzen aus dem Skizzenbuch: Aufbau der Installation, Ablauf und Entscheidungsschleife" data-label="platzhalter"></figure>
+      <div class="sx-pair" style="--gap:12.29;--x1:7.8;--w1:39.79;--w2:46.59;--cg:3.39">
+        <div class="sd-text sx-text" style="--ty:0"><h2 class="sd-h2">Konzept</h2><p>Das Spiel ist eine interaktive Installation mit zwei Projektionsflächen. Auf der Wand läuft das Story-Game. Darunter liegt eine Bodenprojektion. Sie dient als Interaktionsfläche.</p><p>An verschiedenen Stellen hält die Geschichte an. Die Spieler*innen haben dann immer zwei Möglichkeiten. Durch ihre Bewegung auf der Bodenfläche entscheiden sie sich für eine davon. So beeinflussen sie den weiteren Verlauf der Geschichte.</p></div>
+        <img class="sx-bild" src="bilder/sooderso/konzept-skizze.jpg" alt="Skizzen aus dem Skizzenbuch: Aufbau der Installation, Ablauf und Entscheidungsschleife" decoding="async" style="--dy:0.56;--ar:392.2 / 288.8">
       </div>
       <div class="sd-row sd-mrow" style="--gap:7.98;--rh:21.04">
         <figure class="sd-el medium sd-f3" style="--x:1.15;--dy:0.01;--w:31.1;--h:20.73;--ar:261.8 / 174.5" data-datei="bilder/sooderso/foto-01.jpg" data-alt="Spielerin vor der Projektion: Mitfahren oder Taxi" data-label="platzhalter"></figure>
@@ -110,19 +110,35 @@
         <figure class="sd-el medium sd-still" style="--x:2.98;--dy:0;--w:45.92;--h:25.87;--ar:386.6 / 217.8" data-datei="bilder/sooderso/still-05.jpg" data-alt="Still Frame 5" data-label="platzhalter"></figure>
         <figure class="sd-el medium sd-still" style="--x:51.1;--dy:0;--w:45.92;--h:25.87;--ar:386.6 / 217.8" data-datei="bilder/sooderso/still-06.jpg" data-alt="Still Frame 6" data-label="platzhalter"></figure>
       </div>
-      <div class="sd-row sd-band sd-band--voll" style="--gap:17.31;--pb:14.93">
-        <div class="sd-row sd-trow" style="--gap:6.12"><h2 class="sd-text sd-h2" style="--x:7.8;--w:35.63">animation</h2></div>
-        <div class="sd-row sd-mrow" style="--gap:1.41;--rh:22.02">
-          <figure class="sd-el medium sd-anim" style="--x:5.32;--dy:0;--w:35.59;--h:20.96;--ar:299.6 / 176.5" data-datei="bilder/sooderso/animation-01.mp4" data-alt="Animation 1" data-label="" data-auto="ja"></figure>
-          <figure class="sd-el medium sd-anim" style="--x:44.79;--dy:0;--w:51.88;--h:22.02;--ar:436.8 / 185.4" data-datei="bilder/sooderso/animation-02.mp4" data-alt="Animation 2" data-label="" data-auto="ja"></figure>
+      <div class="sd-row sd-band sd-band--voll sx-band" style="--gap:17.31">
+        <h2 class="sd-h2 sx-bh">animation</h2>
+        <div class="sx-arow">
+          <video class="sx-anim" src="bilder/sooderso/animation-01.mp4" autoplay loop muted playsinline preload="auto" disablepictureinpicture aria-label="Animation 1" style="--ml:6.81;--dy:0;--w:47.16"></video>
+          <video class="sx-anim" src="bilder/sooderso/animation-02.mp4" autoplay loop muted playsinline preload="auto" disablepictureinpicture aria-label="Animation 2" style="--ml:3.82;--dy:3.92;--w:34.57"></video>
         </div>
-        <div class="sd-row sd-mrow" style="--gap:3.01;--rh:25.02">
-          <figure class="sd-el medium sd-anim" style="--x:6.2;--dy:0;--w:22.56;--h:25.02;--ar:189.9 / 210.6" data-datei="bilder/sooderso/animation-03.mp4" data-alt="Animation 3" data-label="" data-auto="ja"></figure>
-          <figure class="sd-el medium sd-anim" style="--x:32.63;--dy:1.06;--w:64.05;--h:23.96;--ar:539.2 / 201.7" data-datei="bilder/sooderso/animation-04.mp4" data-alt="Animation 4" data-label="" data-auto="ja"></figure>
+        <div class="sx-arow">
+          <video class="sx-anim" src="bilder/sooderso/animation-03.mp4" autoplay loop muted playsinline preload="auto" disablepictureinpicture aria-label="Animation 3" style="--ml:2.79;--dy:0;--w:45.82"></video>
+          <video class="sx-anim" src="bilder/sooderso/animation-04.mp4" autoplay loop muted playsinline preload="auto" disablepictureinpicture aria-label="Animation 4" style="--ml:2.17;--dy:1.65;--w:45.7"></video>
         </div>
       </div>
       </div>
     </div>
+    <script>
+    /* Animationen: stumm, Endlosschleife, sicher starten (auch in Safari) */
+    (function () {
+      var v = document.querySelectorAll('.sx-anim');
+      function los(el) { el.muted = true; el.defaultMuted = true; var p = el.play(); if (p && p.catch) p.catch(function () {}); }
+      Array.prototype.forEach.call(v, function (el) {
+        el.addEventListener('loadeddata', function () { los(el); });
+        el.addEventListener('canplay', function () { if (el.paused) los(el); });
+        los(el);
+      });
+      document.addEventListener('visibilitychange', function () { if (!document.hidden) Array.prototype.forEach.call(v, function (el) { if (el.paused) los(el); }); });
+      ['touchstart', 'click', 'scroll'].forEach(function (e) {
+        window.addEventListener(e, function () { Array.prototype.forEach.call(v, function (el) { if (el.paused) los(el); }); }, { passive: true, once: true });
+      });
+    })();
+    </script>
     <noscript><p class="hinweis">Für diese Seite wird JavaScript benötigt.</p></noscript>
   </main>
 

@@ -839,3 +839,52 @@ body.menue-offen { overflow: hidden; }
   pointer-events: none;
   z-index: 2;
 }
+
+/* =====================================================
+   SOODERSO (Korrektur): Hauptvideo im Originalformat, Idee/Konzept im Textfluss,
+   Animationen 16:9 in zwei Reihen, mehr Abstand zum schwarzen Bereich.
+   Gilt nur für die Seite Sooderso (sx-Klassen).
+   ===================================================== */
+.sx-hero { margin-top: calc(var(--gap, 0) * 1.2cqw); margin-left: calc(var(--x) * 1cqw); width: calc(var(--w) * 1cqw); }
+.sx-hero video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: transparent; }
+
+.sx-pair {
+  display: grid;
+  grid-template-columns: calc(var(--w1) * 1cqw) calc(var(--w2) * 1cqw);
+  column-gap: calc(var(--cg) * 1cqw);
+  margin-left: calc(var(--x1) * 1cqw);
+  margin-top: calc(var(--gap, 0) * 1.5cqw);
+  align-items: start;
+}
+.sx-pair > .sx-bild { display: block; width: 100%; height: auto; aspect-ratio: var(--ar); margin-top: calc(var(--dy, 0) * 1cqw); }
+.sx-pair > .sx-text { margin-top: calc(var(--ty, 0) * 1cqw); max-width: 36em; }
+.sx-text .sd-h2 { margin-bottom: .55em; }
+
+/* schwarzer Bereich: weiter nach unten, Überschrift und Videos wandern mit */
+[data-projekt="sooderso"] .sd-band.sx-band { margin-top: calc(var(--gap, 0) * 1.5cqw + 14cqw); padding: 6cqw 0 7cqw; }
+.sx-bh { margin: 0 0 4.6cqw 7.84cqw; }
+.sx-arow { display: flex; align-items: flex-start; }
+.sx-arow + .sx-arow { margin-top: 3.8cqw; }
+.sx-anim {
+  display: block;
+  flex: none;
+  width: calc(var(--w) * 1cqw);
+  height: auto;
+  aspect-ratio: 16 / 9;
+  margin-left: calc(var(--ml) * 1cqw);
+  margin-top: calc(var(--dy) * 1cqw);
+  background: transparent;
+  pointer-events: none;
+}
+
+@container sd (max-width: 640px) {
+  .sx-hero { margin-left: 0; width: 100%; }
+  .sx-pair { display: block; margin-left: 0; }
+  .sx-pair > .sx-bild { margin: 1.4rem 0; }
+  .sx-pair > .sx-text { margin-top: 0; max-width: none; }
+  .sx-bh { margin-left: 0; }
+  .sx-arow { display: block; }
+  .sx-arow + .sx-arow { margin-top: 0; }
+  .sx-anim { margin: 0 0 1rem; width: 100%; }
+  [data-projekt="sooderso"] .sd-band.sx-band { padding: 2.2rem 1rem 1.4rem; margin-top: calc(var(--gap, 0) * 1.5cqw + 6cqw); }
+}
