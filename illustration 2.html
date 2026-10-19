@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Illustration – Stella Schreiber</title>
+  <meta name="description" content="Illustrationen von Stella Schreiber.">
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="kopf">
+    <a class="logo" href="index.html#portfolio" aria-label="Stella Schreiber – Startseite">
+      <img src="logo.png" alt="">
+      <span>Stella<br>Schreiber</span>
+    </a>
+    <button class="burger" id="menueAuf" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="menue">
+      <i></i><i></i><i></i>
+    </button>
+  </header>
+
+  <div class="scrim" id="scrim"></div>
+  <nav class="menue" id="menue" aria-label="Bereiche">
+    <button class="menue-zu" id="menueZu" type="button" aria-label="Menü schließen"></button>
+    <ul>
+      <li><a href="animation.html">Animation</a></li>
+      <li><a href="illustration.html" aria-current="page">Illustration</a></li>
+      <li><a href="fotografie.html">Fotografie</a></li>
+      <li><a href="grafik-design.html">Grafik Design</a></li>
+    </ul>
+  </nav>
+
+  <main class="seite i3-seite">
+    <style>
+      /* ===== Illustration: Endlos-Karussell, großes Mittelbild, kleinere Seitenbilder, Titel unter den Bildern ===== */
+      .i3-seite { max-width: 1400px; }
+      .i3 { display: grid; grid-template-columns: 2rem minmax(0, 1fr) 2rem; align-items: start; column-gap: .4rem; margin-top: clamp(.4rem, 1.5vh, 1rem); }
+      .i3-fenster { overflow: hidden; }
+      .i3-spur { position: relative; list-style: none; margin: 0; padding: 0; }
+      .i3-item { position: absolute; left: 50%; top: 0; margin: 0; cursor: pointer; transform-origin: 50% 50%;
+                 transition: transform .5s cubic-bezier(.4, 0, .2, 1), opacity .5s ease; will-change: transform; }
+      .i3-item.i3-mitte { cursor: default; }
+      .i3-bild { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+      .i3-bild img { display: block; width: auto; height: auto; max-width: 100%; }
+      .i3-titel { position: absolute; left: -10%; right: -10%; margin: 0; text-align: center; font-family: var(--fliesstext); font-size: .9rem; line-height: 1.25; }
+      .i3-pfeil { align-self: start; width: 2rem; height: 2rem; margin-top: calc(var(--bh, 300px) / 2 - 1rem); background: none; border: 0; padding: 0; cursor: pointer; position: relative; color: #000; }
+      .i3-pfeil::before { content: ""; position: absolute; left: 50%; top: 50%; width: .8rem; height: .8rem; border-top: 2px solid currentColor; border-right: 2px solid currentColor; }
+      .i3-links::before { transform: translate(-30%, -50%) rotate(-135deg); }
+      .i3-rechts::before { transform: translate(-70%, -50%) rotate(45deg); }
+      .i3-pfeil:hover, .i3-pfeil:focus-visible { color: var(--violett, #8b3ff0); outline: none; }
+      .i3-zaehler { margin-top: .6rem; font-size: .7rem; letter-spacing: .14em; text-align: center; }
+      @media (max-width: 560px) { .i3 { grid-template-columns: 1.6rem minmax(0, 1fr) 1.6rem; } }
+      @media (prefers-reduced-motion: reduce) { .i3-item { transition: none; } }
+    </style>
+    <a class="zurueck" href="index.html#portfolio">&larr; Startseite</a>
+    <h1 class="seite-titel">Illustration</h1>
+
+    <!-- Die Illustrationen stehen in der Datei projekte.js -->
+    <div class="i3" id="i3" data-bereich="illustration">
+      <button class="i3-pfeil i3-links" id="i3Zurueck" type="button" aria-label="Vorige Illustration"></button>
+      <div class="i3-fenster"><ul class="i3-spur" id="i3Spur"></ul></div>
+      <button class="i3-pfeil i3-rechts" id="i3Weiter" type="button" aria-label="Nächste Illustration"></button>
+    </div>
+    <p class="i3-zaehler" id="i3Zaehler" aria-live="polite"></p>
+    <noscript><p class="hinweis">Für diese Seite wird JavaScript benötigt.</p></noscript>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var d = window.PORTFOLIO && window.PORTFOLIO.illustration;
+        var spur = document.getElementById('i3Spur'), box = document.getElementById('i3'), fenster = spur.parentNode;
+        if (!d || !d.bilder || !d.bilder.length) { spur.innerHTML = '<li class="hinweis">Hier sind noch keine Illustrationen eingetragen.</li>'; return; }
+        var n = d.bilder.length, idx = 0, items = [], imgs = [], caps = [], offs = [];
+        var RATIO = 0.72, SIDE = 0.5, CAP = 44;      // Seitenverhältnis der Bildfläche, Verkleinerung der Seitenbilder, Platz für den Titel
+        var hc = 0;
+
+        d.bilder.forEach(function (b, k) {
+          var e = typeof b === 'string' ? { datei: b } : b;
+          var li = document.createElement('li'); li.className = 'i3-item';
+          var f = document.createElement('div'); f.className = 'i3-bild';
+          var im = document.createElement('img'); im.src = (d.ordner || '') + e.datei; im.alt = e.alt || e.titel || ''; im.draggable = false;
+          im.addEventListener('load', function () { place(); });
+          f.appendChild(im); li.appendChild(f);
+          var t = document.createElement('p'); t.className = 'i3-titel'; t.textContent = e.titel || ''; li.appendChild(t);
+          li.addEventListener('click', function () { var o = offs[k]; if (o) geh(o); });
+          spur.appendChild(li); items.push(li); imgs.push(im); caps.push(t); offs.push(null);
+        });
+
+        // Abstand zur Mitte im Kreis: -n/2 … +n/2 (so ist jedes Bild einmal in der Mitte, auch das erste und das letzte)
+        function offset(i) { var h = Math.floor(n / 2); return ((i - idx + n + h) % n + n) % n - h; }
+
+        function place() {
+          var W = fenster.clientWidth;
+          if (!W) return;
+          var wMax = W < 700 ? 0.6 * W : (W < 1000 ? 0.46 * W : 0.4 * W);
+          var wc = Math.min(wMax, Math.max(200, window.innerHeight - 300) * RATIO);
+          hc = wc / RATIO;
+          var g = W < 700 ? 8 : 18;
+          spur.style.height = hc + 'px';
+          box.style.setProperty('--bh', hc + 'px');
+          items.forEach(function (li, i) {
+            var o = offset(i), prev = offs[i];
+            var a = Math.abs(o), x = 0, sc = 1;
+            if (a >= 1) { sc = SIDE; x = (o < 0 ? -1 : 1) * (wc / 2 + g + SIDE * wc / 2 + (a - 1) * (SIDE * wc + g)); }
+            var weit = prev !== null && Math.abs(o - prev) > 2;       // Bild läuft unsichtbar von einem Ende zum anderen
+            if (weit) li.style.transition = 'none';
+            li.style.width = wc + 'px'; li.style.height = hc + 'px'; li.style.marginLeft = (-wc / 2) + 'px';
+            li.style.transform = 'translateX(' + x + 'px) scale(' + sc + ')';
+            li.style.opacity = a <= 1 ? 1 : 0;
+            li.style.zIndex = 10 - a;
+            li.style.pointerEvents = a <= 1 ? 'auto' : 'none';
+            li.classList.toggle('i3-mitte', o === 0);
+            li.setAttribute('aria-hidden', a <= 1 ? 'false' : 'true');
+            if (weit) { void li.offsetWidth; li.style.transition = ''; }
+            offs[i] = o;
+            var im = imgs[i];
+            im.style.maxHeight = (hc - 2 * CAP) + 'px';
+            caps[i].style.top = (hc / 2 + im.offsetHeight / 2 + 8) + 'px';     // Titel direkt unter dem Bild; Bild selbst bleibt vertikal zentriert
+          });
+          document.getElementById('i3Zaehler').textContent = (idx + 1) + ' / ' + n;
+        }
+
+        function geh(r) { idx = ((idx + r) % n + n) % n; place(); }
+        document.getElementById('i3Zurueck').addEventListener('click', function () { geh(-1); });
+        document.getElementById('i3Weiter').addEventListener('click', function () { geh(1); });
+        document.addEventListener('keydown', function (e) { if (e.altKey || e.ctrlKey || e.metaKey) return; if (e.key === 'ArrowLeft') geh(-1); if (e.key === 'ArrowRight') geh(1); });
+        var x0 = null;
+        box.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+        box.addEventListener('touchend', function (e) { if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) geh(dx < 0 ? 1 : -1); x0 = null; }, { passive: true });
+        window.addEventListener('resize', place); window.addEventListener('load', place);
+        place();
+      });
+    </script>
+  </main>
+
+  <footer class="fuss">
+    <p>&copy; 2026 Stella Schreiber</p>
+  </footer>
+
+  <script src="projekte.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
