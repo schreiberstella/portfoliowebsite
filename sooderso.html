@@ -31,124 +31,68 @@
     </ul>
   </nav>
 
-  <main class="seite projektseite" id="sooderso">
-    <a class="zurueck" href="animation.html">&larr; Animation</a>
+  <main class="seite sd-main">
+    <div class="sd-seite" id="sooderso">
+    <a class="zurueck sd-zurueck" href="animation.html">&larr; Animation</a>
 
     <!-- =====================================================================
          SOODERSO – so pflegst du diese Seite
          ---------------------------------------------------------------------
+         Das Layout entspricht deinem Entwurf (PDF) und soll so bleiben.
          TEXTE: einfach hier im Text ändern.
-         BILDER UND VIDEOS: Jedes Bild/Video steht in einem Feld
-         <figure class="medium" data-datei="bilder/sooderso/NAME.jpg">.
-         Lade deine Datei in den Ordner bilder/sooderso/ hoch und achte darauf,
-         dass der Dateiname genau zu data-datei passt. Dann erscheint sie
-         automatisch an dieser Stelle. Solange die Datei fehlt, steht dort
-         ein dunkler "Platzhalter" mit dem erwarteten Dateinamen.
-         Willst du ein Video statt eines Bildes (oder umgekehrt), ändere nur
-         die Endung im Dateinamen (.mp4 für Video, .jpg für Bild).
-         Videos: data-auto="ja" lässt das Video stumm in Dauerschleife laufen.
-         Optionales Startbild für Videos: data-poster="bilder/sooderso/NAME.jpg"
+         BILDER UND VIDEOS: Jedes Feld ist ein  <figure ... data-datei="bilder/sooderso/NAME.jpg">.
+         Lade deine Datei in den Ordner bilder/sooderso/ hoch. Der Dateiname
+         muss genau zu data-datei passen, dann erscheint sie automatisch an
+         dieser Stelle. Solange sie fehlt, steht dort ein schwarzer Platzhalter.
+         Video statt Bild (oder umgekehrt): nur die Endung im Dateinamen
+         ändern (.mp4 = Video, .jpg = Bild).
+         data-auto="ja" lässt ein Video stumm in Dauerschleife laufen.
+         data-poster="bilder/sooderso/NAME.jpg" = Startbild eines Videos.
          ===================================================================== -->
 
-    <header class="sd-kopf">
-      <h1 class="seite-titel">Sooderso</h1>
-      <p class="sd-intro">
-        Ein interaktives Story-Game. Die Spielenden entscheiden durch ihre Bewegung im Raum
-        über den Verlauf einer Geschichte. Immer wieder hält die Geschichte an. Mit jeder Wahl
-        stellt sich die Frage: Ist das Leben Schicksal oder Zufall?<br>
-        Das Spiel entstand im Kurs Expander Animation. Es bespielt zwei Projektionsflächen
-        an der Wand und am Boden.
-      </p>
-      <p class="sd-meta">5 min | 2026</p>
-    </header>
+    <div class="sd-stage">
+      <h1 class="sd-el sd-titel" style="--x:3.91;--y:7.14">Sooderso</h1>
+      <div class="sd-el sd-text sd-intro" style="--x:3.94;--y:15.8;--w:68.89">Ein interaktives Story-Game. Die Spielenden entscheiden durch ihre Bewegung im Raum über den Verlauf einer Geschichte. Immer wieder hält die Geschichte an. Mit jeder Wahl stellt sich die Frage: Ist das Leben Schicksal oder Zufall?<br>Das Spiel entstand im Kurs Expander Animation. Es bespielt zwei Projektionsflächen an der Wand und am Boden.</div>
+      <div class="sd-el sd-text sd-meta" style="--x:79.35;--y:15.8;--w:12.83">5 min | 2026</div>
+      <figure class="sd-el medium sd-video" style="--x:4.09;--y:34.48;--w:91.66;--h:38.65;--ar:771.7 / 325.4" data-datei="bilder/sooderso/video-hero.mp4" data-alt="Sooderso: Ausschnitt aus dem Story-Game" data-label="videoframe&#10;platzhalter" data-poster="bilder/sooderso/still-01.jpg"></figure>
+      <h2 class="sd-el sd-text sd-h2" style="--x:4.32;--y:78.63;--w:35.63">Fragestellung</h2>
+      <div class="sd-el sd-text " style="--x:3.94;--y:83.72;--w:73.64">Jeder Mensch trifft täglich Entscheidungen. Manche sind bedeutungslos. Andere verändern alles. Doch wie viel liegt wirklich in unserer Hand?<br>Ich glaube eigentlich, dass nichts vorherbestimmt ist. Trotzdem prägen mich meine Herkunft und meine Persönlichkeit. Ist das Leben also Schicksal oder Zufall?</div>
+      <figure class="sd-el medium " style="--x:7.15;--y:99.21;--w:39.2;--h:22.09;--ar:330 / 186" data-datei="bilder/sooderso/zufall.jpg" data-alt="Zufall?" data-label="platzhalter"></figure>
+      <figure class="sd-el medium " style="--x:53;--y:99.21;--w:39.21;--h:22.09;--ar:330.1 / 186" data-datei="bilder/sooderso/wahl.jpg" data-alt="Triff deine Wahl" data-label="platzhalter"></figure>
+      <h2 class="sd-el sd-text sd-h2" style="--x:3.21;--y:126.62;--w:35.63">Konzept</h2>
+      <div class="sd-el sd-text " style="--x:2.84;--y:131.7;--w:76.02">Das Spiel ist eine interaktive Installation mit zwei Projektionsflächen. Auf der Wand läuft das Story-Game. Darunter liegt eine Bodenprojektion. Sie dient als Interaktionsfläche.</div>
+      <figure class="sd-el medium " style="--x:3.94;--y:141.88;--w:45.97;--h:23.04;--ar:387 / 194" data-datei="bilder/sooderso/konzept-01.jpg" data-alt="Aufbau der Installation mit Wand- und Bodenprojektion" data-label="platzhalter"></figure>
+      <figure class="sd-el medium " style="--x:52.09;--y:141.88;--w:45.97;--h:23.04;--ar:387 / 194" data-datei="bilder/sooderso/konzept-02.jpg" data-alt="Aufbau der Installation mit Wand- und Bodenprojektion" data-label="platzhalter"></figure>
+      <div class="sd-el sd-text " style="--x:3.94;--y:169.01;--w:76.02">An verschiedenen Stellen hält die Geschichte an. Die Spieler*innen haben dann immer zwei Möglichkeiten. Durch ihre Bewegung auf der Bodenfläche entscheiden sie sich für eine davon. So beeinflussen sie den weiteren Verlauf der Geschichte.</div>
+      <figure class="sd-el medium sd-foto" style="--x:1.92;--y:182.61;--w:30.6;--h:20.41;--ar:257.6 / 171.8" data-datei="bilder/sooderso/foto-01.jpg" data-alt="Spielerin vor der Projektion: Mitfahren oder Taxi" data-label="platzhalter"></figure>
+      <figure class="sd-el medium sd-foto" style="--x:34.93;--y:182.6;--w:30.62;--h:20.43;--ar:257.8 / 172" data-datei="bilder/sooderso/foto-02.jpg" data-alt="Spielerin im blauen Licht der Projektion" data-label="platzhalter"></figure>
+      <figure class="sd-el medium sd-foto" style="--x:67.04;--y:182.61;--w:31.04;--h:20.69;--ar:261.3 / 174.2" data-datei="bilder/sooderso/foto-03.jpg" data-alt="Das Wort Taxi an der Wand" data-label="platzhalter"></figure>
+      <div class="sd-el sd-text sd-bildtext" style="--x:57.96;--y:207.21;--w:40.39">Die Wand zeigt das Leben der Figur.<br>Der Boden wird zum Ort der Entscheidung.</div>
+      <figure class="sd-el medium sd-foto" style="--x:2.35;--y:223.9;--w:45.49;--h:30.32;--ar:383 / 255.3" data-datei="bilder/sooderso/foto-04.jpg" data-alt="Startbild der Installation" data-label="platzhalter"></figure>
+      <figure class="sd-el medium sd-foto" style="--x:49.99;--y:223.9;--w:45.49;--h:30.32;--ar:383 / 255.3" data-datei="bilder/sooderso/foto-05.jpg" data-alt="Autos im Stau, ein Lastwagen brennt" data-label="platzhalter"></figure>
+      <figure class="sd-el medium sd-foto" style="--x:2.35;--y:256.68;--w:45.49;--h:30.32;--ar:383 / 255.3" data-datei="bilder/sooderso/foto-06.jpg" data-alt="Figur mit Zahl 15:00" data-label="platzhalter"></figure>
+      <figure class="sd-el medium sd-foto" style="--x:50.24;--y:256.68;--w:45.49;--h:30.32;--ar:383 / 255.3" data-datei="bilder/sooderso/foto-07.jpg" data-alt="Spielerin im roten Licht" data-label="platzhalter"></figure>
+      <h2 class="sd-el sd-text sd-h2" style="--x:4.11;--y:298.92;--w:35.63">Umsetzung</h2>
+      <div class="sd-el sd-text " style="--x:4.35;--y:302.94;--w:76.02"><p>Alle Szenen wurden Frame für Frame von Hand gezeichnet. Anschließend wurden sie digital zu einer flüssigen Animation zusammengesetzt.</p><p>Die Wiedergabe wurde in TouchDesigner programmiert. Darüber wurden die Szenen auf die beiden Beamer gespielt. Für die Interaktion habe ich in TouchDesigner Buttons eingebaut. Mit ihnen konnte ich das Spiel live steuern. Je nachdem wofür sich die Spieler*innen entschieden haben, habe ich die passende Szene gestartet.</p></div>
+      <figure class="sd-el medium " style="--x:1.88;--y:326.29;--w:45.97;--h:23.04;--ar:387 / 194" data-datei="bilder/sooderso/umsetzung-01.mp4" data-alt="Making-of der Animation" data-label="platzhalter"></figure>
+      <figure class="sd-el medium " style="--x:50.18;--y:324.56;--w:48.85;--h:28.66;--ar:411.3 / 241.3" data-datei="bilder/sooderso/touchdesigner.jpg" data-alt="Programmierung in TouchDesigner: Buttons und Videoschaltung" data-label="platzhalter"></figure>
+      <h2 class="sd-el sd-text sd-h2" style="--x:4.11;--y:358.78;--w:35.63">still frames</h2>
+      <figure class="sd-el medium sd-still" style="--x:2.98;--y:364.11;--w:45.92;--h:25.87;--ar:386.6 / 217.8" data-datei="bilder/sooderso/still-01.jpg" data-alt="Still Frame 1" data-label="platzhalter"></figure>
+      <figure class="sd-el medium sd-still" style="--x:51.1;--y:364.11;--w:45.92;--h:25.87;--ar:386.6 / 217.8" data-datei="bilder/sooderso/still-02.jpg" data-alt="Still Frame 2" data-label="platzhalter"></figure>
+      <figure class="sd-el medium sd-still" style="--x:2.98;--y:392.09;--w:45.92;--h:25.87;--ar:386.6 / 217.8" data-datei="bilder/sooderso/still-03.jpg" data-alt="Still Frame 3" data-label="platzhalter"></figure>
+      <figure class="sd-el medium sd-still" style="--x:51.09;--y:392.4;--w:41.78;--h:25.89;--ar:351.7 / 218" data-datei="bilder/sooderso/still-04.jpg" data-alt="Still Frame 4" data-label="platzhalter"></figure>
+      <figure class="sd-el medium sd-still" style="--x:2.98;--y:421.06;--w:45.92;--h:25.87;--ar:386.6 / 217.8" data-datei="bilder/sooderso/still-05.jpg" data-alt="Still Frame 5" data-label="platzhalter"></figure>
+      <figure class="sd-el medium sd-still" style="--x:50.8;--y:421.06;--w:45.92;--h:25.87;--ar:386.6 / 217.8" data-datei="bilder/sooderso/still-06.jpg" data-alt="Still Frame 6" data-label="platzhalter"></figure>
 
-    <!-- Hauptvideo -->
-    <figure class="medium r169 gross" data-datei="bilder/sooderso/video-hero.mp4" data-alt="Sooderso: Ausschnitt aus dem Story-Game" data-poster="bilder/sooderso/still-01.jpg"></figure>
-
-    <section class="sd-block">
-      <h2>Fragestellung</h2>
-      <p>
-        Jeder Mensch trifft täglich Entscheidungen. Manche sind bedeutungslos. Andere verändern
-        alles. Doch wie viel liegt wirklich in unserer Hand?<br>
-        Ich glaube eigentlich, dass nichts vorherbestimmt ist. Trotzdem prägen mich meine Herkunft
-        und meine Persönlichkeit. Ist das Leben also Schicksal oder Zufall?
-      </p>
-      <div class="sd-reihe sd-2">
-        <figure class="medium r169" data-datei="bilder/sooderso/zufall.jpg" data-alt="Zufall?"></figure>
-        <figure class="medium r169" data-datei="bilder/sooderso/wahl.jpg" data-alt="Triff deine Wahl"></figure>
-      </div>
-    </section>
-
-    <section class="sd-block">
-      <h2>Konzept</h2>
-      <p>
-        Das Spiel ist eine interaktive Installation mit zwei Projektionsflächen. Auf der Wand
-        läuft das Story-Game. Darunter liegt eine Bodenprojektion. Sie dient als Interaktionsfläche.
-      </p>
-      <div class="sd-reihe sd-2">
-        <figure class="medium r169" data-datei="bilder/sooderso/konzept-01.jpg" data-alt="Aufbau der Installation mit Wand- und Bodenprojektion"></figure>
-        <figure class="medium r169" data-datei="bilder/sooderso/konzept-02.jpg" data-alt="Aufbau der Installation mit Wand- und Bodenprojektion"></figure>
-      </div>
-      <p>
-        An verschiedenen Stellen hält die Geschichte an. Die Spieler*innen haben dann immer zwei
-        Möglichkeiten. Durch ihre Bewegung auf der Bodenfläche entscheiden sie sich für eine davon.
-        So beeinflussen sie den weiteren Verlauf der Geschichte.
-      </p>
-      <div class="sd-reihe sd-3">
-        <figure class="medium r32" data-datei="bilder/sooderso/foto-01.jpg" data-alt="Spielerin vor der Projektion: Mitfahren oder Taxi"></figure>
-        <figure class="medium r32" data-datei="bilder/sooderso/foto-02.jpg" data-alt="Spielerin im blauen Licht der Projektion"></figure>
-        <figure class="medium r32" data-datei="bilder/sooderso/foto-03.jpg" data-alt="Das Wort Taxi an der Wand"></figure>
-      </div>
-      <p class="sd-bildtext">
-        Die Wand zeigt das Leben der Figur.<br>Der Boden wird zum Ort der Entscheidung.
-      </p>
-      <div class="sd-reihe sd-2">
-        <figure class="medium r32" data-datei="bilder/sooderso/foto-04.jpg" data-alt="Startbild der Installation"></figure>
-        <figure class="medium r32" data-datei="bilder/sooderso/foto-05.jpg" data-alt="Autos im Stau, ein Lastwagen brennt"></figure>
-        <figure class="medium r32" data-datei="bilder/sooderso/foto-06.jpg" data-alt="Figur mit Zahl 15:00"></figure>
-        <figure class="medium r32" data-datei="bilder/sooderso/foto-07.jpg" data-alt="Spielerin im roten Licht"></figure>
-      </div>
-    </section>
-
-    <section class="sd-block">
-      <h2>Umsetzung</h2>
-      <p>
-        Alle Szenen wurden Frame für Frame von Hand gezeichnet. Anschließend wurden sie digital
-        zu einer flüssigen Animation zusammengesetzt.
-      </p>
-      <p>
-        Die Wiedergabe wurde in TouchDesigner programmiert. Darüber wurden die Szenen auf die
-        beiden Beamer gespielt. Für die Interaktion habe ich in TouchDesigner Buttons eingebaut.
-        Mit ihnen konnte ich das Spiel live steuern. Je nachdem wofür sich die Spieler*innen
-        entschieden haben, habe ich die passende Szene gestartet.
-      </p>
-      <div class="sd-reihe sd-2">
-        <figure class="medium r169" data-datei="bilder/sooderso/umsetzung-01.mp4" data-alt="Making-of der Animation"></figure>
-        <figure class="medium r169" data-datei="bilder/sooderso/touchdesigner.jpg" data-alt="Programmierung in TouchDesigner: Buttons und Videoschaltung"></figure>
-      </div>
-    </section>
-
-    <section class="sd-block">
-      <h2>Still Frames</h2>
-      <div class="sd-reihe sd-2">
-        <figure class="medium r169" data-datei="bilder/sooderso/still-01.jpg" data-alt="Still Frame 1"></figure>
-        <figure class="medium r169" data-datei="bilder/sooderso/still-02.jpg" data-alt="Still Frame 2"></figure>
-        <figure class="medium r169" data-datei="bilder/sooderso/still-03.jpg" data-alt="Still Frame 3"></figure>
-        <figure class="medium r169" data-datei="bilder/sooderso/still-04.jpg" data-alt="Still Frame 4"></figure>
-        <figure class="medium r169" data-datei="bilder/sooderso/still-05.jpg" data-alt="Still Frame 5"></figure>
-        <figure class="medium r169" data-datei="bilder/sooderso/still-06.jpg" data-alt="Still Frame 6"></figure>
-      </div>
-    </section>
-
-    <section class="sd-block sd-dunkel">
-      <h2>Animation</h2>
-      <div class="sd-reihe sd-2">
-        <figure class="medium r45 auto" data-datei="bilder/sooderso/animation-01.mp4" data-alt="Animation 1" data-auto="ja"></figure>
-        <figure class="medium r169 auto" data-datei="bilder/sooderso/animation-02.mp4" data-alt="Animation 2" data-auto="ja"></figure>
-        <figure class="medium r34 auto" data-datei="bilder/sooderso/animation-03.mp4" data-alt="Animation 3" data-auto="ja"></figure>
-        <figure class="medium r169 auto" data-datei="bilder/sooderso/animation-04.mp4" data-alt="Animation 4" data-auto="ja"></figure>
-      </div>
-    </section>
+      <section class="sd-el sd-band" style="--x:0;--y:450.45;--w:100;--h:76.07;--ar:841.89 / 640.45" aria-label="Animation">
+        <h2 class="sd-el sd-text sd-h2" style="--x:4.11;--y:3.1;--w:35.63">animation</h2>
+        <figure class="sd-el medium sd-anim" style="--x:5.32;--y:11.11;--w:35.59;--h:20.96;--ar:299.6 / 176.5" data-datei="bilder/sooderso/animation-01.mp4" data-alt="Animation 1" data-label="" data-auto="ja"></figure>
+        <figure class="sd-el medium sd-anim" style="--x:44.79;--y:11.11;--w:51.88;--h:22.02;--ar:436.8 / 185.4" data-datei="bilder/sooderso/animation-02.mp4" data-alt="Animation 2" data-label="" data-auto="ja"></figure>
+        <figure class="sd-el medium sd-anim" style="--x:6.2;--y:36.12;--w:22.56;--h:25.03;--ar:189.9 / 210.7" data-datei="bilder/sooderso/animation-03.mp4" data-alt="Animation 3" data-label="" data-auto="ja"></figure>
+        <figure class="sd-el medium sd-anim" style="--x:32.63;--y:37.18;--w:64.05;--h:23.97;--ar:539.2 / 201.8" data-datei="bilder/sooderso/animation-04.mp4" data-alt="Animation 4" data-label="" data-auto="ja"></figure>
+      </section>
+    </div>
+    </div>
   </main>
 
   <footer class="fuss">

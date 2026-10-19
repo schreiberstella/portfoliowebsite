@@ -284,7 +284,7 @@
 
       function platzhalter() {
         fig.classList.add('leer');
-        fig.setAttribute('data-hinweis', 'Platzhalter · ' + datei.split('/').pop());
+        fig.setAttribute('data-hinweis', datei.split('/').pop());
         if (medium) medium.remove();
       }
 

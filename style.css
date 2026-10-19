@@ -681,99 +681,129 @@ body.menue-offen { overflow: hidden; }
 
 /* =====================================================
    Ausführliche Projektseite (Sooderso)
+   Layout nach dem Entwurf (PDF): alle Maße sind Anteile der Seitenbreite,
+   die Seite skaliert also gleichmäßig. Auf schmalen Bildschirmen (Handy)
+   werden die Felder untereinander angeordnet.
    ===================================================== */
-.projektseite .seite-titel {
-  margin: 0;
-  font-size: clamp(2rem, 5.5vw, 3.6rem);
+.sd-main { padding-left: 0; padding-right: 0; }
+.sd-seite {
+  container: sd / inline-size;
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
 }
-.sd-kopf {
-  display: grid;
-  gap: 1rem;
-  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
-}
-.sd-kopf p { max-width: 62ch; }
-.sd-meta { font-size: .9rem; letter-spacing: .08em; }
-@media (min-width: 820px) {
-  .sd-kopf {
-    grid-template-columns: 1fr minmax(0, 2fr) auto;
-    column-gap: clamp(1.5rem, 4vw, 4rem);
-    align-items: start;
-  }
-  .sd-kopf .seite-titel { grid-column: 1 / -1; margin-bottom: .6rem; }
-  .sd-intro { grid-column: 2; }
-  .sd-meta { grid-column: 3; text-align: right; }
-}
+.sd-zurueck { margin: 0 0 1rem 4cqw; }
 
-.sd-block { margin-top: clamp(2.5rem, 7vw, 5rem); }
-.sd-block h2 {
-  margin-bottom: .8rem;
-  font-size: 1.15rem;
+/* --- Grundformat (schmal): Felder untereinander --- */
+.sd-stage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 0 16px 32px;
+}
+.sd-el { grid-column: 1 / -1; min-width: 0; }
+.sd-stage .medium.sd-still,
+.sd-stage .medium:not(.sd-video):not(.sd-foto):not(.sd-anim) { grid-column: span 1; }
+.sd-text { font-size: 15px; line-height: 1.2; }
+.sd-text p + p { margin-top: .5em; }
+.sd-titel {
+  font-size: clamp(2.2rem, 11vw, 3.4rem);
+  margin-top: 8px;
+}
+.sd-h2 {
+  font-family: var(--fliesstext);
+  font-weight: 400;
+  -webkit-text-stroke: .03em currentColor;
   text-transform: none;
   letter-spacing: 0;
-  text-decoration: none;
+  font-size: 18px;
+  line-height: 1.2;
+  margin-top: 1.2rem;
 }
-.sd-block > p { max-width: 62ch; margin-bottom: 1.2em; }
-.sd-bildtext { margin-left: auto; text-align: left; }
-@media (min-width: 820px) {
-  .sd-bildtext { max-width: 34ch; margin-right: 0; }
-}
+.sd-meta { text-align: left; }
+.sd-bildtext { white-space: normal; }
 
-.sd-reihe {
-  display: grid;
-  gap: clamp(.8rem, 2vw, 1.4rem);
-  margin-bottom: clamp(1.2rem, 3vw, 2rem);
-  align-items: start;
-}
-@media (min-width: 600px) {
-  .sd-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .sd-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
-
-.medium { margin: 0; background: transparent; }
+.medium { position: relative; margin: 0; aspect-ratio: var(--ar, 16 / 9); background: #000; overflow: hidden; }
 .medium img,
-.medium video { width: 100%; height: auto; }
-.medium video { background: #000; }
-.medium.gross { margin-bottom: 0; }
+.medium video { position: absolute; inset: 0; width: 100%; height: 100%; }
+.medium img { object-fit: cover; }
+.medium video { object-fit: contain; background: #000; }
 
-/* Platzhalter: dunkle Fläche in passendem Seitenverhältnis */
-.medium.leer {
-  display: grid;
-  place-items: center;
-  background: #231f20;
-  color: #fff;
-  aspect-ratio: 16 / 9;
-}
-.medium.leer.r32 { aspect-ratio: 3 / 2; }
-.medium.leer.r45 { aspect-ratio: 4 / 5; }
-.medium.leer.r34 { aspect-ratio: 3 / 4; }
+/* Platzhalter (schwarz, weiße Schrift wie im Entwurf) */
+.medium.leer { display: grid; place-items: center; color: #fff; }
 .medium.leer::after {
-  content: attr(data-hinweis);
-  padding: 1rem;
+  content: attr(data-label);
+  white-space: pre-line;
   text-align: center;
-  overflow-wrap: anywhere;
   font-family: var(--display);
   font-weight: 900;
-  text-transform: uppercase;
-  font-size: clamp(.9rem, 2.4vw, 1.4rem);
-  line-height: 1.15;
+  font-size: clamp(1.1rem, 5.7cqw, 2.6rem);
+  line-height: 1.2;
+}
+.medium.leer::before {
+  content: attr(data-hinweis);
+  position: absolute;
+  left: 0; right: 0; bottom: .6em;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: .04em;
+  opacity: .7;
 }
 
-/* dunkler Animationsbereich */
-.sd-dunkel {
-  position: relative;
-  padding: clamp(1.5rem, 4vw, 2.5rem) 0 clamp(2rem, 5vw, 3.5rem);
+/* schwarzer Abschlussbereich mit umrandeten Feldern */
+.sd-band {
+  background: #000;
   color: #fff;
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+  margin-top: 1.5rem;
 }
-/* Hintergrund über die ganze Bildschirmbreite */
-.sd-dunkel::before {
-  content: "";
-  position: absolute;
-  top: 0; bottom: 0;
-  left: 50%;
-  width: 100vw;
-  transform: translateX(-50%);
-  background: #231f20;
-  z-index: -1;
+.sd-band .sd-h2 { color: #fff; margin-top: 0; }
+.sd-band .sd-el { position: static; }
+.sd-band .sd-el.medium { position: relative; }
+.sd-band .medium.sd-anim { background: transparent; outline: 1px solid #fff; outline-offset: -1px; }
+.sd-band .medium.leer::after { content: none; }
+
+/* --- Breite Darstellung: exakt wie der Entwurf --- */
+@container sd (min-width: 700px) {
+  .sd-zurueck { font-size: .8rem; }
+  .sd-stage {
+    display: block;
+    position: relative;
+    height: calc(526.52 * 1cqw);
+    padding: 0;
+  }
+  .sd-el {
+    position: absolute;
+    left: calc(var(--x) * 1cqw);
+    top: calc(var(--y) * 1cqw);
+    width: calc(var(--w, 40) * 1cqw);
+    margin: 0;
+  }
+  .sd-el.medium { height: calc(var(--h) * 1cqw); aspect-ratio: auto; }
+  .sd-text { font-size: calc(17 / 841.89 * 100cqw); line-height: 1.2; }
+  .sd-text p + p { margin-top: calc(8.4 / 841.89 * 100cqw); }
+  .sd-titel {
+    margin: 0;
+    width: auto;
+    font-size: calc(48 / 841.89 * 100cqw);
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  .sd-h2 { font-size: calc(25 / 841.89 * 100cqw); margin-top: 0; white-space: nowrap; }
+  .sd-meta { text-align: right; }
+  .sd-bildtext { white-space: nowrap; }
+
+  .sd-band {
+    display: block;
+    padding: 0;
+    margin: 0;
+    height: calc(var(--h) * 1cqw);
+  }
+  .sd-band .sd-el,
+  .sd-band .sd-el.medium { position: absolute; }
+  .sd-band .sd-el.medium { height: calc(var(--h) * 1cqw); }
+  .sd-band .medium.leer::before { font-size: calc(12 / 841.89 * 100cqw); }
+  .medium.leer::after { font-size: calc(48 / 841.89 * 100cqw); }
 }
-.sd-dunkel h2 { color: #fff; }
-.sd-dunkel .medium.leer { background: transparent; outline: 1px solid #fff; outline-offset: -1px; }
