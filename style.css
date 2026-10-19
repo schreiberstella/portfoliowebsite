@@ -794,3 +794,48 @@ body.menue-offen { overflow: hidden; }
 /* Animationsbereich: zarte Rahmen statt harter Linien */
 .sd-band .medium.sd-anim { outline-color: rgba(255, 255, 255, .55); }
 .sd-band .sd-text { color: #fff; }
+
+/* =====================================================
+   SOODERSO: Bild und Text nebeneinander (Idee, Konzept), Band über die ganze Breite
+   (nur auf der Seite sooderso.html im Einsatz)
+   ===================================================== */
+.sd-pair { margin-top: calc(var(--gap, 0) * 1.5cqw); min-height: calc(var(--rh) * 1cqw); }
+.sd-pair > .sd-el {
+  position: absolute;
+  left: calc(var(--x) * 1cqw);
+  top: calc(var(--dy) * 1cqw);
+  width: calc(var(--w) * 1cqw);
+  height: calc(var(--h) * 1cqw);
+}
+.sd-pair > .sd-pt {
+  margin-left: calc(var(--x) * 1cqw);
+  margin-top: calc(var(--ty) * 1cqw);
+  width: min(calc(var(--w) * 1cqw), 36em);
+  max-width: calc(100cqw - var(--x) * 1cqw);
+}
+.sd-pt .sd-h2 { margin-bottom: .55em; }
+.sd-band--voll { box-shadow: 0 0 0 100vmax #000; clip-path: inset(0 -100vmax); }
+
+@container sd (max-width: 640px) {
+  .sd-pair { min-height: 0; }
+  .sd-pair > .sd-el {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    aspect-ratio: var(--ar);
+    margin: 1.4rem 0;
+  }
+  .sd-pair > .sd-pt { margin: 0; width: 100%; max-width: none; }
+}
+
+/* Animationsfelder mit Video: dünner Rahmen bleibt sichtbar (liegt über dem Video) */
+.sd-band .medium.sd-anim:not(.leer)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, .55);
+  pointer-events: none;
+  z-index: 2;
+}
