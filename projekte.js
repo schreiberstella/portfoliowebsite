@@ -107,12 +107,19 @@ Das Spiel entstand im Kurs Expander Animation. Es bespielt zwei Projektionsfläc
      ================================================================== */
   illustration: {
     titel: 'Illustration',
-    ordner: 'bilder/',   // Ordner der Bilder (mit / am Ende), z. B. 'bilder/illustration/'
+    ordner: 'bilder/illustration/',   // Ordner der Bilder (mit / am Ende)
 
     bilder: [
-      { datei: 'platzhalter-quer.svg', titel: 'Illustration 1' },
-      { datei: 'platzhalter-hoch.svg', titel: 'Illustration 2' },
-      { datei: 'platzhalter-quer.svg', titel: 'Illustration 3' },
+      { datei: 'dance.jpg', titel: 'Let us dance', alt: 'Illustration: viele tanzende Figuren mit Sonnengesichtern auf lila Grund, Schriftzug „Let us dance“' },
+      { datei: 'ohne-titel.jpg', titel: 'Ohne Titel', alt: 'Illustration: zwei schwebende Personen in einem Kreis, aus ihren Mündern ragen bunte Kegel mit Szenen aus Rick and Morty' },
+      { datei: 'how-to.jpg', titel: 'How to get your brain through the current crisis', alt: 'Illustration: blauer Kopf mit offenem Gehirn und schwarzen Blitzen, Schriftzug „How to get your brain through the current crisis“' },
+      { datei: 'turtles.jpg', titel: 'Save the turtles, smash the nazis', alt: 'Illustration: eine Schildkröte ringt einen Mann mit Hakenkreuz nieder, rosa Schriftzug „Save the turtles, smash the nazis“' },
+      { datei: 'spaetkauf.jpg', titel: 'Spätkauf Trash', alt: 'Illustration: Gruppe junger Leute vor einem Spätkauf, in der Mitte das Wort „Trash“ in Orange' },
+      { datei: 'girl-on-fire.jpg', titel: 'Girl on fire', alt: 'Illustration: Fußballspielerin im Wind, schwarze Flammen und gelbe Funken' },
+      { datei: 'hoffnungslos.jpg', titel: 'Hoffnungslos', alt: 'Illustration: ein Strauß steckt den Kopf in den Boden, darunter brennende Stadt, Schriftzug „Vielleicht gibt es doch Hoffnung“' },
+      { datei: 'ich-bin-ich.jpg', titel: 'Ich bin ich.. mal mehr mal weniger', alt: 'Illustration: Collage bunter gemalter Gesichter mit den Worten „Ich bin ich, mal mehr, mal weniger“' },
+      { datei: 'koepfe.jpg', titel: 'Köpfe', alt: 'Illustration: viele gezeichnete Köpfe, die ineinander übergehen' },
+      { datei: 'spaeti.jpg', titel: 'Späti', alt: 'Illustration: Spätkauf bei Nacht mit Biertischgarnitur' },
       // { datei: '04.jpg', titel: 'Name der Illustration', alt: 'Was zu sehen ist' },
     ],
   },
